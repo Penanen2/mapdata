@@ -4,8 +4,8 @@
       "id": "finland",
       "name": "Suomi",
       "version": "2026-06-23",
-      "url": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/ofmx_ef.ofmx"
-      "pmtilesUrl": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/finland_vfr.pmtiles""
+      "url": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/ofmx_ef.ofmx",
+      "pmtilesUrl": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/finland_vfr.pmtiles"
     }
   ]
 }
