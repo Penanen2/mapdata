@@ -20,13 +20,13 @@ jobs:
           wget -qO raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
 
       - name: Generate PMTiles with Planetiler
-        # Planetiler lukee raakadatan ja heittää roskiin rakennukset ja POI-kohteet.
-        # Lentokentät (aeroway) ja kaupungit (place) pidetään ehdottomasti mukana!
+        # Lisätty --download -lippu, jotta Planetiler hakee tarvitsemansa apukartat
         run: |
           docker run --rm \
             -e JAVA_TOOL_OPTIONS="-Xmx5g" \
             -v "${{ github.workspace }}:/data" \
             ghcr.io/onthegomap/planetiler:latest \
+            --download \
             --osm-path=/data/raw.osm.pbf \
             --output=/data/${{ matrix.country }}_vfr.pmtiles \
             --maxzoom=12 \
@@ -41,3 +41,4 @@ jobs:
           name: "Latest VFR Base Maps"
           files: ${{ matrix.country }}_vfr.pmtiles
           make_latest: true
+      
