@@ -19,20 +19,31 @@ jobs:
         run: |
           wget -qO raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
 
-      - name: Generate PMTiles with Planetiler
+      - name: Generate PMTiles with Planetiler and Aggressive Generalization
         run: |
+          # 1. Planetiler tekee "pohjan" (tämä on välivaihe)
           docker run --rm \
             -e JAVA_TOOL_OPTIONS="-Xmx5g" \
             -v "${{ github.workspace }}:/data" \
             ghcr.io/onthegomap/planetiler:latest \
             --download \
             --osm-path=/data/raw.osm.pbf \
-            --output=/data/${{ matrix.country }}_vfr.pmtiles \
-            --maxzoom=10 \
-            --simplify-tolerance=3.0 \
-            --exclude-layers=poi,building,housenumber,park,mountain_peak,address,admin \
-            --fetch-wikidata=false \
+            --output=/data/temp_vfr.pmtiles \
+            --maxzoom=11 \
+            --exclude-layers=poi,building,housenumber,park,mountain_peak,address,admin,place \
             --force
+
+          # 2. Tippecanoe tekee "yleistyksen" (tämä on se SkyDemon-taika)
+          # -zg = generalisoi automaattisesti
+          # -S 3 = simplifioi rajusti (mitä isompi numero, sitä karkeampi)
+          # --drop-densest-as-needed = poistaa turhaa kohinaa zoomatessa
+          docker run --rm \
+            -v "${{ github.workspace }}:/data" \
+            felt/tippecanoe \
+            tippecanoe -zg -S 3 -o /data/${{ matrix.country }}_vfr.pmtiles \
+            --drop-densest-as-needed \
+            --extend-zooms-if-still-dropping \
+            /data/temp_vfr.pmtiles
 
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
