@@ -1,0 +1,43 @@
+name: Generate VFR Map Tiles
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write # KRIITTINEN: Antaa robotille luvan tallentaa kartat GitHub Releases -sivulle
+
+jobs:
+  build_vfr_maps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # Jos yhden maan lataus pätkäisee, muut saavat silti jatkaa
+      matrix:
+        country: [finland, sweden, germany]
+
+    steps:
+      - name: Download latest OSM data from Geofabrik
+        run: |
+          wget -qO raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
+
+      - name: Generate PMTiles with Planetiler
+        # Planetiler lukee raakadatan ja heittää roskiin rakennukset ja POI-kohteet.
+        # Lentokentät (aeroway) ja kaupungit (place) pidetään ehdottomasti mukana!
+        run: |
+          docker run --rm \
+            -e JAVA_TOOL_OPTIONS="-Xmx5g" \
+            -v "${{ github.workspace }}:/data" \
+            ghcr.io/onthegomap/planetiler:latest \
+            --osm-path=/data/raw.osm.pbf \
+            --output=/data/${{ matrix.country }}_vfr.pmtiles \
+            --maxzoom=12 \
+            --exclude-layers=poi,building,housenumber,park,mountain_peak \
+            --fetch-wikidata=false \
+            --force
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: vfr-maps-latest
+          name: "Latest VFR Base Maps"
+          files: ${{ matrix.country }}_vfr.pmtiles
+          make_latest: true
