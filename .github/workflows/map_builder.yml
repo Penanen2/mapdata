@@ -20,11 +20,10 @@ jobs:
           wget -qO raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
 
       - name: Generate Clean VFR PMTiles with Planetiler
-        # Täydellinen VFR-profiili:
+        # MUUTETTU VFR-PROFIILI:
         # - simplify-tolerance=1.0 pitää rantaviivat tarkkoina.
-        # - exclude-layers: poistetaan "landuse" (poistaa levottomat alueet),
-        #   "waterway" (poistaa pikkuojat), mutta PIDETÄÄN "place" (kaupungit)
-        #   ja "aeroway" (lentokentät).
+        # - landuse, waterway ja poi POISTETTU estolistalta, jotta taajamat, 
+        #   joet ja tulevaisuudessa lentoesteet saadaan kartalle näkyviin.
         run: |
           docker run --rm \
             -e JAVA_TOOL_OPTIONS="-Xmx5g" \
@@ -35,7 +34,7 @@ jobs:
             --output=/data/${{ matrix.country }}_vfr.pmtiles \
             --maxzoom=11 \
             --simplify-tolerance=1.0 \
-            --exclude-layers=poi,building,housenumber,park,mountain_peak,address,waterway,landuse \
+            --exclude-layers=building,housenumber,park,mountain_peak,address \
             --fetch-wikidata=false \
             --force
 
