@@ -1,0 +1,159 @@
+schema_name: AeroTools VFR
+schema_description: A very lightweight aviation basemap optimized for VFR navigation.
+attribution: <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>
+args:
+  area:
+    description: Geofabrik area to download
+    default: massachusetts
+  osm_url:
+    description: OSM URL to download
+    default: '${ args.area == "planet" ? "aws:latest" : ("geofabrik:" + args.area) }'
+sources:
+  ocean:
+    type: shapefile
+    url: https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip
+  osm:
+    type: osm
+    url: '${ args.osm_url }'
+definitions:
+  attributes:
+  - &name
+    key: name
+  - &name_en
+    key: name_en
+    tag_value: name:en
+  - &name_de
+    key: name_de
+    tag_value: name:de
+
+layers:
+- id: water
+  tile_post_process:
+    merge_polygons: true
+    simplify_tolerance: 2.0
+  features:
+  - source: ocean
+    geometry: polygon
+  - source: osm
+    geometry: polygon
+    include_when:
+      natural:
+      - water
+      water:
+      - lake
+      - reservoir
+      - pond
+      - basin
+      waterway:
+      - riverbank
+      landuse:
+      - reservoir
+
+- id: rivers
+  features:
+  - source: osm
+    geometry: line
+    include_when:
+      waterway:
+      - river
+      - canal
+    attributes:
+    - key: class
+      value: river
+
+- id: forest
+  tile_post_process:
+    merge_polygons: true
+    simplify_tolerance: 2.0
+  features:
+  - source: osm
+    geometry: polygon
+    include_when:
+      natural:
+      - wood
+      - scrub
+      - heath
+      landuse:
+      - forest
+    attributes:
+    - key: class
+      value: forest
+
+- id: urban
+  tile_post_process:
+    merge_polygons: true
+    simplify_tolerance: 2.0
+  features:
+  - source: osm
+    geometry: polygon
+    include_when:
+      landuse:
+      - residential
+      - commercial
+      - industrial
+      - retail
+    attributes:
+    - key: class
+      value: urban
+
+- id: roads
+  features:
+  - source: osm
+    geometry: line
+    include_when:
+      highway:
+      - motorway
+      - motorway_link
+      - trunk
+      - trunk_link
+      - primary
+      - primary_link
+    attributes:
+    - key: class
+      value:
+        match:
+        - value: motorway
+          if: { highway: [motorway, motorway_link] }
+        - value: trunk
+          if: { highway: [trunk, trunk_link] }
+        - value: primary
+          if: { highway: [primary, primary_link] }
+
+- id: railway
+  features:
+  - source: osm
+    geometry: line
+    include_when:
+      railway: rail
+    attributes:
+    - key: class
+      value: rail
+
+- id: places
+  features:
+  - source: osm
+    geometry: point
+    include_when:
+      place:
+      - city
+      - town
+    exclude_when:
+      name: ''
+    attributes:
+    - key: class
+      type: match_value
+    - *name
+    - *name_en
+    - *name_de
+
+- id: boundary
+  features:
+  - source: osm
+    geometry: line
+    include_when:
+      __all__:
+      - boundary: administrative
+      - admin_level: 2
+    attributes:
+    - key: class
+      value: national
