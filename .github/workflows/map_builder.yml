@@ -24,7 +24,6 @@ jobs:
           sudo apt-get install -y osmium-tool gdal-bin
           sudo npm install -g mapshaper
 
-      # ---------- ROAD SIMPLIFICATION ----------
       - name: Strip link roads, service/track roads, and roundabouts
         run: |
           osmium tags-filter -i raw.osm.pbf \
@@ -32,7 +31,6 @@ jobs:
             -o step1.osm.pbf
           osmium tags-filter -i step1.osm.pbf w/junction=roundabout -o cleaned.osm.pbf
 
-      # ---------- LANDUSE: EXTRACT + DISSOLVE ----------
       - name: Extract landuse polygons to GeoJSON
         run: |
           ogr2ogr -f GeoJSON landuse_raw.geojson cleaned.osm.pbf multipolygons \
@@ -45,7 +43,6 @@ jobs:
             -simplify 15% \
             -o merged_landuse.geojson format=geojson
 
-      # ---------- MAIN BASEMAP (roads, water, etc.) ----------
       - name: Generate main VFR PMTiles (landuse excluded here)
         run: |
           docker run --rm \
@@ -61,37 +58,21 @@ jobs:
             --fetch-wikidata=false \
             --force
 
-      # ---------- SEPARATE DISSOLVED LANDUSE TILESET ----------
-      - name: Write custom schema for dissolved landuse
+      # ---------- SEPARATE DISSOLVED LANDUSE TILESET WITH TIPPECANOE ----------
+      - name: Install Tippecanoe
         run: |
-          cat > landuse_schema.yml << 'EOF'
-          schema_name: vfr-landuse-merged
-          schema_description: Dissolved urban landuse polygons for VFR base map
-          sources:
-            landuse:
-              type: geojson
-              local_path: merged_landuse.geojson
-          layers:
-            - id: landuse_merged
-              features:
-                - source: landuse
-                  geometry: polygon
-                  min_zoom: 0
-                  output:
-                    - layer: landuse_merged
-                      tags:
-                        class: ${feature.tags.landuse}
-          EOF
+          sudo apt-get install -y build-essential libsqlite3-dev zlib1g-dev
+          git clone https://github.com/mapbox/tippecanoe.git
+          cd tippecanoe && make && sudo make install && cd ..
 
-      - name: Generate dissolved landuse PMTiles
+      - name: Generate dissolved landuse PMTiles with Tippecanoe
         run: |
-          docker run --rm \
-            -e JAVA_TOOL_OPTIONS="-Xmx3g" \
-            -v "${{ github.workspace }}:/data" \
-            ghcr.io/onthegomap/planetiler:latest \
-            --schema=/data/landuse_schema.yml \
-            --output=/data/${{ matrix.country }}_landuse.pmtiles \
-            --force
+          tippecanoe -o ${{ matrix.country }}_landuse.pmtiles \
+            -l landuse_merged \
+            -z 11 \
+            -Z 0 \
+            --drop-densest-as-needed \
+            merged_landuse.geojson
 
       - name: Upload both PMTiles to GitHub Release
         uses: softprops/action-gh-release@v2
