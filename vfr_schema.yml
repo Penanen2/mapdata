@@ -1,0 +1,115 @@
+schema_name: AeroTools VFR Base Map
+schema_description: Minimal basemap for VFR aviation use - major roads only, dissolved landuse, water, boundaries
+
+sources:
+  osm:
+    type: osm
+
+layers:
+  # ===== WATER =====
+  - id: water
+    features:
+      - source: osm
+        geometry: polygon
+        min_zoom: 0
+        include_when:
+          natural: [water, lake, river, canal, pond]
+        output:
+          - layer: water
+            tags:
+              class: water
+
+  # ===== LANDUSE =====
+  - id: landuse
+    features:
+      - source: osm
+        geometry: polygon
+        min_zoom: 0
+        include_when:
+          landuse: [residential, commercial, industrial, retail]
+        output:
+          - layer: landuse
+            tags:
+              class: ${feature.tags.landuse}
+
+  # ===== ROADS - ONLY MAJOR =====
+  # Motorways at z5+
+  - id: roads_motorway
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 5
+        include_when:
+          highway: [motorway]
+        output:
+          - layer: transportation
+            tags:
+              class: motorway
+
+  # Trunk roads at z6+
+  - id: roads_trunk
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 6
+        include_when:
+          highway: [trunk]
+        output:
+          - layer: transportation
+            tags:
+              class: trunk
+
+  # Primary roads at z7+
+  - id: roads_primary
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 7
+        include_when:
+          highway: [primary]
+        output:
+          - layer: transportation
+            tags:
+              class: primary
+
+  # ===== PLACE NAMES =====
+  - id: places_city
+    features:
+      - source: osm
+        geometry: point
+        min_zoom: 4
+        include_when:
+          place: [city, town, village]
+        output:
+          - layer: places
+            tags:
+              class: ${feature.tags.place}
+              name: ${feature.tags.name}
+
+  # ===== BOUNDARIES =====
+  - id: boundaries
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 0
+        include_when:
+          boundary: [administrative]
+        exclude_when:
+          admin_level: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        output:
+          - layer: boundaries
+            tags:
+              admin_level: ${feature.tags.admin_level}
+
+  # ===== RIVERS & WATERWAYS =====
+  - id: waterways
+    features:
+      - source: osm
+        geometry: line
+        min_zoom: 6
+        include_when:
+          waterway: [river, canal, stream, drain]
+        output:
+          - layer: physical_line
+            tags:
+              class: ${feature.tags.waterway}
