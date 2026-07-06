@@ -7,30 +7,23 @@ permissions:
   contents: write
 
 jobs:
- build:
-
+  build:
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v4
 
-      - name: Download Finland
-        run: |
-          wget -O finland.osm.pbf \
-          https://download.geofabrik.de/europe/finland-latest.osm.pbf
-
-      - name: Run Planetiler
+      - name: Run Planetiler Custom Map
         run: |
           docker run --rm \
             -v ${{ github.workspace }}:/data \
             ghcr.io/onthegomap/planetiler:latest \
-            --download=false \
-            --osm-path=/data/finland.osm.pbf \
+            custom \
+            --schema=/data/schema/aerotools.yml \
+            --download \
+            --area=finland \
             --output=/data/finland.pmtiles \
-            --force \
-            --fetch-wikidata=false \
-            --maxzoom=11
+            --force
 
       - name: Upload Release
         uses: softprops/action-gh-release@v2
