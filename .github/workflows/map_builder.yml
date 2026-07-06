@@ -1,10 +1,8 @@
 name: Generate VFR Map Tiles
 on:
   workflow_dispatch:
-
 permissions:
-  contents: write # Antaa robotille luvan tallentaa kartat GitHub Releases -sivulle
-
+  contents: write
 jobs:
   build_vfr_maps:
     runs-on: ubuntu-latest
@@ -12,24 +10,43 @@ jobs:
       fail-fast: false
       matrix:
         country: [finland, sweden, germany]
-
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Download latest OSM data from Geofabrik
         run: |
           wget -qO raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
 
-      - name: Install Osmium Tool
+      - name: Install Osmium Tool, GDAL, Node
         run: |
           sudo apt-get update
-          sudo apt-get install -y osmium-tool
+          sudo apt-get install -y osmium-tool gdal-bin
+          sudo npm install -g mapshaper
 
-      - name: Filter out highway links (ramps) to reduce file size
-        # Käytetään osmiumia poistamaan moottoritie- ja maantierampit (-i eli invert-match poistaa listatut kohteet)
+      # ---------- ROAD SIMPLIFICATION ----------
+      - name: Strip link roads, service/track roads, and roundabouts
         run: |
-          osmium tags-filter -i raw.osm.pbf w/highway=motorway_link,trunk_link,primary_link,secondary_link -o cleaned.osm.pbf
+          osmium tags-filter -i raw.osm.pbf \
+            w/highway=motorway_link,trunk_link,primary_link,secondary_link,tertiary_link,service,track \
+            -o step1.osm.pbf
+          osmium tags-filter -i step1.osm.pbf w/junction=roundabout -o cleaned.osm.pbf
 
-      - name: Generate Clean VFR PMTiles with Planetiler
-        # Syötetään Planetilerille cleaned.osm.pbf raakadatan sijaan
+      # ---------- LANDUSE: EXTRACT + DISSOLVE ----------
+      - name: Extract landuse polygons to GeoJSON
+        run: |
+          ogr2ogr -f GeoJSON landuse_raw.geojson cleaned.osm.pbf multipolygons \
+            -where "landuse IN ('residential','commercial','industrial','retail')"
+
+      - name: Dissolve adjacent polygons and simplify
+        run: |
+          mapshaper landuse_raw.geojson \
+            -dissolve2 fields=landuse \
+            -simplify 15% \
+            -o merged_landuse.geojson format=geojson
+
+      # ---------- MAIN BASEMAP (roads, water, etc.) ----------
+      - name: Generate main VFR PMTiles (landuse excluded here)
         run: |
           docker run --rm \
             -e JAVA_TOOL_OPTIONS="-Xmx5g" \
@@ -40,14 +57,48 @@ jobs:
             --output=/data/${{ matrix.country }}_vfr.pmtiles \
             --maxzoom=11 \
             --simplify-tolerance=1.0 \
-            --exclude-layers=building,housenumber,park,mountain_peak,address \
+            --exclude-layers=building,housenumber,park,mountain_peak,address,landuse \
             --fetch-wikidata=false \
             --force
 
-      - name: Upload to GitHub Release
+      # ---------- SEPARATE DISSOLVED LANDUSE TILESET ----------
+      - name: Write custom schema for dissolved landuse
+        run: |
+          cat > landuse_schema.yml << 'EOF'
+          schema_name: vfr-landuse-merged
+          schema_description: Dissolved urban landuse polygons for VFR base map
+          sources:
+            landuse:
+              type: geojson
+              local_path: merged_landuse.geojson
+          layers:
+            - id: landuse_merged
+              features:
+                - source: landuse
+                  geometry: polygon
+                  min_zoom: 0
+                  output:
+                    - layer: landuse_merged
+                      tags:
+                        class: ${feature.tags.landuse}
+          EOF
+
+      - name: Generate dissolved landuse PMTiles
+        run: |
+          docker run --rm \
+            -e JAVA_TOOL_OPTIONS="-Xmx3g" \
+            -v "${{ github.workspace }}:/data" \
+            ghcr.io/onthegomap/planetiler:latest \
+            --schema=/data/landuse_schema.yml \
+            --output=/data/${{ matrix.country }}_landuse.pmtiles \
+            --force
+
+      - name: Upload both PMTiles to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: vfr-maps-latest
           name: "Latest VFR Base Maps"
-          files: ${{ matrix.country }}_vfr.pmtiles
+          files: |
+            ${{ matrix.country }}_vfr.pmtiles
+            ${{ matrix.country }}_landuse.pmtiles
           make_latest: true
