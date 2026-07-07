@@ -37,16 +37,11 @@ jobs:
         run: |
           wget -qO data/raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
 
-      # Kääntövaihe on poistettu kokonaan.
-      # Ajamme suoraan AeroToolsProfile.java -tiedoston lennosta.
       - name: Generate Clean PMTiles
+        env:
+          MAP_COUNTRY: ${{ matrix.country }}
         run: |
-          java -cp planetiler.jar AeroToolsProfile.java \
-            --osm-path=data/raw.osm.pbf \
-            --output=data/${{ matrix.country }}_vfr.pmtiles \
-            --maxzoom=11 \
-            --nodata \
-            --force
+          java -cp planetiler.jar AeroToolsProfile.java
 
       - name: Upload Map to GitHub Releases
         uses: softprops/action-gh-release@v2
