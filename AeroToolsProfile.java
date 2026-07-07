@@ -3,17 +3,21 @@ import com.onthegomap.planetiler.Profile;
 import com.onthegomap.planetiler.FeatureCollector;
 import com.onthegomap.planetiler.reader.SourceFeature;
 import com.onthegomap.planetiler.config.Arguments;
+import com.onthegomap.planetiler.FeatureMerge;
+import com.onthegomap.planetiler.VectorTile;
+import java.util.List;
+import org.locationtech.jts.geom.GeometryException;
 
 public class AeroToolsProfile implements Profile {
 
     @Override
     public void processFeature(SourceFeature feature, FeatureCollector features) {
         
-        // UUSI: Merialueet erillisestä lähteestä
+        // MERIALUEET
         if ("ocean".equals(feature.getSource())) {
             features.polygon("water_areas")
-                .setAttr("class", "ocean") // Voit tyylitellä meren Flutterissa halutessasi eri sinisellä kuin järvet
-                .setPixelTolerance(2.0) // Yksinkertaistaa rantaviivan
+                .setAttr("class", "ocean")
+                .setPixelTolerance(2.0)
                 .setMinZoom(4);
         }
 
@@ -26,7 +30,6 @@ public class AeroToolsProfile implements Profile {
                 
                 features.line("roads")
                     .setAttr("class", highway)
-                    // Teiden ei tarvitse juurikaan yksinkertaistusta, mutta 1.0 pitää ne siistinä
                     .setPixelTolerance(1.0) 
                     .setMinZoom("motorway".equals(highway) || "trunk".equals(highway) ? 4 : 6);
             }
@@ -47,12 +50,12 @@ public class AeroToolsProfile implements Profile {
             features.line("waterways").setPixelTolerance(2.0).setMinZoom(6);
         }
 
-        // 5. VESISTÖT: ALUEET (Järvet)
+        // 5. VESISTÖT: ALUEET (Järvet ja altaat)
         if (feature.canBePolygon() && (feature.hasTag("natural", "water") || 
                                        feature.hasTag("landuse", "reservoir") || 
                                        feature.hasTag("waterway", "riverbank"))) {
             features.polygon("water_areas")
-                .setPixelTolerance(2.0) // Pehmentää järvien muodot
+                .setPixelTolerance(2.0)
                 .setMinZoom(4);
         }
 
@@ -60,7 +63,7 @@ public class AeroToolsProfile implements Profile {
         if (feature.canBePolygon()) {
             if (feature.hasTag("landuse", "forest") || feature.hasTag("natural", "wood")) {
                 features.polygon("landuse").setAttr("class", "forest")
-                    .setPixelTolerance(2.0) // Pehmentää metsäblokit
+                    .setPixelTolerance(2.0)
                     .setMinZoom(6);
             } 
             else if (feature.hasTag("landuse", "farmland") || feature.hasTag("landuse", "farm") || feature.hasTag("landuse", "meadow")) {
@@ -73,7 +76,7 @@ public class AeroToolsProfile implements Profile {
                     .setPixelTolerance(2.0)
                     .setMinZoom(7);
             } 
-            else if (feature.hasTag("landuse", "residential") || feature.hasTag("landuse", "commercial") || feature.hasTag("landuse", "industrial")) {
+            else if (feature.hasTag("landuse", "residential") || feature.hasTag("landuse", "commercial") || feature.hasTag("landuse", "industrial") || feature.hasTag("landuse", "retail")) {
                 features.polygon("landuse").setAttr("class", "urban")
                     .setPixelTolerance(2.0)
                     .setMinZoom(5);
@@ -95,6 +98,21 @@ public class AeroToolsProfile implements Profile {
         }
     }
 
+    // POST-PROCESSING: Yhdistetään toisiaan lähellä olevat alueet yhtenäisiksi blokeiksi
+    @Override
+    public List<VectorTile.Feature> postProcessLayerFeatures(String layer, int zoom, List<VectorTile.Feature> items) throws GeometryException {
+        if ("landuse".equals(layer)) {
+            return FeatureMerge.mergeNearbyPolygons(
+                items,
+                64,    // minArea: Poistetaan pikkusirpaleet
+                64,    // minHoleArea: Täytetään alueiden sisällä olevat pienet reiät
+                2,     // minDist: Maksimietäisyys alueiden yhdistämiselle (kuroo teiden välit umpeen)
+                2      // buffer: Turvottaa ja kutistaa reunoja tehden niistä pehmeämpiä
+            );
+        }
+        return items;
+    }
+
     @Override
     public String name() {
         return "AeroTools Custom VFR Base Map";
@@ -109,7 +127,6 @@ public class AeroToolsProfile implements Profile {
         Planetiler.create(Arguments.fromArgs("maxzoom=11", "nodata=true", "force=true"))
             .setProfile(new AeroToolsProfile())
             .addOsmSource("osm", java.nio.file.Path.of("data", "raw.osm.pbf"))
-            // UUSI: Ladataan valtameret
             .addShapefileSource("ocean", java.nio.file.Path.of("data", "water-polygons-split-4326.zip"))
             .overwriteOutput("pmtiles", java.nio.file.Path.of("data", country + "_vfr.pmtiles"))
             .run();
