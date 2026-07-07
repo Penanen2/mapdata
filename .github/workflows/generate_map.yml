@@ -37,6 +37,11 @@ jobs:
         run: |
           wget -qO data/raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
 
+      # UUSI VAIHE: Ladataan merialueiden shapefile Planetileria varten
+      - name: Download Ocean Polygons
+        run: |
+          wget -qO data/water-polygons-split-4326.zip https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
+
       - name: Generate Clean PMTiles
         env:
           MAP_COUNTRY: ${{ matrix.country }}
