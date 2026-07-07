@@ -87,17 +87,11 @@ public class AeroToolsProfile implements Profile {
             country = "finland"; // Fallback, jottei ohjelma kaadu lokaalissa testauksessa
         }
         
-        // Määritetään Planetilerin parametrit suoraan koodissa -- etuliitteillä
-        String[] planetilerArgs = new String[]{
-            "--osm-path=data/raw.osm.pbf",
-            "--output=data/" + country + "_vfr.pmtiles",
-            "--maxzoom=11",
-            "--nodata=true",
-            "--force=true"
-        };
-
-        Planetiler.create(Arguments.fromArgs(planetilerArgs))
+        // Annetaan polut suoraan Planetilerin Java-API:lle argumenttiparserin sijaan
+        Planetiler.create(Arguments.fromArgs("maxzoom=11", "nodata=true", "force=true"))
             .setProfile(new AeroToolsProfile())
+            .addOsmSource("osm", java.nio.file.Path.of("data", "raw.osm.pbf"))
+            .overwriteOutput("pmtiles", java.nio.file.Path.of("data", country + "_vfr.pmtiles"))
             .run();
     }
 }
