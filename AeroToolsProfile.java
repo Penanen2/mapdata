@@ -81,8 +81,22 @@ public class AeroToolsProfile implements Profile {
     }
 
     public static void main(String[] args) throws Exception {
-        // Korjattu rivi: Muutetaan args Planetilerin ymmärtämään Arguments-muotoon
-        Planetiler.create(Arguments.fromArgs(args))
+        // Haetaan maa GitHub Actionsin ympäristömuuttujasta
+        String country = System.getenv("MAP_COUNTRY");
+        if (country == null || country.isEmpty()) {
+            country = "finland"; // Fallback, jottei ohjelma kaadu lokaalissa testauksessa
+        }
+        
+        // Määritetään Planetilerin parametrit suoraan koodissa
+        String[] planetilerArgs = new String[]{
+            "osm_path=data/raw.osm.pbf",
+            "output=data/" + country + "_vfr.pmtiles",
+            "maxzoom=11",
+            "nodata=true",
+            "force=true"
+        };
+
+        Planetiler.create(Arguments.fromArgs(planetilerArgs))
             .setProfile(new AeroToolsProfile())
             .run();
     }
