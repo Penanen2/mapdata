@@ -33,7 +33,7 @@ jobs:
 
       - name: Download Planetiler Standalone Jar
         run: |
-          wget -qO planetiler.jar https://github.com/onthegomap/planetiler/releases/latest/download/planetiler-dist-with-dependencies.jar
+          wget -qO planetiler.jar https://github.com/onthegomap/planetiler/releases/latest/download/planetiler.jar
 
       - name: Download OSM Data from Geofabrik
         run: |
