@@ -1,0 +1,63 @@
+name: Generate AeroTools VFR Maps
+
+on:
+  workflow_dispatch: # Mahdollistaa manuaalisen käynnistyksen GitHubin sivuilta
+  schedule:
+    - cron: '0 0 1 * *' # Ajetaan automaattisesti kerran kuukaudessa (kuukauden 1. päivä)
+
+permissions:
+  contents: write # Antaa oikeuden tallentaa valmiit kartat GitHub Releases -sivulle
+
+jobs:
+  build_maps:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Tähän listataan ladattavat maat. Aloitetaan Suomesta.
+        # Geofabrik-osoitteet noudattavat muotoa europe/country-latest.osm.pbf
+        country: [finland]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Create Data Directory
+        run: mkdir -p data
+
+      - name: Download Planetiler Standalone Jar
+        run: |
+          wget -qO planetiler.jar https://github.com/onthegomap/planetiler/releases/latest/download/planetiler-dist-with-dependencies.jar
+
+      - name: Download OSM Data from Geofabrik
+        run: |
+          wget -qO data/raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
+
+      - name: Compile Custom Planetiler Profile
+        run: |
+          javac -cp planetiler.jar AeroToolsProfile.java
+
+      - name: Generate Clean PMTiles
+        run: |
+          java -cp .:planetiler.jar AeroToolsProfile \
+            --osm-path=data/raw.osm.pbf \
+            --output=data/${{ matrix.country }}_vfr.pmtiles \
+            --maxzoom=11 \
+            --nodata \
+            --force
+
+      - name: Upload Map to GitHub Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: vfr-maps-latest
+          name: "Latest AeroTools VFR Maps"
+          files: data/${{ matrix.country }}_vfr.pmtiles
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
