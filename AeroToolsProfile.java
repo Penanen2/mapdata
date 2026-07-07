@@ -6,7 +6,6 @@ import com.onthegomap.planetiler.config.Arguments;
 import com.onthegomap.planetiler.FeatureMerge;
 import com.onthegomap.planetiler.VectorTile;
 import java.util.List;
-import org.locationtech.jts.geom.GeometryException;
 
 public class AeroToolsProfile implements Profile {
 
@@ -100,15 +99,20 @@ public class AeroToolsProfile implements Profile {
 
     // POST-PROCESSING: Yhdistetään toisiaan lähellä olevat alueet yhtenäisiksi blokeiksi
     @Override
-    public List<VectorTile.Feature> postProcessLayerFeatures(String layer, int zoom, List<VectorTile.Feature> items) throws GeometryException {
+    public List<VectorTile.Feature> postProcessLayerFeatures(String layer, int zoom, List<VectorTile.Feature> items) {
         if ("landuse".equals(layer)) {
-            return FeatureMerge.mergeNearbyPolygons(
-                items,
-                64,    // minArea: Poistetaan pikkusirpaleet
-                64,    // minHoleArea: Täytetään alueiden sisällä olevat pienet reiät
-                2,     // minDist: Maksimietäisyys alueiden yhdistämiselle (kuroo teiden välit umpeen)
-                2      // buffer: Turvottaa ja kutistaa reunoja tehden niistä pehmeämpiä
-            );
+            try {
+                return FeatureMerge.mergeNearbyPolygons(
+                    items,
+                    64,    // minArea
+                    64,    // minHoleArea
+                    2,     // minDist
+                    2      // buffer
+                );
+            } catch (Exception e) {
+                // Jos geometrian yhdistäminen kaatuu rikkinäiseen dataan, palautetaan alkuperäiset palikat
+                return items;
+            }
         }
         return items;
     }
@@ -128,7 +132,8 @@ public class AeroToolsProfile implements Profile {
             .setProfile(new AeroToolsProfile())
             .addOsmSource("osm", java.nio.file.Path.of("data", "raw.osm.pbf"))
             .addShapefileSource("ocean", java.nio.file.Path.of("data", "water-polygons-split-4326.zip"))
-            .overwriteOutput("pmtiles", java.nio.file.Path.of("data", country + "_vfr.pmtiles"))
+            // Varoitus korjattu: poistettu "pmtiles" -muotomäärite
+            .overwriteOutput(java.nio.file.Path.of("data", country + "_vfr.pmtiles")) 
             .run();
     }
 }
