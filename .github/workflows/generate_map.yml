@@ -25,6 +25,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
       - name: Create Data Directory
         run: mkdir -p data
@@ -37,10 +42,15 @@ jobs:
         run: |
           wget -qO data/raw.osm.pbf "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
 
-      # UUSI VAIHE: Ladataan merialueiden shapefile Planetileria varten
       - name: Download Ocean Polygons
         run: |
           wget -qO data/water-polygons-split-4326.zip https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
+
+      - name: Parse OFMX to GeoJSON
+        run: |
+          # Oletetaan, että Python-skripti (parse_ofmx.py) on repositoriossa ja OFMX-data saatavilla.
+          # Tämä luo tarvittavat .geojson -tiedostot data/ kansioon.
+          python parse_ofmx.py data/ofmx_ef.ofmx
 
       - name: Generate Clean PMTiles
         env:
