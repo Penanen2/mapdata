@@ -82,7 +82,64 @@ public class AeroToolsProfile implements Profile {
             }
         }
 
-        // 7. TEKSTIT JA NIMISTÖ
+        // 7. LENTOKENTTÄALUEET JA RULLAUSTIET (Erittäin tarkka geometria)
+        if (feature.hasTag("aeroway")) {
+            String aeroway = feature.getString("aeroway");
+            
+            if (feature.canBePolygon() && ("apron".equals(aeroway) || "runway".equals(aeroway) || "taxiway".equals(aeroway) || "helipad".equals(aeroway))) {
+                features.polygon("aeroways")
+                    .setAttr("class", aeroway)
+                    .setPixelTolerance(0.0) // Ei yksinkertaistusta polygoneille
+                    .setMinZoom(10);
+            } else if (feature.canBeLine() && ("runway".equals(aeroway) || "taxiway".equals(aeroway))) {
+                features.line("aeroway_lines")
+                    .setAttr("class", aeroway)
+                    .setPixelTolerance(0.0) // Ei yksinkertaistusta viivoille
+                    .setMinZoom(11);
+            }
+        }
+
+        // 8. ESTEET OSM-DATASTA
+        if (feature.isPoint() && (feature.hasTag("man_made", "mast") || feature.hasTag("man_made", "tower") || feature.hasTag("generator:source", "wind"))) {
+            String mslElevation = feature.getString("ele"); 
+            String aglHeight = feature.getString("height");
+            features.point("obstacles")
+                .setAttr("class", feature.hasTag("generator:source", "wind") ? "wind_turbine" : "mast")
+                .setAttr("ele", mslElevation != null ? mslElevation : "")
+                .setAttr("height", aglHeight != null ? aglHeight : "")
+                .setMinZoom(8);
+        }
+
+        // 9. OFMX-DATAN LÄHTEET (GeoJSON)
+        if ("reporting_points".equals(feature.getSource())) {
+            features.point("reporting_points")
+                .setAttr("name", feature.getString("name"))
+                .setAttr("type", feature.getString("type"))
+                .setMinZoom(8);
+        }
+        
+        if ("approach_sectors".equals(feature.getSource())) {
+            features.polygon("approach_sectors")
+                .setAttr("rwy", feature.getString("runway_designator"))
+                .setMinZoom(10);
+        }
+        
+        if ("labels".equals(feature.getSource())) {
+            features.point("vfr_labels")
+                .setAttr("label", feature.getString("label_text"))
+                .setMinZoom(9);
+        }
+
+        if ("airspaces".equals(feature.getSource())) {
+            features.polygon("airspaces")
+                .setAttr("type", feature.getString("type"))
+                .setAttr("name", feature.getString("name"))
+                .setAttr("lower_limit", feature.getString("lower_limit"))
+                .setAttr("upper_limit", feature.getString("upper_limit"))
+                .setMinZoom(6);
+        }
+
+        // 10. TEKSTIT JA NIMISTÖ
         if (feature.isPoint() && feature.hasTag("place")) {
             String place = feature.getString("place");
             if ("city".equals(place) || "town".equals(place)) {
@@ -110,9 +167,17 @@ public class AeroToolsProfile implements Profile {
                     2      // buffer
                 );
             } catch (Exception e) {
-                // Jos geometrian yhdistäminen kaatuu rikkinäiseen dataan, palautetaan alkuperäiset palikat
                 return items;
             }
+        }
+        if ("roads".equals(layer)) {
+            // Yhdistää lähekkäin menevät tien osat
+            return FeatureMerge.mergeLineStrings(
+                items,
+                0.5, // minLength
+                0.1, // tolerance
+                4.0  // buffer
+            );
         }
         return items;
     }
@@ -132,7 +197,11 @@ public class AeroToolsProfile implements Profile {
             .setProfile(new AeroToolsProfile())
             .addOsmSource("osm", java.nio.file.Path.of("data", "raw.osm.pbf"))
             .addShapefileSource("ocean", java.nio.file.Path.of("data", "water-polygons-split-4326.zip"))
-            // Varoitus korjattu: poistettu "pmtiles" -muotomäärite
+            // Uudet OFMX-lähteet (edellyttää, että Python-skripti on ajettu ennen Planetileria)
+            .addGeoJsonSource("reporting_points", java.nio.file.Path.of("data", "reporting_points.geojson"))
+            .addGeoJsonSource("airspaces", java.nio.file.Path.of("data", "airspaces.geojson"))
+            .addGeoJsonSource("approach_sectors", java.nio.file.Path.of("data", "approach_sectors.geojson"))
+            .addGeoJsonSource("labels", java.nio.file.Path.of("data", "labels.geojson"))
             .overwriteOutput(java.nio.file.Path.of("data", country + "_vfr.pmtiles")) 
             .run();
     }
