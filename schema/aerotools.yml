@@ -67,6 +67,29 @@ layers:
         - key: class
           value: river
 
+- id: aeroways
+  features:
+    - source: osm
+      geometry: polygon
+      include_when:
+        aeroway:
+          - apron
+          - runway
+          - taxiway
+          - helipad
+      attributes:
+        - key: class
+          value: aeroway
+    - source: osm
+      geometry: line
+      include_when:
+        aeroway:
+          - runway
+          - taxiway
+      attributes:
+        - key: class
+          value: aeroway
+
 - id: forest
   features:
     - source: osm
@@ -140,6 +163,20 @@ layers:
       attributes:
         - key: class
           value: rail
+
+- id: obstacles
+  features:
+    - source: osm
+      geometry: point
+      include_when:
+        man_made:
+          - mast
+          - tower
+        generator:source:
+          - wind
+      attributes:
+        - key: ele
+        - key: height
 
 - id: places
   features:
