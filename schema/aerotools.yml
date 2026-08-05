@@ -71,24 +71,31 @@ layers:
   features:
     - source: osm
       geometry: polygon
+      min_zoom: 10
       include_when:
         aeroway:
           - apron
           - runway
           - taxiway
           - helipad
+          - terminal
+          - hangar
+          - aerodrome
       attributes:
         - key: class
-          value: aeroway
+          type: match_value
     - source: osm
       geometry: line
+      min_zoom: 11
       include_when:
         aeroway:
           - runway
           - taxiway
+          - parking_position
+          - holding_position
       attributes:
         - key: class
-          value: aeroway
+          type: match_value
 
 - id: forest
   features:
