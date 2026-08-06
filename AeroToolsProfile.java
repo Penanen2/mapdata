@@ -8,6 +8,7 @@ import com.onthegomap.planetiler.VectorTile;
 import com.onthegomap.planetiler.geo.GeoUtils;
 import com.onthegomap.planetiler.geo.GeometryException;
 import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.operation.buffer.BufferParameters;
 import java.util.List;
 
 public class AeroToolsProfile implements Profile {
@@ -85,13 +86,10 @@ public class AeroToolsProfile implements Profile {
             }
         }
 
-        // 7. LENTOKENTTAALUEET JA RULLAUSTIET (airport areas and taxiways -
-        // real OSM geometry where it exists, derived geometry as a fallback)
+        // 7. LENTOKENTTAALUEET JA RULLAUSTIET (airport areas and runways only)
         if (feature.hasTag("aeroway")) {
             String aeroway = feature.getString("aeroway");
-            boolean isAreaKind = "apron".equals(aeroway) || "runway".equals(aeroway) ||
-                "taxiway".equals(aeroway) || "helipad".equals(aeroway) ||
-                "aerodrome".equals(aeroway) || "terminal".equals(aeroway) || "hangar".equals(aeroway);
+            boolean isAreaKind = "runway".equals(aeroway) || "aerodrome".equals(aeroway);
 
             if (feature.canBePolygon() && isAreaKind) {
                 // Real OSM polygon geometry exists - use it directly, unmodified.
@@ -100,13 +98,7 @@ public class AeroToolsProfile implements Profile {
                     .setPixelTolerance(0.0)
                     .setMinZoom("aerodrome".equals(aeroway) ? 8 : 10);
             }
-            else if (feature.isPoint() && "helipad".equals(aeroway)) {
-                // Many real-world helipads are only mapped as a point, not a polygon.
-                features.point("aeroways")
-                    .setAttr("class", "helipad")
-                    .setMinZoom(12);
-            }
-            else if (feature.canBeLine() && ("runway".equals(aeroway) || "taxiway".equals(aeroway))) {
+            else if (feature.canBeLine() && "runway".equals(aeroway)) {
                 // Keep the precise centerline for markings/labels.
                 features.line("aeroway_lines")
                     .setAttr("class", aeroway)
@@ -121,20 +113,41 @@ public class AeroToolsProfile implements Profile {
                     if (widthTag != null) {
                         widthMeters = Double.parseDouble(widthTag.replaceAll("[^0-9.]", ""));
                     } else {
-                        widthMeters = "runway".equals(aeroway) ? 30.0 : 18.0;
+                        widthMeters = 30.0;
                     }
                     if (widthMeters > 0) {
                         Geometry worldGeom = feature.worldGeometry();
                         double latDeg = GeoUtils.getWorldLat(worldGeom.getCentroid().getY());
                         double metersPerWorldUnit = GeoUtils.WORLD_CIRCUMFERENCE_METERS * Math.cos(Math.toRadians(latDeg));
                         double bufferWorldUnits = (widthMeters / 2.0) / metersPerWorldUnit;
-                        Geometry buffered = worldGeom.buffer(bufferWorldUnits);
+                        
+                        // Use CAP_FLAT to ensure rectangular corners instead of rounded ends
+                        Geometry buffered = worldGeom.buffer(bufferWorldUnits, 8, BufferParameters.CAP_FLAT);
 
                         features.geometry("aeroways", buffered)
                             .setAttr("class", aeroway)
                             .setAttr("derived", true)
                             .setPixelTolerance(0.0)
                             .setMinZoom(10);
+                            
+                        // Add runway identifiers if present in 'ref' tag
+                        String ref = feature.getString("ref");
+                        if (ref != null && ref.contains("/")) {
+                            String[] parts = ref.split("/");
+                            if (parts.length == 2 && worldGeom instanceof org.locationtech.jts.geom.LineString) {
+                                org.locationtech.jts.geom.LineString ls = (org.locationtech.jts.geom.LineString) worldGeom;
+                                
+                                features.geometry("aeroways", ls.getStartPoint())
+                                    .setAttr("class", "runway_ident")
+                                    .setAttr("ident", parts[0].trim())
+                                    .setMinZoom(11);
+                                
+                                features.geometry("aeroways", ls.getEndPoint())
+                                    .setAttr("class", "runway_ident")
+                                    .setAttr("ident", parts[1].trim())
+                                    .setMinZoom(11);
+                            }
+                        }
                     }
                 } catch (NumberFormatException | GeometryException e) {
                     // Bad/missing width tag or unbuildable geometry - skip the
