@@ -3,7 +3,7 @@
     {
       "id": "finland",
       "name": "Suomi",
-      "version": "2026-06-23",
+      "version": "2026-07-23",
       "url": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/ofmx_ef.ofmx",
       "pmtilesUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/finland_vfr.pmtiles"
     }
