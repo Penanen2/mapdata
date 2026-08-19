@@ -1,4 +1,4 @@
-name: Generate AeroTools VFR Maps
+name: Generate AeroTools VFR Maps & Obstacles
 
 on:
   workflow_dispatch:
@@ -14,17 +14,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        country: [finland]
+        include:
+          - country: finland
+            code: ef
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Java
+      - name: Set up Java & Python
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install requests
 
       - name: Create Data Directory
         run: mkdir -p data
@@ -47,7 +57,86 @@ jobs:
         run: |
           java -cp planetiler.jar AeroToolsProfile.java
 
-      - name: Upload Map to GitHub Releases
+      - name: Extract & Filter ICAO Obstacles (>= 300 ft AGL / Lit)
+        run: |
+          python - << 'EOF'
+          import json, requests, datetime
+
+          overpass_url = "https://overpass-api.de/api/interpreter"
+          query = """
+          [out:json][timeout:90];
+          area["ISO3166-1"="FI"][admin_level=2]->.searchArea;
+          (
+            node["man_made"~"mast|tower|chimney"](area.searchArea);
+            node["generator:source"="wind"](area.searchArea);
+            node["aeroway"="obstacle"](area.searchArea);
+          );
+          out body;
+          """
+          resp = requests.post(overpass_url, data={'data': query})
+          data = resp.json()
+
+          features = []
+          for el in data.get('elements', []):
+              tags = el.get('tags', {})
+              h_str = tags.get('height', tags.get('height:agl', ''))
+              elev_str = tags.get('ele', '')
+              is_lit = tags.get('hazard:light') == 'yes' or tags.get('light:lit') == 'yes' or tags.get('aerodrome:light') == 'yes'
+
+              h_ft = None
+              if h_str:
+                  try:
+                      val = float(h_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
+                      h_ft = round(val if 'ft' in h_str.lower() else val * 3.28084)
+                  except:
+                      pass
+
+              elev_ft = None
+              if elev_str:
+                  try:
+                      val = float(elev_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
+                      elev_ft = round(val if 'ft' in elev_str.lower() else val * 3.28084)
+                  except:
+                      pass
+
+              if (h_ft is not None and h_ft >= 300) or (elev_ft is not None and elev_ft >= 300) or is_lit:
+                  name = tags.get('name', '')
+                  type_tag = tags.get('man_made', tags.get('generator:source', 'mast'))
+                  features.append({
+                      "type": "Feature",
+                      "geometry": {"type": "Point", "coordinates": [el['lon'], el['lat']]},
+                      "properties": {
+                          "id": f"osm_{el['id']}",
+                          "name": name if name else f"{type_tag.capitalize()} ({h_ft or ''} ft)",
+                          "type": type_tag,
+                          "elevation_ft": elev_ft,
+                          "height_agl_ft": h_ft,
+                          "country": "FI",
+                          "is_lit": is_lit
+                      }
+                  })
+
+          geojson = {"type": "FeatureCollection", "features": features}
+          with open("obstacles_${{ matrix.code }}.geojson", "w", encoding="utf-8") as f:
+              json.dump(geojson, f, indent=2)
+          print(f"Extracted {len(features)} ICAO obstacles.")
+          EOF
+
+      - name: Update manifest.json Version Date
+        run: |
+          python - << 'EOF'
+          import json, datetime
+          with open("manifest.json", "r", encoding="utf-8") as f:
+              m = json.load(f)
+          for r in m.get("regions", []):
+              if r.get("id") == "${{ matrix.country }}":
+                  r["version"] = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+                  r["obstaclesUrl"] = "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/obstacles_${{ matrix.code }}.geojson"
+          with open("manifest.json", "w", encoding="utf-8") as f:
+              json.dump(m, f, indent=2)
+          EOF
+
+      - name: Upload PMTiles to GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
           tag_name: vfr-maps-latest
@@ -56,3 +145,10 @@ jobs:
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit & Push Updated Obstacles and Manifest
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add obstacles_${{ matrix.code }}.geojson manifest.json
+          git diff-index --quiet HEAD || (git commit -m "Auto-update VFR obstacles and manifest [skip ci]" && git push)
