@@ -68,7 +68,7 @@ jobs:
                   self.features = []
 
               def node(self, n):
-                  tags = n.tags
+                  tags = {t.k: t.v for t in n.tags}
                   man_made = tags.get('man_made')
                   power = tags.get('power')
                   gen_source = tags.get('generator:source')
