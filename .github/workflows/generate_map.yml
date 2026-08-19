@@ -68,24 +68,28 @@ jobs:
                   self.features = []
 
               def node(self, n):
-                  tags = {t.k: t.v for t in n.tags}
-                  man_made = tags.get('man_made')
-                  power = tags.get('power')
-                  gen_source = tags.get('generator:source')
-                  aeroway = tags.get('aeroway')
+                  # FAST EXIT: Skip 99.9% of the 60 million nodes instantly!
+                  if not ('man_made' in n.tags or 'generator:source' in n.tags or 'aeroway' in n.tags or 'power' in n.tags):
+                      return
+                      
+                  man_made = n.tags.get('man_made', '')
+                  power = n.tags.get('power', '')
+                  gen_source = n.tags.get('generator:source', '')
+                  aeroway = n.tags.get('aeroway', '')
 
                   is_obstacle = (
                       man_made in ('mast', 'tower', 'chimney', 'communications_tower') or
                       gen_source == 'wind' or
                       aeroway == 'obstacle' or
-                      (power == 'tower' and ('height' in tags or 'ele' in tags))
+                      (power == 'tower' and ('height' in n.tags or 'ele' in n.tags))
                   )
                   if not is_obstacle:
                       return
 
-                  h_str = tags.get('height') or tags.get('height:agl') or ''
-                  elev_str = tags.get('ele') or ''
-                  is_lit = tags.get('hazard:light') == 'yes' or tags.get('light:lit') == 'yes' or tags.get('aerodrome:light') == 'yes'
+                  # Now we know it's a real obstacle, process the heights safely
+                  h_str = n.tags.get('height', n.tags.get('height:agl', ''))
+                  elev_str = n.tags.get('ele', '')
+                  is_lit = n.tags.get('hazard:light') == 'yes' or n.tags.get('light:lit') == 'yes' or n.tags.get('aerodrome:light') == 'yes'
 
                   h_ft = None
                   if h_str:
@@ -105,7 +109,7 @@ jobs:
 
                   # ICAO Rule: >= 300 ft AGL or Lit
                   if (h_ft is not None and h_ft >= 300) or (elev_ft is not None and elev_ft >= 300) or is_lit:
-                      name = tags.get('name')
+                      name = n.tags.get('name', '')
                       type_tag = man_made or gen_source or power or 'mast'
                       self.features.append({
                           "type": "Feature",
