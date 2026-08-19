@@ -34,7 +34,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install Python dependencies
-        run: pip install requests
+        run: pip install osmium
 
       - name: Create Data Directory
         run: mkdir -p data
@@ -57,69 +57,76 @@ jobs:
         run: |
           java -cp planetiler.jar AeroToolsProfile.java
 
-      - name: Extract & Filter ICAO Obstacles (>= 300 ft AGL / Lit)
+      - name: Extract & Filter ICAO Obstacles from local OSM PBF
         run: |
           python - << 'EOF'
-          import json, requests, datetime
+          import json, osmium
 
-          overpass_url = "https://overpass-api.de/api/interpreter"
-          query = """
-          [out:json][timeout:90];
-          area["ISO3166-1"="FI"][admin_level=2]->.searchArea;
-          (
-            node["man_made"~"mast|tower|chimney"](area.searchArea);
-            node["generator:source"="wind"](area.searchArea);
-            node["aeroway"="obstacle"](area.searchArea);
-          );
-          out body;
-          """
-          resp = requests.post(overpass_url, data={'data': query})
-          data = resp.json()
+          class ObstacleHandler(osmium.SimpleHandler):
+              def __init__(self):
+                  super().__init__()
+                  self.features = []
 
-          features = []
-          for el in data.get('elements', []):
-              tags = el.get('tags', {})
-              h_str = tags.get('height', tags.get('height:agl', ''))
-              elev_str = tags.get('ele', '')
-              is_lit = tags.get('hazard:light') == 'yes' or tags.get('light:lit') == 'yes' or tags.get('aerodrome:light') == 'yes'
+              def node(self, n):
+                  tags = n.tags
+                  man_made = tags.get('man_made')
+                  power = tags.get('power')
+                  gen_source = tags.get('generator:source')
+                  aeroway = tags.get('aeroway')
 
-              h_ft = None
-              if h_str:
-                  try:
-                      val = float(h_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
-                      h_ft = round(val if 'ft' in h_str.lower() else val * 3.28084)
-                  except:
-                      pass
+                  is_obstacle = (
+                      man_made in ('mast', 'tower', 'chimney', 'communications_tower') or
+                      gen_source == 'wind' or
+                      aeroway == 'obstacle' or
+                      (power == 'tower' and ('height' in tags or 'ele' in tags))
+                  )
+                  if not is_obstacle:
+                      return
 
-              elev_ft = None
-              if elev_str:
-                  try:
-                      val = float(elev_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
-                      elev_ft = round(val if 'ft' in elev_str.lower() else val * 3.28084)
-                  except:
-                      pass
+                  h_str = tags.get('height') or tags.get('height:agl') or ''
+                  elev_str = tags.get('ele') or ''
+                  is_lit = tags.get('hazard:light') == 'yes' or tags.get('light:lit') == 'yes' or tags.get('aerodrome:light') == 'yes'
 
-              if (h_ft is not None and h_ft >= 300) or (elev_ft is not None and elev_ft >= 300) or is_lit:
-                  name = tags.get('name', '')
-                  type_tag = tags.get('man_made', tags.get('generator:source', 'mast'))
-                  features.append({
-                      "type": "Feature",
-                      "geometry": {"type": "Point", "coordinates": [el['lon'], el['lat']]},
-                      "properties": {
-                          "id": f"osm_{el['id']}",
-                          "name": name if name else f"{type_tag.capitalize()} ({h_ft or ''} ft)",
-                          "type": type_tag,
-                          "elevation_ft": elev_ft,
-                          "height_agl_ft": h_ft,
-                          "country": "FI",
-                          "is_lit": is_lit
-                      }
-                  })
+                  h_ft = None
+                  if h_str:
+                      try:
+                          val = float(h_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
+                          h_ft = round(val if 'ft' in h_str.lower() else val * 3.28084)
+                      except:
+                          pass
 
-          geojson = {"type": "FeatureCollection", "features": features}
+                  elev_ft = None
+                  if elev_str:
+                      try:
+                          val = float(elev_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
+                          elev_ft = round(val if 'ft' in elev_str.lower() else val * 3.28084)
+                      except:
+                          pass
+
+                  # ICAO Rule: >= 300 ft AGL or Lit
+                  if (h_ft is not None and h_ft >= 300) or (elev_ft is not None and elev_ft >= 300) or is_lit:
+                      name = tags.get('name')
+                      type_tag = man_made or gen_source or power or 'mast'
+                      self.features.append({
+                          "type": "Feature",
+                          "geometry": {"type": "Point", "coordinates": [n.location.lon, n.location.lat]},
+                          "properties": {
+                              "id": f"osm_{n.id}",
+                              "name": name if name else f"{type_tag.capitalize()} ({h_ft or ''} ft)",
+                              "type": type_tag,
+                              "elevation_ft": elev_ft,
+                              "height_agl_ft": h_ft,
+                              "country": "FI",
+                              "is_lit": is_lit
+                          }
+                      })
+
+          handler = ObstacleHandler()
+          handler.apply_file('data/raw.osm.pbf', locations=True)
+          geojson = {"type": "FeatureCollection", "features": handler.features}
           with open("obstacles_${{ matrix.code }}.geojson", "w", encoding="utf-8") as f:
               json.dump(geojson, f, indent=2)
-          print(f"Extracted {len(features)} ICAO obstacles.")
+          print(f"Successfully extracted {len(handler.features)} ICAO obstacles.")
           EOF
 
       - name: Update manifest.json Version Date
