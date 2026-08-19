@@ -1,0 +1,8726 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9715633,
+          60.1836537
+        ]
+      },
+      "properties": {
+        "id": "osm_56324623",
+        "name": "Chimney (492 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 492,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.643646,
+          60.9800563
+        ]
+      },
+      "properties": {
+        "id": "osm_258341194",
+        "name": "Radiomasto",
+        "type": "mast",
+        "elevation_ft": 492,
+        "height_agl_ft": 492,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3594682,
+          63.7858964
+        ]
+      },
+      "properties": {
+        "id": "osm_264064897",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7510183,
+          60.1834668
+        ]
+      },
+      "properties": {
+        "id": "osm_392667128",
+        "name": "Mast (348 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 348,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.5965058,
+          60.8413404
+        ]
+      },
+      "properties": {
+        "id": "osm_413561292",
+        "name": "Mast (492 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 492,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9586834,
+          60.2366346
+        ]
+      },
+      "properties": {
+        "id": "osm_441205296",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6982451,
+          61.2813406
+        ]
+      },
+      "properties": {
+        "id": "osm_531004983",
+        "name": "Yleisradioasema",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1053,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.8599479,
+          61.3934315
+        ]
+      },
+      "properties": {
+        "id": "osm_559779833",
+        "name": "Haistila",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 358,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.523432,
+          61.0068016
+        ]
+      },
+      "properties": {
+        "id": "osm_589192645",
+        "name": "Lahden (Tiirismaan) radio- ja televisiomasto",
+        "type": "mast",
+        "elevation_ft": 732,
+        "height_agl_ft": 1073,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0502433,
+          60.209418
+        ]
+      },
+      "properties": {
+        "id": "osm_652803141",
+        "name": "Mast (332 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 332,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5336026,
+          61.9267445
+        ]
+      },
+      "properties": {
+        "id": "osm_710894032",
+        "name": "Tower (20 ft)",
+        "type": "tower",
+        "elevation_ft": 633,
+        "height_agl_ft": 20,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9208669,
+          60.2193471
+        ]
+      },
+      "properties": {
+        "id": "osm_746771046",
+        "name": "Mast (394 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8761033,
+          60.479147
+        ]
+      },
+      "properties": {
+        "id": "osm_804837535",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.7145625,
+          66.3156238
+        ]
+      },
+      "properties": {
+        "id": "osm_813977114",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.6989026,
+          66.1167013
+        ]
+      },
+      "properties": {
+        "id": "osm_823720006",
+        "name": "Tervolan radio- ja televisiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 988,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.657026,
+          60.1251048
+        ]
+      },
+      "properties": {
+        "id": "osm_828151193",
+        "name": "Mast (311 ft)",
+        "type": "mast",
+        "elevation_ft": 328,
+        "height_agl_ft": 311,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.7310635,
+          61.4966376
+        ]
+      },
+      "properties": {
+        "id": "osm_871383701",
+        "name": "Mast (302 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 302,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.2081056,
+          60.8132882
+        ]
+      },
+      "properties": {
+        "id": "osm_924537389",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.704076,
+          62.2145124
+        ]
+      },
+      "properties": {
+        "id": "osm_1024861487",
+        "name": "Mast (528 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 528,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0331161,
+          60.1440237
+        ]
+      },
+      "properties": {
+        "id": "osm_1032028943",
+        "name": "Mast (427 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 427,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6488261,
+          63.0960279
+        ]
+      },
+      "properties": {
+        "id": "osm_1043043446",
+        "name": "Mast (459 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8061555,
+          62.2523116
+        ]
+      },
+      "properties": {
+        "id": "osm_1065117038",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 591,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8997515,
+          62.2397864
+        ]
+      },
+      "properties": {
+        "id": "osm_1076827978",
+        "name": "Mast (331 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 331,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4352275,
+          65.0376156
+        ]
+      },
+      "properties": {
+        "id": "osm_1076867456",
+        "name": "Chimney (427 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 427,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.5436488,
+          64.0734783
+        ]
+      },
+      "properties": {
+        "id": "osm_1124870218",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6388174,
+          62.2055095
+        ]
+      },
+      "properties": {
+        "id": "osm_1125898966",
+        "name": "Mast (397 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 397,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.4307244,
+          61.2426157
+        ]
+      },
+      "properties": {
+        "id": "osm_1157252748",
+        "name": "Mast (349 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 349,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.449196,
+          60.9863284
+        ]
+      },
+      "properties": {
+        "id": "osm_1282020914",
+        "name": "Mast (364 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 364,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4135717,
+          60.9920095
+        ]
+      },
+      "properties": {
+        "id": "osm_1285224802",
+        "name": "Mast (427 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 427,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4933064,
+          60.125485
+        ]
+      },
+      "properties": {
+        "id": "osm_1305274422",
+        "name": "Fiskarsin radio- ja televisiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 748,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8475496,
+          60.6489615
+        ]
+      },
+      "properties": {
+        "id": "osm_1349527807",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.5710795,
+          61.7431248
+        ]
+      },
+      "properties": {
+        "id": "osm_1356972846",
+        "name": "Mast (410 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 410,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.31477,
+          61.0606126
+        ]
+      },
+      "properties": {
+        "id": "osm_1361846323",
+        "name": "Mast (443 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 443,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8637825,
+          61.4216873
+        ]
+      },
+      "properties": {
+        "id": "osm_1389338233",
+        "name": "Mast (459 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.10246,
+          60.0999156
+        ]
+      },
+      "properties": {
+        "id": "osm_1393603301",
+        "name": "Mast (301 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 301,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4821872,
+          64.9867558
+        ]
+      },
+      "properties": {
+        "id": "osm_1398108344",
+        "name": "Mast (423 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 423,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9515331,
+          60.4906635
+        ]
+      },
+      "properties": {
+        "id": "osm_1422836076",
+        "name": "Chimney (420 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 420,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.3350322,
+          60.3768624
+        ]
+      },
+      "properties": {
+        "id": "osm_1502157942",
+        "name": "Turun yleisradiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1027,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2502395,
+          61.9893804
+        ]
+      },
+      "properties": {
+        "id": "osm_1506184751",
+        "name": "Kerim\u00e4ki Radio & TV Mast",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1054,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.5932857,
+          62.8866359
+        ]
+      },
+      "properties": {
+        "id": "osm_1583551782",
+        "name": "Neulam\u00e4en linkkimasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.721449,
+          62.571989
+        ]
+      },
+      "properties": {
+        "id": "osm_1627639480",
+        "name": "Mast (404 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 404,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.804036,
+          62.7785612
+        ]
+      },
+      "properties": {
+        "id": "osm_1629575403",
+        "name": "Mast (515 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 515,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.952827,
+          62.9557839
+        ]
+      },
+      "properties": {
+        "id": "osm_1634089616",
+        "name": "Lapuan radio- ja televisiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1060,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.3660111,
+          61.4309167
+        ]
+      },
+      "properties": {
+        "id": "osm_1664145822",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8203795,
+          60.7081532
+        ]
+      },
+      "properties": {
+        "id": "osm_1801558091",
+        "name": "Chimney (354 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 354,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0465206,
+          60.6922936
+        ]
+      },
+      "properties": {
+        "id": "osm_1860613025",
+        "name": "Sippolan TV- ja radiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1043,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.239267,
+          68.5831623
+        ]
+      },
+      "properties": {
+        "id": "osm_1892914336",
+        "name": "Tower (322 ft)",
+        "type": "tower",
+        "elevation_ft": null,
+        "height_agl_ft": 322,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.0011562,
+          60.0190984
+        ]
+      },
+      "properties": {
+        "id": "osm_1959649034",
+        "name": "Mast (525 ft)",
+        "type": "mast",
+        "elevation_ft": 568,
+        "height_agl_ft": 525,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2947708,
+          61.8474159
+        ]
+      },
+      "properties": {
+        "id": "osm_1993803779",
+        "name": "Tower (420 ft)",
+        "type": "tower",
+        "elevation_ft": null,
+        "height_agl_ft": 420,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3693473,
+          64.1450002
+        ]
+      },
+      "properties": {
+        "id": "osm_2049722984",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.0078116,
+          61.1816438
+        ]
+      },
+      "properties": {
+        "id": "osm_2145618305",
+        "name": "Mast (407 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 407,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3423465,
+          61.9873655
+        ]
+      },
+      "properties": {
+        "id": "osm_2197620699",
+        "name": "Mast (397 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 397,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4345328,
+          59.9906216
+        ]
+      },
+      "properties": {
+        "id": "osm_2219198906",
+        "name": "Mast (448 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 448,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.7429798,
+          68.6038607
+        ]
+      },
+      "properties": {
+        "id": "osm_2234526441",
+        "name": "Mast (217 ft)",
+        "type": "mast",
+        "elevation_ft": 1713,
+        "height_agl_ft": 217,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6472471,
+          63.2885302
+        ]
+      },
+      "properties": {
+        "id": "osm_2235131105",
+        "name": "Mast (1053 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1053,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2164304,
+          60.9328718
+        ]
+      },
+      "properties": {
+        "id": "osm_2269184283",
+        "name": "Mast (448 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 448,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.871439,
+          60.6448854
+        ]
+      },
+      "properties": {
+        "id": "osm_2301131630",
+        "name": "Mast (354 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 354,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.6781522,
+          67.4293261
+        ]
+      },
+      "properties": {
+        "id": "osm_2384666845",
+        "name": "Mast (323 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 323,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8759824,
+          61.6619131
+        ]
+      },
+      "properties": {
+        "id": "osm_2406339755",
+        "name": "Teiskon yleisradiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1066,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3325067,
+          61.4323047
+        ]
+      },
+      "properties": {
+        "id": "osm_2408297363",
+        "name": "Mast (394 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8139908,
+          61.134874
+        ]
+      },
+      "properties": {
+        "id": "osm_2409490844",
+        "name": "Mast (364 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 364,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.5470974,
+          60.1682067
+        ]
+      },
+      "properties": {
+        "id": "osm_2419557110",
+        "name": "Mast (351 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 351,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.9782259,
+          61.2710202
+        ]
+      },
+      "properties": {
+        "id": "osm_2428493210",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 435,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9651304,
+          60.9946784
+        ]
+      },
+      "properties": {
+        "id": "osm_2432218281",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7849462,
+          61.2068879
+        ]
+      },
+      "properties": {
+        "id": "osm_2452557967",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.3476603,
+          60.9111572
+        ]
+      },
+      "properties": {
+        "id": "osm_2486376392",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.532088,
+          61.1567563
+        ]
+      },
+      "properties": {
+        "id": "osm_2552505611",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.4044957,
+          61.6317258
+        ]
+      },
+      "properties": {
+        "id": "osm_2626154300",
+        "name": "Chimney (492 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 492,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.6917417,
+          61.1354023
+        ]
+      },
+      "properties": {
+        "id": "osm_2640891286",
+        "name": "Mast (302 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 302,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.6277705,
+          61.2790084
+        ]
+      },
+      "properties": {
+        "id": "osm_2641846326",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.3917405,
+          61.1117354
+        ]
+      },
+      "properties": {
+        "id": "osm_2645312423",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.032359,
+          65.3648199
+        ]
+      },
+      "properties": {
+        "id": "osm_2755716349",
+        "name": "Mast (364 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 364,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2152287,
+          67.0210625
+        ]
+      },
+      "properties": {
+        "id": "osm_2789944987",
+        "name": "Mast (863 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 863,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2113592,
+          67.5670426
+        ]
+      },
+      "properties": {
+        "id": "osm_2845837705",
+        "name": "Mast (422 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 422,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.1631955,
+          62.2640233
+        ]
+      },
+      "properties": {
+        "id": "osm_2921437079",
+        "name": "Mast (433 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 433,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5158451,
+          60.3077825
+        ]
+      },
+      "properties": {
+        "id": "osm_2982391207",
+        "name": "Mast (321 ft)",
+        "type": "mast",
+        "elevation_ft": 394,
+        "height_agl_ft": 321,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.5413829,
+          61.1313589
+        ]
+      },
+      "properties": {
+        "id": "osm_2994470394",
+        "name": "Joutsenon TV-asema",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 705,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4624226,
+          60.2883135
+        ]
+      },
+      "properties": {
+        "id": "osm_3053143882",
+        "name": "Mast (262 ft)",
+        "type": "mast",
+        "elevation_ft": 371,
+        "height_agl_ft": 262,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.9339613,
+          62.6504195
+        ]
+      },
+      "properties": {
+        "id": "osm_3127620055",
+        "name": "Mast (361 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 361,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.776492,
+          61.7258997
+        ]
+      },
+      "properties": {
+        "id": "osm_3267027742",
+        "name": "Wind (459 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7702993,
+          61.7287447
+        ]
+      },
+      "properties": {
+        "id": "osm_3267027875",
+        "name": "Wind (459 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7801156,
+          61.7299284
+        ]
+      },
+      "properties": {
+        "id": "osm_3267027887",
+        "name": "Wind (459 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7862236,
+          61.736955
+        ]
+      },
+      "properties": {
+        "id": "osm_3267028015",
+        "name": "Wind (459 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7766542,
+          61.7377423
+        ]
+      },
+      "properties": {
+        "id": "osm_3267028027",
+        "name": "Wind (459 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7903376,
+          61.7406918
+        ]
+      },
+      "properties": {
+        "id": "osm_3267028079",
+        "name": "Wind (459 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4554179,
+          63.2030023
+        ]
+      },
+      "properties": {
+        "id": "osm_3276994582",
+        "name": "Mast (226 ft)",
+        "type": "mast",
+        "elevation_ft": 568,
+        "height_agl_ft": 226,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4835027,
+          60.4317321
+        ]
+      },
+      "properties": {
+        "id": "osm_3407349552",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6487,
+          60.9787
+        ]
+      },
+      "properties": {
+        "id": "osm_3411029973",
+        "name": "Radiomasto",
+        "type": "mast",
+        "elevation_ft": 492,
+        "height_agl_ft": 492,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.9869163,
+          69.4281761
+        ]
+      },
+      "properties": {
+        "id": "osm_3524177015",
+        "name": "Mast (236 ft)",
+        "type": "mast",
+        "elevation_ft": 2018,
+        "height_agl_ft": 236,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4694548,
+          60.3336816
+        ]
+      },
+      "properties": {
+        "id": "osm_3578359915",
+        "name": "Mast (285 ft)",
+        "type": "mast",
+        "elevation_ft": 384,
+        "height_agl_ft": 285,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1228325,
+          68.8523282
+        ]
+      },
+      "properties": {
+        "id": "osm_3602766395",
+        "name": "Mast (744 ft)",
+        "type": "mast",
+        "elevation_ft": 1181,
+        "height_agl_ft": 744,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0959628,
+          69.6716826
+        ]
+      },
+      "properties": {
+        "id": "osm_3602766404",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0570638,
+          69.8973665
+        ]
+      },
+      "properties": {
+        "id": "osm_3602766411",
+        "name": "Mast (397 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 397,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.4467579,
+          68.4096659
+        ]
+      },
+      "properties": {
+        "id": "osm_3602797076",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0547599,
+          61.3542591
+        ]
+      },
+      "properties": {
+        "id": "osm_3645346740",
+        "name": "Mast (318 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 318,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9960804,
+          63.957267
+        ]
+      },
+      "properties": {
+        "id": "osm_3748100470",
+        "name": "Mast (341 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 341,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7597066,
+          61.1984235
+        ]
+      },
+      "properties": {
+        "id": "osm_3751407941",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.2611928,
+          60.9985305
+        ]
+      },
+      "properties": {
+        "id": "osm_3751591196",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2609887,
+          64.1661969
+        ]
+      },
+      "properties": {
+        "id": "osm_3756114217",
+        "name": "Haapaveden radio- ja televisiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1073,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7830462,
+          61.165248
+        ]
+      },
+      "properties": {
+        "id": "osm_3777227870",
+        "name": "Mast (322 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 322,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6779818,
+          66.5125795
+        ]
+      },
+      "properties": {
+        "id": "osm_3789274078",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0166152,
+          63.0233911
+        ]
+      },
+      "properties": {
+        "id": "osm_3909114968",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.023096,
+          63.0276997
+        ]
+      },
+      "properties": {
+        "id": "osm_3909114970",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0047778,
+          63.0358643
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141388",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9987697,
+          63.0331253
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141389",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9919854,
+          63.0301573
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141390",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9918314,
+          63.0271286
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141394",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9828504,
+          63.032952
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141395",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0013613,
+          63.0402138
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141402",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9953517,
+          63.0425762
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141403",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9829613,
+          63.0430105
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141404",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9899883,
+          63.0478351
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141405",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9956421,
+          63.0510403
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141406",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0049813,
+          63.0496663
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141407",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.009365,
+          63.046818
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141408",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0171217,
+          63.0414512
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141423",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0150939,
+          63.0377196
+        ]
+      },
+      "properties": {
+        "id": "osm_3909141424",
+        "name": "Wind (449 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 449,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9074523,
+          66.1410063
+        ]
+      },
+      "properties": {
+        "id": "osm_3918215420",
+        "name": "Veera",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8112848,
+          65.8275745
+        ]
+      },
+      "properties": {
+        "id": "osm_3936029584",
+        "name": "Mast (344 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 344,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7391468,
+          62.1918044
+        ]
+      },
+      "properties": {
+        "id": "osm_3967618499",
+        "name": "Chimney (459 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8120214,
+          62.2378947
+        ]
+      },
+      "properties": {
+        "id": "osm_3967618500",
+        "name": "Chimney (427 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 427,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7662515,
+          63.9841749
+        ]
+      },
+      "properties": {
+        "id": "osm_3978294309",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 390,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.6358,
+          62.02718
+        ]
+      },
+      "properties": {
+        "id": "osm_3990887533",
+        "name": "Chimney (394 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.6950051,
+          62.0149987
+        ]
+      },
+      "properties": {
+        "id": "osm_3990921792",
+        "name": "Mast (397 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 397,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1703951,
+          66.3418745
+        ]
+      },
+      "properties": {
+        "id": "osm_4026064833",
+        "name": "Mast (433 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 433,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2354298,
+          69.0763629
+        ]
+      },
+      "properties": {
+        "id": "osm_4032749756",
+        "name": "Mast (255 ft)",
+        "type": "mast",
+        "elevation_ft": 845,
+        "height_agl_ft": 255,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4655189,
+          61.5848862
+        ]
+      },
+      "properties": {
+        "id": "osm_4062329806",
+        "name": "Mast (695 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 695,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.629812,
+          65.6345196
+        ]
+      },
+      "properties": {
+        "id": "osm_4092360972",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.8396426,
+          64.3888673
+        ]
+      },
+      "properties": {
+        "id": "osm_4094913671",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.1160946,
+          66.7966331
+        ]
+      },
+      "properties": {
+        "id": "osm_4167189711",
+        "name": "Mast (331 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 331,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.78241,
+          68.1695724
+        ]
+      },
+      "properties": {
+        "id": "osm_4176582409",
+        "name": "Mast (403 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 403,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.9525367,
+          66.7706154
+        ]
+      },
+      "properties": {
+        "id": "osm_4202517591",
+        "name": "Mast (348 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 348,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9489199,
+          60.4945727
+        ]
+      },
+      "properties": {
+        "id": "osm_4290664175",
+        "name": "Mast (300 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 300,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.1699691,
+          67.2957942
+        ]
+      },
+      "properties": {
+        "id": "osm_4321355277",
+        "name": "Mast (266 ft)",
+        "type": "mast",
+        "elevation_ft": 617,
+        "height_agl_ft": 266,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7871632,
+          67.6341695
+        ]
+      },
+      "properties": {
+        "id": "osm_4328026801",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.9840737,
+          64.549715
+        ]
+      },
+      "properties": {
+        "id": "osm_4330052381",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.3676237,
+          60.1984704
+        ]
+      },
+      "properties": {
+        "id": "osm_4336093047",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3471348,
+          67.4800186
+        ]
+      },
+      "properties": {
+        "id": "osm_4357359656",
+        "name": "Mast (272 ft)",
+        "type": "mast",
+        "elevation_ft": 705,
+        "height_agl_ft": 272,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4040347,
+          67.2411245
+        ]
+      },
+      "properties": {
+        "id": "osm_4357431325",
+        "name": "Mast (272 ft)",
+        "type": "mast",
+        "elevation_ft": 630,
+        "height_agl_ft": 272,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2430429,
+          60.1927964
+        ]
+      },
+      "properties": {
+        "id": "osm_4370761597",
+        "name": "Mast (394 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6656242,
+          67.7999698
+        ]
+      },
+      "properties": {
+        "id": "osm_4377064475",
+        "name": "Mast (108 ft)",
+        "type": "mast",
+        "elevation_ft": 1452,
+        "height_agl_ft": 108,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.003465,
+          67.0259402
+        ]
+      },
+      "properties": {
+        "id": "osm_4383566242",
+        "name": "Mast (138 ft)",
+        "type": "mast",
+        "elevation_ft": 614,
+        "height_agl_ft": 138,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6439783,
+          67.156202
+        ]
+      },
+      "properties": {
+        "id": "osm_4405546963",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 617,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.826556,
+          67.0830274
+        ]
+      },
+      "properties": {
+        "id": "osm_4444577148",
+        "name": "Mast (269 ft)",
+        "type": "mast",
+        "elevation_ft": 797,
+        "height_agl_ft": 269,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3772265,
+          65.4756238
+        ]
+      },
+      "properties": {
+        "id": "osm_4447356552",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4013032,
+          65.4858609
+        ]
+      },
+      "properties": {
+        "id": "osm_4447356553",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4066658,
+          65.4780757
+        ]
+      },
+      "properties": {
+        "id": "osm_4447356586",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3900002,
+          65.4770744
+        ]
+      },
+      "properties": {
+        "id": "osm_4447358409",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3655095,
+          65.4774895
+        ]
+      },
+      "properties": {
+        "id": "osm_4447358412",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.9992494,
+          60.1802893
+        ]
+      },
+      "properties": {
+        "id": "osm_4447889435",
+        "name": "Mast (430 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 430,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.7473583,
+          60.2582243
+        ]
+      },
+      "properties": {
+        "id": "osm_4477429463",
+        "name": "Tower (295 ft)",
+        "type": "tower",
+        "elevation_ft": 656,
+        "height_agl_ft": 295,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.7912045,
+          60.2757715
+        ]
+      },
+      "properties": {
+        "id": "osm_4477438259",
+        "name": "Mast (180 ft)",
+        "type": "mast",
+        "elevation_ft": 328,
+        "height_agl_ft": 180,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7073325,
+          69.9631722
+        ]
+      },
+      "properties": {
+        "id": "osm_4482934643",
+        "name": "Mast (148 ft)",
+        "type": "mast",
+        "elevation_ft": 1014,
+        "height_agl_ft": 148,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.5011937,
+          61.5065885
+        ]
+      },
+      "properties": {
+        "id": "osm_4485893665",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.5380575,
+          60.0820114
+        ]
+      },
+      "properties": {
+        "id": "osm_4504506871",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.350504,
+          62.2186961
+        ]
+      },
+      "properties": {
+        "id": "osm_4506909504",
+        "name": "Mast (302 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 302,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8981358,
+          60.930153
+        ]
+      },
+      "properties": {
+        "id": "osm_4558832837",
+        "name": "Mast (715 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 715,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.485988,
+          60.9511713
+        ]
+      },
+      "properties": {
+        "id": "osm_4682635548",
+        "name": "Painokankaan t\u00e4ytel\u00e4hetinasema",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.774261,
+          60.4719764
+        ]
+      },
+      "properties": {
+        "id": "osm_4705578144",
+        "name": "Mast (358 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 358,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0715359,
+          64.1742641
+        ]
+      },
+      "properties": {
+        "id": "osm_4728555494",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4681587,
+          63.2072574
+        ]
+      },
+      "properties": {
+        "id": "osm_4768920159",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.461868,
+          63.2106513
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954364",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4785718,
+          63.2111608
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954365",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4818689,
+          63.2160072
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954366",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4923312,
+          63.2211825
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954367",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4866675,
+          63.2270145
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954368",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.5033709,
+          63.2261006
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954369",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.496641,
+          63.2310561
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954370",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.5113562,
+          63.2319388
+        ]
+      },
+      "properties": {
+        "id": "osm_4768954371",
+        "name": "Wind (472 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 472,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3373387,
+          61.6435897
+        ]
+      },
+      "properties": {
+        "id": "osm_4780833868",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 525,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2629855,
+          60.3059776
+        ]
+      },
+      "properties": {
+        "id": "osm_4784537666",
+        "name": "Mast (418 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 418,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.2471151,
+          61.7945352
+        ]
+      },
+      "properties": {
+        "id": "osm_4813480265",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 459,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.088655,
+          60.6564935
+        ]
+      },
+      "properties": {
+        "id": "osm_4835262318",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.4536771,
+          60.520451
+        ]
+      },
+      "properties": {
+        "id": "osm_4854424662",
+        "name": "Mast (331 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 331,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.9155941,
+          63.8864467
+        ]
+      },
+      "properties": {
+        "id": "osm_4857259309",
+        "name": "Mast (323 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 323,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.7725111,
+          60.3611562
+        ]
+      },
+      "properties": {
+        "id": "osm_4932111278",
+        "name": "Mast (318 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 318,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7721689,
+          60.3478039
+        ]
+      },
+      "properties": {
+        "id": "osm_4976215858",
+        "name": "Mast (302 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 302,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9496865,
+          59.9645921
+        ]
+      },
+      "properties": {
+        "id": "osm_4990429387",
+        "name": "Wind (328 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9581161,
+          59.9649047
+        ]
+      },
+      "properties": {
+        "id": "osm_4990429635",
+        "name": "Wind (328 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.968463,
+          59.9649327
+        ]
+      },
+      "properties": {
+        "id": "osm_4990429647",
+        "name": "Wind (328 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9676922,
+          59.9621476
+        ]
+      },
+      "properties": {
+        "id": "osm_4990429675",
+        "name": "Wind (328 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.9543654,
+          59.9673125
+        ]
+      },
+      "properties": {
+        "id": "osm_4990429694",
+        "name": "Wind (328 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2527751,
+          61.1254583
+        ]
+      },
+      "properties": {
+        "id": "osm_5086386862",
+        "name": "Mast (361 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 361,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8152011,
+          61.2900711
+        ]
+      },
+      "properties": {
+        "id": "osm_5175026635",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.9282996,
+          63.7140024
+        ]
+      },
+      "properties": {
+        "id": "osm_5204667657",
+        "name": "Mast (358 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 358,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.2957957,
+          60.324271
+        ]
+      },
+      "properties": {
+        "id": "osm_5211852066",
+        "name": "Mast (515 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 515,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9615863,
+          65.3278213
+        ]
+      },
+      "properties": {
+        "id": "osm_5222299399",
+        "name": "Mast (402 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 402,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3543387,
+          65.3015513
+        ]
+      },
+      "properties": {
+        "id": "osm_5225123502",
+        "name": "Taivalkosken radio- ja televisiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 902,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2844743,
+          65.24812
+        ]
+      },
+      "properties": {
+        "id": "osm_5228299147",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.954192,
+          59.9588052
+        ]
+      },
+      "properties": {
+        "id": "osm_5303244301",
+        "name": "Wind (328 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8995705,
+          62.3188083
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612141",
+        "name": "Chimney (394 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.930642,
+          62.3044268
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612170",
+        "name": "Mast (405 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 405,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8956816,
+          62.3160789
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612186",
+        "name": "Chimney (394 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8940895,
+          62.3165846
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612216",
+        "name": "Chimney (394 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8585099,
+          62.3403857
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612393",
+        "name": "Mast (390 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 390,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6426109,
+          61.8995125
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612594",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1620116,
+          62.2845558
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612611",
+        "name": "Mast (246 ft)",
+        "type": "mast",
+        "elevation_ft": 498,
+        "height_agl_ft": 246,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2902714,
+          61.895071
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612614",
+        "name": "Mast (394 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3504898,
+          61.9594392
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612767",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.7302595,
+          62.0682204
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612779",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.1731319,
+          62.176784
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612791",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.1665328,
+          62.0383818
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612811",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8763051,
+          61.8891897
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612818",
+        "name": "Mast (332 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 332,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1322155,
+          62.2669915
+        ]
+      },
+      "properties": {
+        "id": "osm_5372613102",
+        "name": "Kokkom\u00e4ki",
+        "type": "mast",
+        "elevation_ft": 638,
+        "height_agl_ft": 430,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4730047,
+          60.7800894
+        ]
+      },
+      "properties": {
+        "id": "osm_5372613774",
+        "name": "Mast (300 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 300,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0131184,
+          60.7235967
+        ]
+      },
+      "properties": {
+        "id": "osm_5372614232",
+        "name": "Mast (302 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 302,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4000368,
+          60.8428406
+        ]
+      },
+      "properties": {
+        "id": "osm_5372614286",
+        "name": "Mast (300 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 300,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0440306,
+          61.2390039
+        ]
+      },
+      "properties": {
+        "id": "osm_5372614686",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.655829,
+          61.001178
+        ]
+      },
+      "properties": {
+        "id": "osm_5372614920",
+        "name": "Mast (427 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 427,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2527802,
+          61.125457
+        ]
+      },
+      "properties": {
+        "id": "osm_5372615168",
+        "name": "Mast (361 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 361,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4121698,
+          61.1325703
+        ]
+      },
+      "properties": {
+        "id": "osm_5372615940",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.7277476,
+          61.0342803
+        ]
+      },
+      "properties": {
+        "id": "osm_5372615966",
+        "name": "Mast (302 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 302,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3811508,
+          61.3392322
+        ]
+      },
+      "properties": {
+        "id": "osm_5372615995",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.2635093,
+          61.0494326
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616024",
+        "name": "Mast (413 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 413,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2189807,
+          61.5924485
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616041",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6449007,
+          61.6762784
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616427",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.9487222,
+          61.7444149
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616432",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.5686528,
+          61.7054847
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616485",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7633143,
+          61.4498885
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616628",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0054589,
+          61.6496041
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616649",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.792911,
+          61.8089463
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616705",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.1797659,
+          61.5722104
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616711",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 336,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.185679,
+          61.5224331
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616721",
+        "name": "Mast (125 ft)",
+        "type": "mast",
+        "elevation_ft": 328,
+        "height_agl_ft": 125,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2545811,
+          61.7040711
+        ]
+      },
+      "properties": {
+        "id": "osm_5372616722",
+        "name": "Mast (368 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 368,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.8300153,
+          62.578407
+        ]
+      },
+      "properties": {
+        "id": "osm_5372618997",
+        "name": "Mast (412 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 412,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.8126345,
+          62.5874236
+        ]
+      },
+      "properties": {
+        "id": "osm_5372619460",
+        "name": "Repokallion masto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2397892,
+          62.6384499
+        ]
+      },
+      "properties": {
+        "id": "osm_5372619482",
+        "name": "Mast (358 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 358,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0504121,
+          62.4136164
+        ]
+      },
+      "properties": {
+        "id": "osm_5372619495",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0449899,
+          62.552822
+        ]
+      },
+      "properties": {
+        "id": "osm_5372619998",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1731626,
+          62.2965152
+        ]
+      },
+      "properties": {
+        "id": "osm_5372620475",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.8108889,
+          62.8717595
+        ]
+      },
+      "properties": {
+        "id": "osm_5377710210",
+        "name": "Mast (326 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 326,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.5416301,
+          62.7387616
+        ]
+      },
+      "properties": {
+        "id": "osm_5377710386",
+        "name": "Mast (1043 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1043,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6520211,
+          62.8933216
+        ]
+      },
+      "properties": {
+        "id": "osm_5377710467",
+        "name": "Mast (364 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 364,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6624419,
+          63.084425
+        ]
+      },
+      "properties": {
+        "id": "osm_5377710721",
+        "name": "Mast (436 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 436,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3963014,
+          62.7504706
+        ]
+      },
+      "properties": {
+        "id": "osm_5377710796",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4229056,
+          62.8333018
+        ]
+      },
+      "properties": {
+        "id": "osm_5377711329",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1861409,
+          63.5496471
+        ]
+      },
+      "properties": {
+        "id": "osm_5377711949",
+        "name": "Mast (407 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 407,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.7677732,
+          63.3783993
+        ]
+      },
+      "properties": {
+        "id": "osm_5377711997",
+        "name": "Mast (386 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 386,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4435472,
+          63.3654917
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713149",
+        "name": "Mast (463 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 463,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.8166861,
+          62.7352643
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713216",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.0588206,
+          62.8119305
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713609",
+        "name": "Mast (323 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 323,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1934915,
+          63.1337999
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713725",
+        "name": "Mast (323 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 323,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.433554,
+          63.3088095
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713772",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0996178,
+          63.5483013
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713805",
+        "name": "Mast (411 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 411,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.5523043,
+          63.4344384
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713817",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.4846329,
+          63.4910245
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713822",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.9746606,
+          63.3396829
+        ]
+      },
+      "properties": {
+        "id": "osm_5377713902",
+        "name": "Mast (322 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 322,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.9472519,
+          64.539381
+        ]
+      },
+      "properties": {
+        "id": "osm_5377719766",
+        "name": "Mast (230 ft)",
+        "type": "mast",
+        "elevation_ft": 705,
+        "height_agl_ft": 230,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.811165,
+          64.7246762
+        ]
+      },
+      "properties": {
+        "id": "osm_5377721770",
+        "name": "Mast (394 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0905038,
+          64.6772568
+        ]
+      },
+      "properties": {
+        "id": "osm_5377722381",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1864261,
+          64.5403589
+        ]
+      },
+      "properties": {
+        "id": "osm_5377722771",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.783901,
+          63.6837505
+        ]
+      },
+      "properties": {
+        "id": "osm_5377722937",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9660784,
+          64.2486691
+        ]
+      },
+      "properties": {
+        "id": "osm_5377724467",
+        "name": "Mast (506 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 506,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.2534125,
+          64.1263674
+        ]
+      },
+      "properties": {
+        "id": "osm_5377724713",
+        "name": "Vuokatin radio- ja TV-masto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1070,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9005826,
+          64.199627
+        ]
+      },
+      "properties": {
+        "id": "osm_5377725270",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0938764,
+          64.3309916
+        ]
+      },
+      "properties": {
+        "id": "osm_5377725593",
+        "name": "Mast (363 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 363,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6878957,
+          63.9617351
+        ]
+      },
+      "properties": {
+        "id": "osm_5377725968",
+        "name": "Mast (338 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 338,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.574138,
+          64.1149929
+        ]
+      },
+      "properties": {
+        "id": "osm_5377727946",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8075275,
+          64.48512
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734055",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.774948,
+          64.486805
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734058",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8248001,
+          64.4771342
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734067",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7901935,
+          64.4866365
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734070",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8211809,
+          64.4875412
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734072",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8303278,
+          64.485314
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734078",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8041064,
+          64.4910901
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734083",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8195669,
+          64.4802865
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734090",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8145123,
+          64.498408
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734094",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8190443,
+          64.4942789
+        ]
+      },
+      "properties": {
+        "id": "osm_5377734104",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8806468,
+          64.5724213
+        ]
+      },
+      "properties": {
+        "id": "osm_5377738325",
+        "name": "Mast (436 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 436,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.0318024,
+          64.6845379
+        ]
+      },
+      "properties": {
+        "id": "osm_5377738335",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4316998,
+          65.0048359
+        ]
+      },
+      "properties": {
+        "id": "osm_5377739096",
+        "name": "Chimney (410 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 410,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6411627,
+          65.0498333
+        ]
+      },
+      "properties": {
+        "id": "osm_5377739933",
+        "name": "Mast (315 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 315,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.622778,
+          65.0049148
+        ]
+      },
+      "properties": {
+        "id": "osm_5377739996",
+        "name": "Mast (476 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 476,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8434538,
+          65.0345227
+        ]
+      },
+      "properties": {
+        "id": "osm_5377740232",
+        "name": "Digita l\u00e4hetysasema",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1070,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2932526,
+          65.6803223
+        ]
+      },
+      "properties": {
+        "id": "osm_5377745018",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6335479,
+          66.0028051
+        ]
+      },
+      "properties": {
+        "id": "osm_5377745687",
+        "name": "Mast (741 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 741,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0324825,
+          65.3942135
+        ]
+      },
+      "properties": {
+        "id": "osm_5377746479",
+        "name": "Mast (302 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 302,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4999553,
+          66.1546468
+        ]
+      },
+      "properties": {
+        "id": "osm_5377747106",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8992205,
+          66.1368945
+        ]
+      },
+      "properties": {
+        "id": "osm_5377747120",
+        "name": "Topi",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8795331,
+          66.1457882
+        ]
+      },
+      "properties": {
+        "id": "osm_5377747621",
+        "name": "Joonatan",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8981908,
+          66.1417169
+        ]
+      },
+      "properties": {
+        "id": "osm_5377747622",
+        "name": "Onni",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0472899,
+          65.9267987
+        ]
+      },
+      "properties": {
+        "id": "osm_5377747642",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.513055,
+          65.5057979
+        ]
+      },
+      "properties": {
+        "id": "osm_5377747697",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4715997,
+          65.6427271
+        ]
+      },
+      "properties": {
+        "id": "osm_5377748292",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6433789,
+          65.5708351
+        ]
+      },
+      "properties": {
+        "id": "osm_5377748296",
+        "name": "Mast (358 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 358,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.1226454,
+          65.6254719
+        ]
+      },
+      "properties": {
+        "id": "osm_5377748313",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": 394,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.1050344,
+          65.6266453
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749024",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": 394,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.1169665,
+          65.6297809
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749026",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": 394,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3656286,
+          65.4823238
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749473",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3655666,
+          65.493242
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749477",
+        "name": "Wind (666 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 666,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3692027,
+          65.4865868
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749481",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.354578,
+          65.4911913
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749485",
+        "name": "Wind (666 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 666,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3738959,
+          65.4899001
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749489",
+        "name": "Wind (643 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3622907,
+          65.4889685
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749492",
+        "name": "Wind (666 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 666,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.856238,
+          66.1290656
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749833",
+        "name": "Veeti",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8692106,
+          66.1454682
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749839",
+        "name": "Lilli",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8661851,
+          66.1320938
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749843",
+        "name": "V\u00e4in\u00f6",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7020108,
+          65.933894
+        ]
+      },
+      "properties": {
+        "id": "osm_5377749852",
+        "name": "Mast (331 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 331,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1521645,
+          66.1601953
+        ]
+      },
+      "properties": {
+        "id": "osm_5377751597",
+        "name": "Mast (399 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 399,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0626267,
+          66.5600094
+        ]
+      },
+      "properties": {
+        "id": "osm_5377752500",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2030606,
+          66.374562
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754068",
+        "name": "Mast (364 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 364,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9156545,
+          66.1489473
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754105",
+        "name": "Mikael",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9788967,
+          66.239214
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754106",
+        "name": "Mast (404 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 404,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8781696,
+          66.152337
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754110",
+        "name": "Anton",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.6178147,
+          66.6905429
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754467",
+        "name": "Mast (397 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 397,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.6167228,
+          66.3961402
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754633",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8649376,
+          66.5228456
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754642",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8545454,
+          66.149776
+        ]
+      },
+      "properties": {
+        "id": "osm_5377754663",
+        "name": "Mauno",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 643,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.7189379,
+          61.3421586
+        ]
+      },
+      "properties": {
+        "id": "osm_5520574642",
+        "name": "Mast (323 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 323,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.3477802,
+          70.0004194
+        ]
+      },
+      "properties": {
+        "id": "osm_5589153117",
+        "name": "Mast (49 ft)",
+        "type": "mast",
+        "elevation_ft": 669,
+        "height_agl_ft": 49,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.9288009,
+          69.5824805
+        ]
+      },
+      "properties": {
+        "id": "osm_5589153511",
+        "name": "Mast (184 ft)",
+        "type": "mast",
+        "elevation_ft": 925,
+        "height_agl_ft": 184,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.9125175,
+          69.6832444
+        ]
+      },
+      "properties": {
+        "id": "osm_5589153512",
+        "name": "Mast (177 ft)",
+        "type": "mast",
+        "elevation_ft": 935,
+        "height_agl_ft": 177,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8546584,
+          69.4781644
+        ]
+      },
+      "properties": {
+        "id": "osm_5589153667",
+        "name": "Mast (105 ft)",
+        "type": "mast",
+        "elevation_ft": 443,
+        "height_agl_ft": 105,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8311646,
+          69.5425851
+        ]
+      },
+      "properties": {
+        "id": "osm_5589153669",
+        "name": "Mast (98 ft)",
+        "type": "mast",
+        "elevation_ft": 410,
+        "height_agl_ft": 98,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2378714,
+          69.4761834
+        ]
+      },
+      "properties": {
+        "id": "osm_5941341703",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.3821462,
+          61.3132095
+        ]
+      },
+      "properties": {
+        "id": "osm_6042178862",
+        "name": "Mast (394 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2058715,
+          61.3539309
+        ]
+      },
+      "properties": {
+        "id": "osm_6084336636",
+        "name": "Mast (164 ft)",
+        "type": "mast",
+        "elevation_ft": 453,
+        "height_agl_ft": 164,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7799898,
+          60.0847888
+        ]
+      },
+      "properties": {
+        "id": "osm_6387961540",
+        "name": "Mast (300 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 300,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.2776544,
+          60.4287199
+        ]
+      },
+      "properties": {
+        "id": "osm_6629182921",
+        "name": "Mast (351 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 351,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.4695189,
+          61.2383322
+        ]
+      },
+      "properties": {
+        "id": "osm_6679610246",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.1175615,
+          61.1172007
+        ]
+      },
+      "properties": {
+        "id": "osm_6720975419",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.9652112,
+          60.320915
+        ]
+      },
+      "properties": {
+        "id": "osm_7121702838",
+        "name": "Mast (459 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.3614406,
+          59.7826262
+        ]
+      },
+      "properties": {
+        "id": "osm_7121777804",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9332343,
+          61.5122017
+        ]
+      },
+      "properties": {
+        "id": "osm_7328375664",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.0252986,
+          61.5873786
+        ]
+      },
+      "properties": {
+        "id": "osm_7448554497",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.426819,
+          60.8088134
+        ]
+      },
+      "properties": {
+        "id": "osm_7689173720",
+        "name": "Mast (381 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 381,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.0941629,
+          60.341248
+        ]
+      },
+      "properties": {
+        "id": "osm_7775442786",
+        "name": "Mast (397 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 397,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.6399699,
+          60.8012861
+        ]
+      },
+      "properties": {
+        "id": "osm_7837049927",
+        "name": "Chimney (535 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 535,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.6345644,
+          60.8106189
+        ]
+      },
+      "properties": {
+        "id": "osm_7837053230",
+        "name": "Chimney (604 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 604,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.1013173,
+          61.454009
+        ]
+      },
+      "properties": {
+        "id": "osm_7921432057",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.8267145,
+          60.3973793
+        ]
+      },
+      "properties": {
+        "id": "osm_8044142138",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0527244,
+          60.4606291
+        ]
+      },
+      "properties": {
+        "id": "osm_8198533184",
+        "name": "Chimney (361 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 361,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2095078,
+          69.26306
+        ]
+      },
+      "properties": {
+        "id": "osm_8259935017",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.2603314,
+          60.0741864
+        ]
+      },
+      "properties": {
+        "id": "osm_8268096946",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8471756,
+          62.5287404
+        ]
+      },
+      "properties": {
+        "id": "osm_8279118119",
+        "name": "Mast (453 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 453,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0105664,
+          61.6339723
+        ]
+      },
+      "properties": {
+        "id": "osm_8334889197",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 599,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7029706,
+          62.4187822
+        ]
+      },
+      "properties": {
+        "id": "osm_8364475478",
+        "name": "Mast (430 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 430,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.423356,
+          61.4307834
+        ]
+      },
+      "properties": {
+        "id": "osm_8420594180",
+        "name": "Mast ( ft)",
+        "type": "mast",
+        "elevation_ft": 440,
+        "height_agl_ft": null,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7657415,
+          60.4145041
+        ]
+      },
+      "properties": {
+        "id": "osm_8457654148",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": 308,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6392842,
+          62.2069246
+        ]
+      },
+      "properties": {
+        "id": "osm_8476879251",
+        "name": "Jyv\u00e4skyl\u00e4n radio- ja televisiomasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 1056,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.4830187,
+          60.5440801
+        ]
+      },
+      "properties": {
+        "id": "osm_8529465587",
+        "name": "Mast (334 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 334,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2828754,
+          61.6206178
+        ]
+      },
+      "properties": {
+        "id": "osm_8727088637",
+        "name": "Mast (318 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 318,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.3247122,
+          60.377363
+        ]
+      },
+      "properties": {
+        "id": "osm_8808426667",
+        "name": "Mast (377 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 377,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.0891819,
+          60.8476389
+        ]
+      },
+      "properties": {
+        "id": "osm_8808426691",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9563883,
+          60.4657972
+        ]
+      },
+      "properties": {
+        "id": "osm_8808426710",
+        "name": "Chimney (413 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 413,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.706808,
+          61.4656263
+        ]
+      },
+      "properties": {
+        "id": "osm_9005147590",
+        "name": "Mast (341 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 341,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7879824,
+          60.4533274
+        ]
+      },
+      "properties": {
+        "id": "osm_9064313495",
+        "name": "Tower (26 ft)",
+        "type": "tower",
+        "elevation_ft": 318,
+        "height_agl_ft": 26,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.0555833,
+          61.0178252
+        ]
+      },
+      "properties": {
+        "id": "osm_9450156406",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.4985939,
+          60.602056
+        ]
+      },
+      "properties": {
+        "id": "osm_9610696294",
+        "name": "Mast (354 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 354,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.7684919,
+          60.7145893
+        ]
+      },
+      "properties": {
+        "id": "osm_9776569247",
+        "name": "Mast (331 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 331,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3014688,
+          63.9021873
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734833",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3006963,
+          63.8959189
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734834",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3013254,
+          63.8904271
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734835",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3069024,
+          63.8833163
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734836",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2872614,
+          63.8687887
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734837",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3086095,
+          63.8691197
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734838",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.3208931,
+          63.8665474
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734839",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.2687678,
+          63.874337
+        ]
+      },
+      "properties": {
+        "id": "osm_9848734840",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7590885,
+          63.9004613
+        ]
+      },
+      "properties": {
+        "id": "osm_9848833913",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7517339,
+          63.8944315
+        ]
+      },
+      "properties": {
+        "id": "osm_9848837437",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7405389,
+          63.8913227
+        ]
+      },
+      "properties": {
+        "id": "osm_9848837438",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7318605,
+          63.8947896
+        ]
+      },
+      "properties": {
+        "id": "osm_9848837439",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7248268,
+          63.8984056
+        ]
+      },
+      "properties": {
+        "id": "osm_9848837440",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7212402,
+          63.9039115
+        ]
+      },
+      "properties": {
+        "id": "osm_9848837441",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7586267,
+          63.8899825
+        ]
+      },
+      "properties": {
+        "id": "osm_9848837580",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.5530676,
+          60.7329184
+        ]
+      },
+      "properties": {
+        "id": "osm_9862047269",
+        "name": "Mast (459 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 459,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.9497902,
+          61.6116664
+        ]
+      },
+      "properties": {
+        "id": "osm_9925755803",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3618567,
+          63.7905574
+        ]
+      },
+      "properties": {
+        "id": "osm_10171673850",
+        "name": "Wind (656 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 656,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3340879,
+          63.7961789
+        ]
+      },
+      "properties": {
+        "id": "osm_10171673864",
+        "name": "Wind (656 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 656,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4062804,
+          63.7870487
+        ]
+      },
+      "properties": {
+        "id": "osm_10171747231",
+        "name": "Wind (702 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 702,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3907862,
+          63.7867648
+        ]
+      },
+      "properties": {
+        "id": "osm_10171747232",
+        "name": "Wind (702 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 702,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.384403,
+          63.7785726
+        ]
+      },
+      "properties": {
+        "id": "osm_10171747237",
+        "name": "Wind (702 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 702,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3968621,
+          63.7813563
+        ]
+      },
+      "properties": {
+        "id": "osm_10171747238",
+        "name": "Wind (702 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 702,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3663938,
+          63.7815151
+        ]
+      },
+      "properties": {
+        "id": "osm_10171747256",
+        "name": "Wind (702 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 702,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4121723,
+          63.7809819
+        ]
+      },
+      "properties": {
+        "id": "osm_10171747263",
+        "name": "Wind (702 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 702,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.4045531,
+          63.7760028
+        ]
+      },
+      "properties": {
+        "id": "osm_10171747264",
+        "name": "Wind (702 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 702,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.279232,
+          61.3479095
+        ]
+      },
+      "properties": {
+        "id": "osm_10171825050",
+        "name": "Mast (394 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 394,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2126982,
+          64.7538974
+        ]
+      },
+      "properties": {
+        "id": "osm_10171826287",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2054354,
+          64.7486209
+        ]
+      },
+      "properties": {
+        "id": "osm_10171826288",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.1983153,
+          64.7433432
+        ]
+      },
+      "properties": {
+        "id": "osm_10171826290",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2207206,
+          64.7598591
+        ]
+      },
+      "properties": {
+        "id": "osm_10171826293",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2157246,
+          61.3300306
+        ]
+      },
+      "properties": {
+        "id": "osm_10178370126",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9488405,
+          61.9293528
+        ]
+      },
+      "properties": {
+        "id": "osm_10194560450",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8822682,
+          62.2557333
+        ]
+      },
+      "properties": {
+        "id": "osm_10695394526",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1342417,
+          62.59462
+        ]
+      },
+      "properties": {
+        "id": "osm_10696892422",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6135595,
+          63.763789
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800313",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5988899,
+          63.7733598
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800314",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.610183,
+          63.7696383
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800315",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6248696,
+          63.7671395
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800316",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6141881,
+          63.7771746
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800334",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6268895,
+          63.7734155
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800344",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6404515,
+          63.7718421
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800345",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6384674,
+          63.7657557
+        ]
+      },
+      "properties": {
+        "id": "osm_10699800346",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6017357,
+          63.7806078
+        ]
+      },
+      "properties": {
+        "id": "osm_10699805935",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5910677,
+          63.7842978
+        ]
+      },
+      "properties": {
+        "id": "osm_10699805936",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6148082,
+          63.7866696
+        ]
+      },
+      "properties": {
+        "id": "osm_10699810658",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6256956,
+          63.7901545
+        ]
+      },
+      "properties": {
+        "id": "osm_10699810659",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6177645,
+          63.7953089
+        ]
+      },
+      "properties": {
+        "id": "osm_10699810660",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5765189,
+          63.8293373
+        ]
+      },
+      "properties": {
+        "id": "osm_10699813246",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5621999,
+          63.8295578
+        ]
+      },
+      "properties": {
+        "id": "osm_10699813247",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5687169,
+          63.8356613
+        ]
+      },
+      "properties": {
+        "id": "osm_10699813248",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5518835,
+          63.8335698
+        ]
+      },
+      "properties": {
+        "id": "osm_10699813249",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6024698,
+          63.7904756
+        ]
+      },
+      "properties": {
+        "id": "osm_10699828153",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6032965,
+          63.7966376
+        ]
+      },
+      "properties": {
+        "id": "osm_10699828154",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5930026,
+          63.8006731
+        ]
+      },
+      "properties": {
+        "id": "osm_10699828165",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5405129,
+          63.8369298
+        ]
+      },
+      "properties": {
+        "id": "osm_10699898402",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5341133,
+          63.8422018
+        ]
+      },
+      "properties": {
+        "id": "osm_10699898403",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5572111,
+          63.839376
+        ]
+      },
+      "properties": {
+        "id": "osm_10699903614",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.5476868,
+          63.8438591
+        ]
+      },
+      "properties": {
+        "id": "osm_10699903615",
+        "name": "Wind (722 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 722,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7165904,
+          61.593392
+        ]
+      },
+      "properties": {
+        "id": "osm_11122516782",
+        "name": "Mast (338 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 338,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.5219421,
+          65.7567125
+        ]
+      },
+      "properties": {
+        "id": "osm_11178427923",
+        "name": "Chimney (344 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 344,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.2375512,
+          61.6429575
+        ]
+      },
+      "properties": {
+        "id": "osm_11229502652",
+        "name": "Mast (404 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 404,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.4099362,
+          61.1005539
+        ]
+      },
+      "properties": {
+        "id": "osm_11405526259",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9446037,
+          60.7358115
+        ]
+      },
+      "properties": {
+        "id": "osm_11418347486",
+        "name": "Tower (1181 ft)",
+        "type": "tower",
+        "elevation_ft": null,
+        "height_agl_ft": 1181,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.4176641,
+          62.0448949
+        ]
+      },
+      "properties": {
+        "id": "osm_11444322928",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.5864827,
+          64.071303
+        ]
+      },
+      "properties": {
+        "id": "osm_11589053015",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.0569063,
+          61.2602282
+        ]
+      },
+      "properties": {
+        "id": "osm_11589062344",
+        "name": "Mast (361 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 361,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.6401247,
+          60.1777253
+        ]
+      },
+      "properties": {
+        "id": "osm_11598682665",
+        "name": "Espoon masto",
+        "type": "mast",
+        "elevation_ft": 144,
+        "height_agl_ft": 1070,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.3771502,
+          61.8351534
+        ]
+      },
+      "properties": {
+        "id": "osm_11610349253",
+        "name": "Mast (312 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 312,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.2266182,
+          61.5195214
+        ]
+      },
+      "properties": {
+        "id": "osm_11672376136",
+        "name": "Mast (308 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 308,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.7801032,
+          62.2638088
+        ]
+      },
+      "properties": {
+        "id": "osm_11939195557",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.3344682,
+          62.4042648
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588780",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.3424558,
+          62.401384
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588781",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.3177245,
+          62.3978572
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588782",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.3274097,
+          62.3967808
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588783",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.3393465,
+          62.393742
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588784",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.4056355,
+          62.401629
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588785",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.4091919,
+          62.3968067
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588786",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.4192356,
+          62.3958409
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588787",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.4068731,
+          62.3899491
+        ]
+      },
+      "properties": {
+        "id": "osm_11939588788",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.642326,
+          62.4654366
+        ]
+      },
+      "properties": {
+        "id": "osm_11940185760",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.6363449,
+          62.4583729
+        ]
+      },
+      "properties": {
+        "id": "osm_11940229270",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.6513195,
+          62.4546049
+        ]
+      },
+      "properties": {
+        "id": "osm_11940229316",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.6365292,
+          62.4480513
+        ]
+      },
+      "properties": {
+        "id": "osm_11940229317",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.6287855,
+          62.4395504
+        ]
+      },
+      "properties": {
+        "id": "osm_11940229327",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.6069986,
+          62.4440916
+        ]
+      },
+      "properties": {
+        "id": "osm_11940229330",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.5922228,
+          62.4533268
+        ]
+      },
+      "properties": {
+        "id": "osm_11940229331",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.6470355,
+          62.4318511
+        ]
+      },
+      "properties": {
+        "id": "osm_11940229340",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.195219,
+          62.7894362
+        ]
+      },
+      "properties": {
+        "id": "osm_11942021947",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2019163,
+          62.7853974
+        ]
+      },
+      "properties": {
+        "id": "osm_11942021948",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2049509,
+          62.7778639
+        ]
+      },
+      "properties": {
+        "id": "osm_11942021949",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2109157,
+          62.7732011
+        ]
+      },
+      "properties": {
+        "id": "osm_11942021950",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.2243729,
+          62.7720329
+        ]
+      },
+      "properties": {
+        "id": "osm_11942021951",
+        "name": "Wind (755 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 755,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0878482,
+          62.6847413
+        ]
+      },
+      "properties": {
+        "id": "osm_11943084574",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0764629,
+          62.6809955
+        ]
+      },
+      "properties": {
+        "id": "osm_11943084580",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0945664,
+          62.6760388
+        ]
+      },
+      "properties": {
+        "id": "osm_11943084587",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0839802,
+          62.6735641
+        ]
+      },
+      "properties": {
+        "id": "osm_11943125431",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0853615,
+          62.6674434
+        ]
+      },
+      "properties": {
+        "id": "osm_11943125460",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.1032138,
+          62.6665305
+        ]
+      },
+      "properties": {
+        "id": "osm_11943125464",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0954074,
+          62.6554579
+        ]
+      },
+      "properties": {
+        "id": "osm_11943125634",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.0897453,
+          62.6445991
+        ]
+      },
+      "properties": {
+        "id": "osm_11943125676",
+        "name": "Wind (689 ft)",
+        "type": "wind",
+        "elevation_ft": null,
+        "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.8968483,
+          60.609629
+        ]
+      },
+      "properties": {
+        "id": "osm_12170471867",
+        "name": "Mast (334 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 334,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.7047199,
+          61.5176635
+        ]
+      },
+      "properties": {
+        "id": "osm_12450191335",
+        "name": "Mast (341 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 341,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.5979931,
+          61.5422916
+        ]
+      },
+      "properties": {
+        "id": "osm_13164820882",
+        "name": "Mast (407 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 407,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.9368156,
+          60.1968487
+        ]
+      },
+      "properties": {
+        "id": "osm_13200537220",
+        "name": "Mast (340 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 340,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.8114908,
+          62.2379739
+        ]
+      },
+      "properties": {
+        "id": "osm_13368007513",
+        "name": "Chimney (328 ft)",
+        "type": "chimney",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.4392381,
+          60.0012239
+        ]
+      },
+      "properties": {
+        "id": "osm_13484526640",
+        "name": "Mast (430 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 430,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.6911634,
+          60.5433164
+        ]
+      },
+      "properties": {
+        "id": "osm_13942794075",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8738841,
+          62.248375
+        ]
+      },
+      "properties": {
+        "id": "osm_13990195879",
+        "name": "Mast (341 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 341,
+        "country": "FI",
+        "is_lit": false
+      }
+    }
+  ]
+}
