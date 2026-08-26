@@ -861,6 +861,25 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          25.7510322,
+          60.9617003
+        ]
+      },
+      "properties": {
+        "id": "osm_1830331713",
+        "name": "250",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 476,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           27.0465206,
           60.6922936
         ]
@@ -1631,6 +1650,44 @@
         "type": "mast",
         "elevation_ft": 568,
         "height_agl_ft": 226,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.3071796,
+          60.3802477
+        ]
+      },
+      "properties": {
+        "id": "osm_3361848833",
+        "name": "Mast (328 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 328,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.1835443,
+          60.5425146
+        ]
+      },
+      "properties": {
+        "id": "osm_3399731359",
+        "name": "Mast (305 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
         "country": "FI",
         "is_lit": false
       }
@@ -8566,6 +8623,25 @@
         "type": "wind",
         "elevation_ft": null,
         "height_agl_ft": 689,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6745407,
+          61.281948
+        ]
+      },
+      "properties": {
+        "id": "osm_12076844095",
+        "name": "Mast (325 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 325,
         "country": "FI",
         "is_lit": false
       }
