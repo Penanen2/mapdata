@@ -17,12 +17,16 @@ jobs:
         include:
           - country: finland
             code: ef
+            min_lat: 59.5
+            max_lat: 70.2
+            min_lon: 19.0
+            max_lon: 31.8
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Java & Python
+      - name: Set up Java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
@@ -34,7 +38,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install Python dependencies
-        run: pip install osmium
+        run: pip install osmium pillow requests
 
       - name: Create Data Directory
         run: mkdir -p data
@@ -68,7 +72,6 @@ jobs:
                   self.features = []
 
               def node(self, n):
-                  # FAST EXIT: Skip 99.9% of the 60 million nodes instantly!
                   if not ('man_made' in n.tags or 'generator:source' in n.tags or 'aeroway' in n.tags or 'power' in n.tags):
                       return
                       
@@ -86,7 +89,6 @@ jobs:
                   if not is_obstacle:
                       return
 
-                  # Now we know it's a real obstacle, process the heights safely
                   h_str = n.tags.get('height', n.tags.get('height:agl', ''))
                   elev_str = n.tags.get('ele', '')
                   is_lit = n.tags.get('hazard:light') == 'yes' or n.tags.get('light:lit') == 'yes' or n.tags.get('aerodrome:light') == 'yes'
@@ -107,7 +109,6 @@ jobs:
                       except:
                           pass
 
-                  # ICAO Rule: >= 300 ft AGL or Lit
                   if (h_ft is not None and h_ft >= 300) or (elev_ft is not None and elev_ft >= 300) or is_lit:
                       name = n.tags.get('name', '')
                       type_tag = man_made or gen_source or power or 'mast'
@@ -133,7 +134,94 @@ jobs:
           print(f"Successfully extracted {len(handler.features)} ICAO obstacles.")
           EOF
 
-      - name: Update manifest.json Version Date
+      - name: Generate Offline DEM Elevation Grid (100% Free Public DEM)
+        run: |
+          python - << 'EOF'
+          import json, gzip, math, io, requests
+          from PIL import Image
+
+          min_lat = float("${{ matrix.min_lat }}")
+          max_lat = float("${{ matrix.max_lat }}")
+          min_lon = float("${{ matrix.min_lon }}")
+          max_lon = float("${{ matrix.max_lon }}")
+          region_id = "${{ matrix.country }}"
+
+          print(f"Generating DEM grid for {region_id} [{min_lat}, {min_lon}] to [{max_lat}, {max_lon}]...")
+
+          # Zoom level 7-8 provides ~600m resolution globally (free AWS Terrarium DEM tiles)
+          zoom = 7
+          def deg_to_tile(lat, lon, z):
+              lat_rad = math.radians(lat)
+              n = 2.0 ** z
+              xtile = int((lon + 180.0) / 360.0 * n)
+              ytile = int((1.0 - math.asinh(math.tan(lat_rad)) / math.pi) / 2.0 * n)
+              return xtile, ytile
+
+          # Pre-fetch required tiles
+          tile_cache = {}
+          x_min, y_max_tile = deg_to_tile(min_lat, min_lon, zoom)
+          x_max, y_min_tile = deg_to_tile(max_lat, max_lon, zoom)
+
+          for tx in range(min(x_min, x_max), max(x_min, x_max) + 1):
+              for ty in range(min(y_min_tile, y_max_tile), max(y_min_tile, y_max_tile) + 1):
+                  url = f"https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{zoom}/{tx}/{ty}.png"
+                  try:
+                      r = requests.get(url, timeout=10)
+                      if r.status_code == 200:
+                          tile_cache[(tx, ty)] = Image.open(io.BytesIO(r.content)).convert('RGB')
+                  except Exception as e:
+                      pass
+
+          def get_elevation_m(lat, lon):
+              tx, ty = deg_to_tile(lat, lon, zoom)
+              img = tile_cache.get((tx, ty))
+              if not img:
+                  return 0
+              lat_rad = math.radians(lat)
+              n = 2.0 ** zoom
+              fx = ((lon + 180.0) / 360.0 * n) - tx
+              fy = ((1.0 - math.asinh(math.tan(lat_rad)) / math.pi) / 2.0 * n) - ty
+              px = min(255, max(0, int(fx * 256)))
+              py = min(255, max(0, int(fy * 256)))
+              r, g, b = img.getpixel((px, py))
+              # Terrarium equation: (R * 256 + G + B / 256) - 32768
+              elev = (r * 256 + g + b / 256.0) - 32768
+              return max(0, int(round(elev)))
+
+          # Sample at 0.01 degree step (~1 km)
+          step = 0.01
+          lat_steps = int(round((max_lat - min_lat) / step))
+          lon_steps = int(round((max_lon - min_lon) / step))
+          points = []
+
+          for i in range(lat_steps + 1):
+              lat = min_lat + (i * step)
+              lat_idx = int(round(lat * 100))
+              for j in range(lon_steps + 1):
+                  lon = min_lon + (j * step)
+                  lon_idx = int(round(lon * 100))
+                  elev_m = get_elevation_m(lat, lon)
+                  if elev_m > 0:
+                      points.append({
+                          "lat_idx": lat_idx,
+                          "lon_idx": lon_idx,
+                          "elevation_m": elev_m
+                      })
+
+          out_file = f"{region_id}_elevation.json.gz"
+          payload = {
+              "region_id": region_id,
+              "grid_resolution_deg": step,
+              "count": len(points),
+              "points": points
+          }
+          with gzip.open(out_file, "wt", encoding="utf-8") as f:
+              json.dump(payload, f)
+
+          print(f"Exported {len(points)} elevation nodes to {out_file}")
+          EOF
+
+      - name: Update manifest.json Version Date & Elevation URL
         run: |
           python - << 'EOF'
           import json, datetime
@@ -143,6 +231,7 @@ jobs:
               if r.get("id") == "${{ matrix.country }}":
                   r["version"] = datetime.datetime.utcnow().strftime("%Y-%m-%d")
                   r["obstaclesUrl"] = "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/obstacles_${{ matrix.code }}.geojson"
+                  r["elevationUrl"] = "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/${{ matrix.country }}_elevation.json.gz"
           with open("manifest.json", "w", encoding="utf-8") as f:
               json.dump(m, f, indent=2)
           EOF
@@ -157,9 +246,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit & Push Updated Obstacles and Manifest
+      - name: Commit & Push Updated Obstacles, Elevation & Manifest
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add obstacles_${{ matrix.code }}.geojson manifest.json
-          git diff-index --quiet HEAD || (git commit -m "Auto-update VFR obstacles and manifest [skip ci]" && git push)
+          git add obstacles_${{ matrix.code }}.geojson ${{ matrix.country }}_elevation.json.gz manifest.json
+          git diff-index --quiet HEAD || (git commit -m "Auto-update VFR obstacles, elevation and manifest [skip ci]" && git push)
