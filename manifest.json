@@ -3,10 +3,11 @@
     {
       "id": "finland",
       "name": "Suomi",
-      "version": "2026-08-19",
+      "version": "2026-08-26",
       "url": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/ofmx_ef.ofmx",
       "pmtilesUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/finland_vfr.pmtiles",
-      "obstaclesUrl": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/obstacles_ef.geojson"
+      "obstaclesUrl": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/obstacles_ef.geojson",
+      "elevationUrl": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/finland_elevation.json.gz"
     }
   ]
 }
