@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      max-parallel: 1 # Prevents git push conflicts when committing manifest.json
+      max-parallel: 1 # Ensures Finland and Sweden run one after the other to avoid git conflicts
       matrix:
         include:
           - country: finland
@@ -24,7 +24,7 @@ jobs:
             min_lon: 19.0
             max_lon: 31.8
           - country: sweden
-            code: sweden # Set to 'sweden' to match manifest.json (obstacles_sweden.geojson)
+            code: sweden
             country_iso: SE
             min_lat: 55.3
             max_lat: 69.1
@@ -34,6 +34,9 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -256,7 +259,15 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git fetch origin main
-          git rebase origin/main || git merge -X ours origin/main
+
+          # 1. Stage generated and modified files first
           git add obstacles_${{ matrix.code }}.geojson ${{ matrix.country }}_elevation.json.gz manifest.json
-          git diff-index --quiet HEAD || (git commit -m "Auto-update VFR obstacles, elevation and manifest for ${{ matrix.country }} [skip ci]" && git push origin main)
+
+          # 2. Commit changes locally to clear the working directory
+          git diff-index --quiet HEAD || git commit -m "Auto-update VFR obstacles, elevation and manifest for ${{ matrix.country }} [skip ci]"
+
+          # 3. Pull latest main (replaying Sweden's commit cleanly on top of Finland's commit)
+          git pull --rebase origin main
+
+          # 4. Push directly to main
+          git push origin main
