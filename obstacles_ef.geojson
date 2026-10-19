@@ -1317,8 +1317,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          26.6917417,
-          61.1354023
+          26.6917291,
+          61.1354344
         ]
       },
       "properties": {
@@ -2381,8 +2381,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          24.6358,
-          62.02718
+          24.6354987,
+          62.0272348
         ]
       },
       "properties": {
@@ -3854,6 +3854,25 @@
         "type": "mast",
         "elevation_ft": null,
         "height_agl_ft": 305,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1984046,
+          62.0102727
+        ]
+      },
+      "properties": {
+        "id": "osm_5372612786",
+        "name": "Mast (319 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 319,
         "country": "FI",
         "is_lit": false
       }
@@ -6153,6 +6172,25 @@
         "type": "mast",
         "elevation_ft": null,
         "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.07293,
+          62.5715499
+        ]
+      },
+      "properties": {
+        "id": "osm_7097931611",
+        "name": "Ulamasto",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 305,
         "country": "FI",
         "is_lit": false
       }
@@ -8794,6 +8832,44 @@
         "type": "mast",
         "elevation_ft": null,
         "height_agl_ft": 341,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0992343,
+          62.6514115
+        ]
+      },
+      "properties": {
+        "id": "osm_14133754330",
+        "name": "Mast (335 ft)",
+        "type": "mast",
+        "elevation_ft": 928,
+        "height_agl_ft": 335,
+        "country": "FI",
+        "is_lit": false
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.6773946,
+          60.3864776
+        ]
+      },
+      "properties": {
+        "id": "osm_14203665754",
+        "name": "Mast (433 ft)",
+        "type": "mast",
+        "elevation_ft": null,
+        "height_agl_ft": 433,
         "country": "FI",
         "is_lit": false
       }
