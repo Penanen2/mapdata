@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      max-parallel: 1 # Ensures Finland and Sweden run one after the other to avoid git conflicts
+      max-parallel: 1 # Ensures Finland and Sweden run sequentially to prevent git push collisions
       matrix:
         include:
           - country: finland
@@ -260,14 +260,14 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          # 1. Stage generated and modified files first
+          # 1. Stage all created and updated files locally
           git add obstacles_${{ matrix.code }}.geojson ${{ matrix.country }}_elevation.json.gz manifest.json
 
-          # 2. Commit changes locally to clear the working directory
+          # 2. Commit them locally so the working tree is clean
           git diff-index --quiet HEAD || git commit -m "Auto-update VFR obstacles, elevation and manifest for ${{ matrix.country }} [skip ci]"
 
-          # 3. Pull latest main (replaying Sweden's commit cleanly on top of Finland's commit)
+          # 3. Pull latest commits from main and rebase cleanly on top
           git pull --rebase origin main
 
-          # 4. Push directly to main
+          # 4. Push directly to remote main
           git push origin main
