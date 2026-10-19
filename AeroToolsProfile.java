@@ -10,6 +10,7 @@ import com.onthegomap.planetiler.geo.GeometryException;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.operation.buffer.BufferParameters;
 import java.util.List;
+import java.nio.file.Path;
 
 public class AeroToolsProfile implements Profile {
 
@@ -79,7 +80,8 @@ public class AeroToolsProfile implements Profile {
                     .setPixelTolerance(2.0)
                     .setMinZoom(7);
             }
-            else if (feature.hasTag("landuse", "residential") || feature.hasTag("landuse", "commercial") || feature.hasTag("landuse", "industrial") || feature.hasTag("landuse", "retail")) {
+            else if (feature.hasTag("landuse", "residential") || feature.hasTag("landuse", "commercial") || 
+                     feature.hasTag("landuse", "industrial") || feature.hasTag("landuse", "retail")) {
                 features.polygon("landuse").setAttr("class", "urban")
                     .setPixelTolerance(2.0)
                     .setMinZoom(5);
@@ -105,23 +107,23 @@ public class AeroToolsProfile implements Profile {
                     .setPixelTolerance(0.0)
                     .setMinZoom(11);
 
-                // ALSO derive an accurate filled surface polygon from the OSM
-                // width tag, for airports where only a centerline was mapped.
+                // Derive filled surface polygon from OSM width tag if available
                 try {
                     double widthMeters;
                     String widthTag = feature.getString("width");
                     if (widthTag != null) {
-                        widthMeters = Double.parseDouble(widthTag.replaceAll("[^0-9.]", ""));
+                        String clean = widthTag.replaceAll("[^0-9.]", "");
+                        widthMeters = clean.isEmpty() ? 30.0 : Double.parseDouble(clean);
                     } else {
                         widthMeters = 30.0;
                     }
+
                     if (widthMeters > 0) {
                         Geometry worldGeom = feature.worldGeometry();
                         double latDeg = GeoUtils.getWorldLat(worldGeom.getCentroid().getY());
                         double metersPerWorldUnit = GeoUtils.WORLD_CIRCUMFERENCE_METERS * Math.cos(Math.toRadians(latDeg));
                         double bufferWorldUnits = (widthMeters / 2.0) / metersPerWorldUnit;
                         
-                        // Use CAP_FLAT to ensure rectangular corners instead of rounded ends
                         Geometry buffered = worldGeom.buffer(bufferWorldUnits, 8, BufferParameters.CAP_FLAT);
 
                         features.geometry("aeroways", buffered)
@@ -130,7 +132,7 @@ public class AeroToolsProfile implements Profile {
                             .setPixelTolerance(0.0)
                             .setMinZoom(10);
                             
-                        // Add runway identifiers if present in 'ref' tag
+                        // Add runway identifiers if present in 'ref' tag (e.g. 04/22)
                         String ref = feature.getString("ref");
                         if (ref != null && ref.contains("/")) {
                             String[] parts = ref.split("/");
@@ -150,8 +152,7 @@ public class AeroToolsProfile implements Profile {
                         }
                     }
                 } catch (NumberFormatException | GeometryException e) {
-                    // Bad/missing width tag or unbuildable geometry - skip the
-                    // derived polygon, the centerline above is still emitted.
+                    // Fall back cleanly to emitting the centerline only
                 }
             }
         }
@@ -204,16 +205,16 @@ public class AeroToolsProfile implements Profile {
     }
 
     public static void main(String[] args) throws Exception {
-        String country = System.getenv("MAP_COUNTRY");
-        if (country == null || country.isEmpty()) {
-            country = "finland";
-        }
+        String envCountry = System.getenv("MAP_COUNTRY");
+        String country = (envCountry != null && !envCountry.trim().isEmpty()) 
+            ? envCountry.trim().toLowerCase() 
+            : "finland";
 
         Planetiler.create(Arguments.fromArgs("maxzoom=11", "nodata=true", "force=true"))
             .setProfile(new AeroToolsProfile())
-            .addOsmSource("osm", java.nio.file.Path.of("data", "raw.osm.pbf"))
-            .addShapefileSource("ocean", java.nio.file.Path.of("data", "water-polygons-split-4326.zip"))
-            .overwriteOutput(java.nio.file.Path.of("data", country + "_vfr.pmtiles"))
+            .addOsmSource("osm", Path.of("data", "raw.osm.pbf"))
+            .addShapefileSource("ocean", Path.of("data", "water-polygons-split-4326.zip"))
+            .overwriteOutput(Path.of("data", country + "_vfr.pmtiles"))
             .run();
     }
 }
