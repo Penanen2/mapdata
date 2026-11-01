@@ -12,7 +12,7 @@
     {
       "id": "sweden",
       "name": "Sverige",
-      "version": "2026-10-19",
+      "version": "2026-11-01",
       "url": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/ofmx_sweden.ofmx",
       "pmtilesUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/sweden_vfr.pmtiles",
       "obstaclesUrl": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/obstacles_sweden.geojson",
