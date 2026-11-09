@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      max-parallel: 1 # Ensures Finland and Sweden run sequentially to prevent git push collisions
+      max-parallel: 1
       matrix:
         include:
           - country: finland
@@ -50,14 +50,14 @@ jobs:
           python-version: '3.11'
 
       - name: Install Python dependencies
-        run: pip install osmium pillow requests
+        run: pip install osmium pillow requests shapely
 
       - name: Create Data Directory
         run: mkdir -p data
 
-      - name: Download Planetiler Standalone Jar
+      - name: Download Pinned Planetiler Standalone Jar
         run: |
-          wget -qO planetiler.jar https://github.com/onthegomap/planetiler/releases/latest/download/planetiler.jar
+          wget -qO planetiler.jar https://github.com/onthegomap/planetiler/releases/download/v0.8.3/planetiler.jar
 
       - name: Download OSM Data from Geofabrik
         run: |
@@ -67,68 +67,68 @@ jobs:
         run: |
           wget -qO data/water-polygons-split-4326.zip https://osmdata.openstreetmap.de/download/water-polygons-split-4326.zip
 
-      - name: Generate Clean PMTiles
-        env:
-          MAP_COUNTRY: ${{ matrix.country }}
-        run: |
-          java -cp planetiler.jar AeroToolsProfile.java
-
-      - name: Extract & Filter ICAO Obstacles from local OSM PBF
+      - name: Pre-process Airport Geometry Metadata & Extract ICAO Obstacles
         run: |
           python - << 'EOF'
-          import json, osmium
+          import json, math, osmium
+          from shapely.geometry import LineString, Polygon, box
+          from shapely.strtree import STRtree
 
-          class ObstacleHandler(osmium.SimpleHandler):
+          class PreProcessor(osmium.SimpleHandler):
               def __init__(self):
                   super().__init__()
-                  self.features = []
+                  self.obstacles = []
+                  self.airport_boxes = []
+                  self.area_runways = []
+                  self.centerline_runways = []
+                  self.taxiway_lines = []
+                  self.holding_nodes = {}
+                  self.grass_polys = []
 
-              def node(self, n):
-                  if not ('man_made' in n.tags or 'generator:source' in n.tags or 'aeroway' in n.tags or 'power' in n.tags):
-                      return
-                      
-                  man_made = n.tags.get('man_made', '')
-                  power = n.tags.get('power', '')
-                  gen_source = n.tags.get('generator:source', '')
-                  aeroway = n.tags.get('aeroway', '')
+              def _parse_ft(self, raw):
+                  if not raw:
+                      return None
+                  try:
+                      s = raw.lower().replace(',', '.').strip()
+                      is_ft = 'ft' in s or "'" in s
+                      clean = ''.join(ch for ch in s if (ch.isdigit() or ch in '.-'))
+                      val = float(clean)
+                      return round(val if is_ft else val * 3.28084)
+                  except Exception:
+                      return None
 
-                  is_obstacle = (
+              def _check_obstacle(self, tags, osm_id, lon, lat):
+                  man_made = tags.get('man_made', '')
+                  power = tags.get('power', '')
+                  gen_source = tags.get('generator:source', '')
+                  aeroway = tags.get('aeroway', '')
+
+                  is_obs = (
                       man_made in ('mast', 'tower', 'chimney', 'communications_tower') or
                       gen_source == 'wind' or
                       aeroway == 'obstacle' or
-                      (power == 'tower' and ('height' in n.tags or 'ele' in n.tags))
+                      (power == 'tower' and ('height' in tags or 'ele' in tags))
                   )
-                  if not is_obstacle:
+                  if not is_obs:
                       return
 
-                  h_str = n.tags.get('height', n.tags.get('height:agl', ''))
-                  elev_str = n.tags.get('ele', '')
-                  is_lit = n.tags.get('hazard:light') == 'yes' or n.tags.get('light:lit') == 'yes' or n.tags.get('aerodrome:light') == 'yes'
-
-                  h_ft = None
-                  if h_str:
-                      try:
-                          val = float(h_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
-                          h_ft = round(val if 'ft' in h_str.lower() else val * 3.28084)
-                      except:
-                          pass
-
-                  elev_ft = None
-                  if elev_str:
-                      try:
-                          val = float(elev_str.lower().replace('m', '').replace('ft', '').replace(',', '.').strip())
-                          elev_ft = round(val if 'ft' in elev_str.lower() else val * 3.28084)
-                      except:
-                          pass
+                  h_ft = self._parse_ft(tags.get('height', tags.get('height:agl', '')))
+                  elev_ft = self._parse_ft(tags.get('ele', ''))
+                  is_lit = (
+                      tags.get('hazard:light') == 'yes' or
+                      tags.get('light:lit') == 'yes' or
+                      tags.get('aerodrome:light') == 'yes' or
+                      tags.get('lit') == 'yes'
+                  )
 
                   if (h_ft is not None and h_ft >= 300) or (elev_ft is not None and elev_ft >= 300) or is_lit:
-                      name = n.tags.get('name', '')
-                      type_tag = man_made or gen_source or power or 'mast'
-                      self.features.append({
+                      name = tags.get('name', '')
+                      type_tag = 'wind_turbine' if gen_source == 'wind' else (man_made or power or 'mast')
+                      self.obstacles.append({
                           "type": "Feature",
-                          "geometry": {"type": "Point", "coordinates": [n.location.lon, n.location.lat]},
+                          "geometry": {"type": "Point", "coordinates": [round(lon, 6), round(lat, 6)]},
                           "properties": {
-                              "id": f"osm_{n.id}",
+                              "id": f"osm_{osm_id}",
                               "name": name if name else f"{type_tag.capitalize()} ({h_ft or ''} ft)",
                               "type": type_tag,
                               "elevation_ft": elev_ft,
@@ -138,15 +138,125 @@ jobs:
                           }
                       })
 
-          handler = ObstacleHandler()
-          handler.apply_file('data/raw.osm.pbf', locations=True)
-          geojson = {"type": "FeatureCollection", "features": handler.features}
+              def node(self, n):
+                  if not n.location.valid():
+                      return
+                  if n.tags.get('aeroway') == 'holding_position':
+                      self.holding_nodes[n.id] = (n.location.lon, n.location.lat)
+                  if 'man_made' in n.tags or 'generator:source' in n.tags or 'aeroway' in n.tags or 'power' in n.tags:
+                      self._check_obstacle(n.tags, f"n{n.id}", n.location.lon, n.location.lat)
+
+              def way(self, w):
+                  coords = [(nd.lon, nd.lat) for nd in w.nodes if nd.location.valid()]
+                  node_ids = [nd.ref for nd in w.nodes]
+                  if len(coords) < 2:
+                      return
+
+                  aeroway = w.tags.get('aeroway', w.tags.get('disused:aeroway', ''))
+                  if aeroway in ('aerodrome', 'airstrip', 'runway', 'apron', 'taxiway', 'helipad'):
+                      lons = [c[0] for c in coords]
+                      lats = [c[1] for c in coords]
+                      # Pad by ~0.015 deg (~1.5 km) so nearby airport hangars & grass cutouts are captured
+                      self.airport_boxes.append((min(lons) - 0.015, min(lats) - 0.010, max(lons) + 0.015, max(lats) + 0.010))
+
+                  is_closed = len(coords) >= 4 and coords[0] == coords[-1]
+                  is_area = is_closed and w.tags.get('area') != 'no'
+
+                  if aeroway == 'runway':
+                      if is_area:
+                          lons = [c[0] for c in coords]
+                          lats = [c[1] for c in coords]
+                          self.area_runways.append(box(min(lons), min(lats), max(lons), max(lats)))
+                      else:
+                          self.centerline_runways.append(LineString(coords))
+                  elif aeroway in ('taxiway', 'taxilane') and not is_area:
+                      self.taxiway_lines.append((node_ids, coords))
+
+                  # Collect grass/wood polygons to classify infill islands vs background turf
+                  if is_closed and (
+                      w.tags.get('landuse') in ('grass', 'meadow', 'forest') or
+                      w.tags.get('natural') in ('grassland', 'scrub', 'wood')
+                  ):
+                      try:
+                          self.grass_polys.append((w.id, Polygon(coords)))
+                      except Exception:
+                          pass
+
+                  # Also catch large obstacles mapped as closed ways (chimneys, cooling towers, wind turbine bases)
+                  if is_closed and ('man_made' in w.tags or 'generator:source' in w.tags):
+                      lons = [c[0] for c in coords]
+                      lats = [c[1] for c in coords]
+                      self._check_obstacle(w.tags, f"w{w.id}", sum(lons)/len(lons), sum(lats)/len(lats))
+
+          p = PreProcessor()
+          p.apply_file('data/raw.osm.pbf', locations=True)
+
+          # 1. Write ICAO Obstacles GeoJSON
+          assert len(p.obstacles) > 50, f"Obstacle count suspiciously low: {len(p.obstacles)}"
           with open("obstacles_${{ matrix.code }}.geojson", "w", encoding="utf-8") as f:
-              json.dump(geojson, f, indent=2)
-          print(f"Successfully extracted {len(handler.features)} ICAO obstacles.")
+              json.dump({"type": "FeatureCollection", "features": p.obstacles}, f)
+          print(f"Extracted {len(p.obstacles)} ICAO obstacles.")
+
+          # 2. Compute holding_position node perpendicular bearings from parent taxiways
+          hold_bearings = {}
+          for node_ids, coords in p.taxiway_lines:
+              for idx, nid in enumerate(node_ids):
+                  if nid in p.holding_nodes:
+                      p1 = coords[max(0, idx - 1)]
+                      p2 = coords[min(len(coords) - 1, idx + 1)]
+                      dlon = math.radians(p2[0] - p1[0])
+                      lat1 = math.radians(p1[1])
+                      lat2 = math.radians(p2[1])
+                      y = math.sin(dlon) * math.cos(lat2)
+                      x = math.cos(lat1) * math.sin(lat2) - math.sin(lat1) * math.cos(lat2) * math.cos(dlon)
+                      twy_brg = (math.degrees(math.atan2(y, x)) + 360.0) % 360.0
+                      # Hold-short bar is perpendicular (+90 deg) to taxiway direction
+                      hold_bearings[nid] = round((twy_brg + 90.0) % 360.0, 1)
+
+          # 3. Identify area runways that ALSO have a centerline runway way
+          area_rwy_with_line = []
+          for rwy_box in p.area_runways:
+              if any(rwy_box.intersects(line) for line in p.centerline_runways):
+                  b = rwy_box.bounds
+                  area_rwy_with_line.append((b[0], b[1], b[2], b[3]))
+
+          # 4. Identify true grass islands (do NOT have runway/taxiway centerlines cutting through their interior)
+          all_centerlines = list(p.centerline_runways) + [LineString(c) for _, c in p.taxiway_lines]
+          line_tree = STRtree(all_centerlines) if all_centerlines else None
+          grass_island_ids = []
+          for wid, poly in p.grass_polys:
+              if not poly.is_valid:
+                  poly = poly.buffer(0)
+              shrunk = poly.buffer(-0.00003) # shrink by ~3m so shared border nodes don't count as interior cuts
+              if shrunk.is_empty:
+                  grass_island_ids.append(wid)
+                  continue
+              if line_tree is not None:
+                  candidates = line_tree.query(shrunk)
+                  cuts_interior = any(shrunk.intersects(all_centerlines[i]) for i in candidates)
+                  if not cuts_interior:
+                      grass_island_ids.append(wid)
+
+          # 5. Merge overlapping airport bounding boxes and write metadata file for Java
+          with open("data/airport_metadata.txt", "w", encoding="utf-8") as mf:
+              for b in p.airport_boxes:
+                  mf.write(f"AIRPORT_BBOX|{b[0]:.5f}|{b[1]:.5f}|{b[2]:.5f}|{b[3]:.5f}\n")
+              for b in area_rwy_with_line:
+                  mf.write(f"AREA_RWY_WITH_LINE|{b[0]:.6f}|{b[1]:.6f}|{b[2]:.6f}|{b[3]:.6f}\n")
+              for nid, brg in hold_bearings.items():
+                  mf.write(f"HOLD_BEARING|{nid}|{brg}\n")
+              for wid in grass_island_ids:
+                  mf.write(f"GRASS_ISLAND|{wid}\n")
+          print(f"Wrote metadata: {len(p.airport_boxes)} airport boxes, {len(hold_bearings)} hold bearings, {len(grass_island_ids)} grass islands.")
           EOF
 
-      - name: Generate Offline DEM Elevation Grid (100% Free Public DEM)
+      - name: Generate Clean VFR & Aerodrome PMTiles
+        env:
+          MAP_COUNTRY: ${{ matrix.country }}
+        run: |
+          java -cp planetiler.jar AeroToolsProfile.java
+
+      - name: Generate Offline DEM Elevation Grid (Fail-Safe Checked)
         run: |
           python - << 'EOF'
           import json, gzip, math, io, requests
@@ -157,8 +267,6 @@ jobs:
           min_lon = float("${{ matrix.min_lon }}")
           max_lon = float("${{ matrix.max_lon }}")
           region_id = "${{ matrix.country }}"
-
-          print(f"Generating DEM grid for {region_id} [{min_lat}, {min_lon}] to [{max_lat}, {max_lon}]...")
 
           zoom = 7
           def deg_to_tile(lat, lon, z):
@@ -172,22 +280,21 @@ jobs:
           x_min, y_max_tile = deg_to_tile(min_lat, min_lon, zoom)
           x_max, y_min_tile = deg_to_tile(max_lat, max_lon, zoom)
 
+          expected_tiles = 0
           session = requests.Session()
           for tx in range(min(x_min, x_max), max(x_min, x_max) + 1):
               for ty in range(min(y_min_tile, y_max_tile), max(y_min_tile, y_max_tile) + 1):
+                  expected_tiles += 1
                   url = f"https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{zoom}/{tx}/{ty}.png"
-                  try:
-                      r = session.get(url, timeout=10)
-                      if r.status_code == 200:
-                          tile_cache[(tx, ty)] = Image.open(io.BytesIO(r.content)).convert('RGB')
-                  except Exception:
-                      pass
+                  r = session.get(url, timeout=15)
+                  r.raise_for_status()
+                  tile_cache[(tx, ty)] = Image.open(io.BytesIO(r.content)).convert('RGB')
+
+          assert len(tile_cache) == expected_tiles and expected_tiles > 0, "Failed to fetch all DEM tiles!"
 
           def get_elevation_m(lat, lon):
               tx, ty = deg_to_tile(lat, lon, zoom)
-              img = tile_cache.get((tx, ty))
-              if not img:
-                  return 0
+              img = tile_cache[(tx, ty)]
               lat_rad = math.radians(lat)
               n = 2.0 ** zoom
               fx = ((lon + 180.0) / 360.0 * n) - tx
@@ -217,6 +324,8 @@ jobs:
                           "elevation_m": elev_m
                       })
 
+          assert len(points) > 100000, f"Elevation grid point count too low: {len(points)}"
+
           out_file = f"{region_id}_elevation.json.gz"
           payload = {
               "region_id": region_id,
@@ -226,48 +335,66 @@ jobs:
           }
           with gzip.open(out_file, "wt", encoding="utf-8") as f:
               json.dump(payload, f)
-
           print(f"Exported {len(points)} elevation nodes to {out_file}")
           EOF
 
-      - name: Update manifest.json Version Date & Elevation URL
-        run: |
-          python - << 'EOF'
-          import json, datetime
-          with open("manifest.json", "r", encoding="utf-8") as f:
-              m = json.load(f)
-          for r in m.get("regions", []):
-              if r.get("id") == "${{ matrix.country }}":
-                  r["version"] = datetime.datetime.utcnow().strftime("%Y-%m-%d")
-                  r["obstaclesUrl"] = "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/obstacles_${{ matrix.code }}.geojson"
-                  r["elevationUrl"] = "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/${{ matrix.country }}_elevation.json.gz"
-          with open("manifest.json", "w", encoding="utf-8") as f:
-              json.dump(m, f, indent=2)
-          EOF
-
-      - name: Upload PMTiles to GitHub Releases
+      - name: Upload PMTiles, Obstacles & Elevation to GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
           tag_name: vfr-maps-latest
           name: "Latest AeroTools VFR Maps"
-          files: data/${{ matrix.country }}_vfr.pmtiles
+          body: "Automated VFR Basemap + Z16 Aerodrome Charts build from commit ${{ github.sha }}."
+          files: |
+            data/${{ matrix.country }}_vfr.pmtiles
+            obstacles_${{ matrix.code }}.geojson
+            ${{ matrix.country }}_elevation.json.gz
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit & Push Updated Obstacles, Elevation & Manifest
+      - name: Update manifest.json with Checksums, Sizes & Release URLs
+        run: |
+          python - << 'EOF'
+          import json, datetime, hashlib, os
+
+          def file_meta(path):
+              h = hashlib.sha256()
+              with open(path, "rb") as f:
+                  for chunk in iter(lambda: f.read(65536), b""):
+                      h.update(chunk)
+              return h.hexdigest(), os.path.getsize(path)
+
+          pm_sha, pm_size = file_meta("data/${{ matrix.country }}_vfr.pmtiles")
+          obs_sha, obs_size = file_meta("obstacles_${{ matrix.code }}.geojson")
+          elev_sha, elev_size = file_meta("${{ matrix.country }}_elevation.json.gz")
+          today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+          base_rel = "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest"
+
+          with open("manifest.json", "r", encoding="utf-8") as f:
+              m = json.load(f)
+
+          for r in m.get("regions", []):
+              if r.get("id") == "${{ matrix.country }}":
+                  r["version"] = today
+                  r["pmtilesUrl"] = f"{base_rel}/${{ matrix.country }}_vfr.pmtiles"
+                  r["pmtilesSha256"] = pm_sha
+                  r["pmtilesSizeBytes"] = pm_size
+                  r["obstaclesUrl"] = f"{base_rel}/obstacles_${{ matrix.code }}.geojson"
+                  r["obstaclesSha256"] = obs_sha
+                  r["obstaclesSizeBytes"] = obs_size
+                  r["elevationUrl"] = f"{base_rel}/${{ matrix.country }}_elevation.json.gz"
+                  r["elevationSha256"] = elev_sha
+                  r["elevationSizeBytes"] = elev_size
+
+          with open("manifest.json", "w", encoding="utf-8") as f:
+              json.dump(m, f, indent=2)
+          EOF
+
+      - name: Commit & Push Updated Manifest
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-
-          # 1. Stage all created and updated files locally
-          git add obstacles_${{ matrix.code }}.geojson ${{ matrix.country }}_elevation.json.gz manifest.json
-
-          # 2. Commit them locally so the working tree is clean
-          git diff-index --quiet HEAD || git commit -m "Auto-update VFR obstacles, elevation and manifest for ${{ matrix.country }} [skip ci]"
-
-          # 3. Pull latest commits from main and rebase cleanly on top
+          git add manifest.json
+          git diff-index --quiet HEAD || git commit -m "Auto-update manifest for ${{ matrix.country }} [skip ci]"
           git pull --rebase origin main
-
-          # 4. Push directly to remote main
           git push origin main
