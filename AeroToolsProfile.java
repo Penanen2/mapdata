@@ -87,10 +87,12 @@ public class AeroToolsProfile implements Profile {
     private boolean isInsideEnvelopeList(SourceFeature feature, List<Envelope> envelopes) {
         if (envelopes.isEmpty()) return false;
         try {
-            Geometry geom = feature.latLonGeometry();
+            Geometry geom = feature.worldGeometry();
             Coordinate c = geom.getCentroid().getCoordinate();
+            double lon = GeoUtils.getWorldLon(c.x);
+            double lat = GeoUtils.getWorldLat(c.y);
             for (Envelope env : envelopes) {
-                if (env.contains(c.x, c.y)) {
+                if (env.contains(lon, lat)) {
                     return true;
                 }
             }
@@ -177,17 +179,6 @@ public class AeroToolsProfile implements Profile {
     @Override
     public void processFeature(SourceFeature feature, FeatureCollector features) {
 
-        // 0. SEA AREAS (Basemap z0-12)
-        if ("ocean".equals(feature.getSource())) {
-            features.polygon("water_areas")
-                .setAttr("class", "ocean")
-                .setPixelTolerance(1.0)
-                .setZoomRange(0, BASEMAP_MAX_ZOOM);
-            return;
-        }
-
-        boolean inAirport = isInsideEnvelopeList(feature, airportZones);
-
         // 1. ROADS (Basemap z4-12)
         if (feature.canBeLine() && feature.hasTag("highway")) {
             String highway = feature.getString("highway");
@@ -250,7 +241,7 @@ public class AeroToolsProfile implements Profile {
                     .setPixelTolerance(1.5)
                     .setZoomRange(6, BASEMAP_MAX_ZOOM);
 
-                if (inAirport && grassIslandWayIds.contains(feature.id())) {
+                if (grassIslandWayIds.contains(feature.id())) {
                     features.polygon("aeroways")
                         .setAttr("class", "airport_wood")
                         .setPixelTolerance(0.0)
@@ -258,7 +249,7 @@ public class AeroToolsProfile implements Profile {
                 }
             } else if (feature.hasTag("landuse", "grass") || feature.hasTag("landuse", "meadow") ||
                        feature.hasTag("natural", "grassland") || feature.hasTag("natural", "scrub")) {
-                if (inAirport) {
+                if (isInsideEnvelopeList(feature, airportZones)) {
                     String grassClass = grassIslandWayIds.contains(feature.id()) ? "airport_grass_island" : "aerodrome_turf";
                     features.polygon("aeroways")
                         .setAttr("class", grassClass)
@@ -285,14 +276,14 @@ public class AeroToolsProfile implements Profile {
         }
 
         // 7. AIRPORT BUILDINGS (Hangars, Terminals, Towers — z12-16)
-        if (feature.canBePolygon() && (inAirport || feature.hasTag("aeroway"))) {
+        if (feature.canBePolygon() && (feature.hasTag("aeroway") || feature.hasTag("building"))) {
             String aeroway = feature.getString("aeroway");
             String building = feature.getString("building");
             boolean isHangar = "hangar".equals(aeroway) || "hangar".equals(building);
             boolean isTerminal = "terminal".equals(aeroway) || "terminal".equals(building);
             boolean isTower = "tower".equals(aeroway) || "control_tower".equals(aeroway);
 
-            if (isHangar || isTerminal || isTower) {
+            if ((isHangar || isTerminal || isTower) && (feature.hasTag("aeroway") || isInsideEnvelopeList(feature, airportZones))) {
                 String bldgClass = isTerminal ? "terminal" : (isTower ? "tower" : "hangar");
                 String name = feature.getString("name");
                 features.polygon("aeroways")
@@ -437,8 +428,7 @@ public class AeroToolsProfile implements Profile {
                             double latDeg = GeoUtils.getWorldLat(worldGeom.getCentroid().getY());
                             double metersPerWorldUnit = GeoUtils.WORLD_CIRCUMFERENCE_METERS * Math.cos(Math.toRadians(latDeg));
                             double bufferWorldUnits = (widthMeters / 2.0) / metersPerWorldUnit;
-                            BufferParameters bp = new BufferParameters(8, BufferParameters.CAP_ROUND, BufferParameters.JOIN_ROUND, 2.0);
-                            Geometry buffered = org.locationtech.jts.operation.buffer.BufferOp.bufferOp(worldGeom, bufferWorldUnits, bp);
+                            Geometry buffered = worldGeom.buffer(bufferWorldUnits, 8, BufferParameters.CAP_ROUND);
 
                             features.geometry("aeroways", buffered)
                                 .setAttr("class", aeroway)
@@ -577,16 +567,11 @@ public class AeroToolsProfile implements Profile {
             : "finland";
 
         Path metadataPath = Path.of("data", "airport_metadata.txt");
-        Path oceanPath = Path.of("data", "water-polygons-split-4326.zip");
 
-        var runner = Planetiler.create(Arguments.fromArgs("maxzoom=" + AIRPORT_MAX_ZOOM, "nodata=true", "force=true"))
+        Planetiler.create(Arguments.fromArgs("maxzoom=" + AIRPORT_MAX_ZOOM, "nodata=true", "force=true"))
             .setProfile(new AeroToolsProfile(metadataPath))
-            .addOsmSource("osm", Path.of("data", "raw.osm.pbf"));
-
-        if (Files.exists(oceanPath)) {
-            runner.addShapefileSource("ocean", oceanPath);
-        }
-
-        runner.overwriteOutput(Path.of("data", country + "_vfr.pmtiles")).run();
+            .addOsmSource("osm", Path.of("data", "raw.osm.pbf"))
+            .overwriteOutput(Path.of("data", country + "_vfr.pmtiles"))
+            .run();
     }
 }
