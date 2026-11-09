@@ -152,7 +152,6 @@ public class AeroToolsProfile implements Profile {
             try {
                 double expectedBearingA = (Integer.parseInt(digitsA) * 10) % 360;
                 if (angularDiff(lineBearing, expectedBearingA) > 90.0) {
-                    // OSM way is drawn opposite to ref order; swap ends so labels sit on the right thresholds
                     String tmp = identA;
                     identA = identB;
                     identB = tmp;
@@ -189,12 +188,8 @@ public class AeroToolsProfile implements Profile {
 
         boolean inAirport = isInsideEnvelopeList(feature, airportZones);
 
-        // 1. ROADS (Basemap z4-12, suppressed inside airports)
+        // 1. ROADS (Basemap z4-12)
         if (feature.canBeLine() && feature.hasTag("highway")) {
-            if (inAirport) {
-                // Pilots do not want car/service roads cutting across aprons or runways
-                return;
-            }
             String highway = feature.getString("highway");
             if ("motorway".equals(highway) || "trunk".equals(highway) ||
                 "primary".equals(highway) || "secondary".equals(highway) ||
@@ -210,7 +205,7 @@ public class AeroToolsProfile implements Profile {
             }
         }
 
-        // 2. RAILWAYS (Basemap z7-12, main tracks only — skip rail yards/sidings)
+        // 2. RAILWAYS (Basemap z7-12)
         if (feature.canBeLine() && "rail".equals(feature.getString("railway"))) {
             String service = feature.getString("service");
             if (service == null || service.isEmpty()) {
@@ -264,7 +259,6 @@ public class AeroToolsProfile implements Profile {
             } else if (feature.hasTag("landuse", "grass") || feature.hasTag("landuse", "meadow") ||
                        feature.hasTag("natural", "grassland") || feature.hasTag("natural", "scrub")) {
                 if (inAirport) {
-                    // Distinguish infill grass islands (carving taxiway/apron fillets) from whole-field turf
                     String grassClass = grassIslandWayIds.contains(feature.id()) ? "airport_grass_island" : "aerodrome_turf";
                     features.polygon("aeroways")
                         .setAttr("class", grassClass)
@@ -290,7 +284,7 @@ public class AeroToolsProfile implements Profile {
             }
         }
 
-        // 7. AIRPORT BUILDINGS (Hangars, Terminals, Control Towers only — z12-16)
+        // 7. AIRPORT BUILDINGS (Hangars, Terminals, Towers — z12-16)
         if (feature.canBePolygon() && (inAirport || feature.hasTag("aeroway"))) {
             String aeroway = feature.getString("aeroway");
             String building = feature.getString("building");
@@ -316,7 +310,7 @@ public class AeroToolsProfile implements Profile {
             }
         }
 
-        // 8. OPERATIONAL AEROWAY GEOMETRY (z8-16)
+        // 8. OPERATIONAL AEROWAYS (z8-16)
         if (feature.hasTag("aeroway") || feature.hasTag("disused:aeroway") || feature.hasTag("abandoned:aeroway")) {
             boolean isClosed = feature.hasTag("disused:aeroway") || feature.hasTag("abandoned:aeroway") ||
                                feature.hasTag("aeroway", "closed");
@@ -330,7 +324,7 @@ public class AeroToolsProfile implements Profile {
             String ref = feature.getString("ref");
             String name = feature.getString("name");
 
-            // 8A. Polygon Aeroways (Aerodrome, Apron, Area Runway, Area Taxiway, Stopway, Helipad)
+            // 8A. Polygon Aeroways
             if (feature.canBePolygon() && ("aerodrome".equals(aeroway) || "airstrip".equals(aeroway) ||
                 "apron".equals(aeroway) || "runway".equals(aeroway) || "taxiway".equals(aeroway) ||
                 "taxilane".equals(aeroway) || "stopway".equals(aeroway) || "blast_pad".equals(aeroway) ||
@@ -356,7 +350,6 @@ public class AeroToolsProfile implements Profile {
                         .setZoomRange(14, AIRPORT_MAX_ZOOM);
                 }
 
-                // If an area-mapped runway has NO separate centerline way in OSM, synthesize its centerline & idents
                 if ("runway".equals(aeroway) && !isInsideEnvelopeList(feature, areaRunwayWithLineZones)) {
                     try {
                         Geometry worldGeom = feature.worldGeometry();
@@ -390,7 +383,7 @@ public class AeroToolsProfile implements Profile {
                 }
             }
 
-            // 8B. Line Aeroways (Runways, Taxiways, Taxilanes, Holding Positions, Stand Lead-ins)
+            // 8B. Line Aeroways
             else if (feature.canBeLine()) {
                 if ("runway".equals(aeroway)) {
                     features.line("aeroway_lines")
@@ -406,7 +399,6 @@ public class AeroToolsProfile implements Profile {
                         if (worldGeom instanceof LineString ls) {
                             emitRunwayIdents(features, ref, ls.getStartPoint(), ls.getEndPoint());
                         }
-                        // Only buffer the centerline into a polygon if a real OSM runway polygon doesn't already cover it
                         if (!isInsideEnvelopeList(feature, areaRunwayWithLineZones)) {
                             double widthMeters = parseMeters(feature.getString("width"), 30.0);
                             if (widthMeters > 0) {
@@ -428,7 +420,6 @@ public class AeroToolsProfile implements Profile {
                     } catch (GeometryException ignored) {}
                 }
                 else if ("taxiway".equals(aeroway) || "taxilane".equals(aeroway)) {
-                    // Emit crisp centerline for yellow markings and taxiway designator labels (A, B, C...)
                     features.line("aeroway_lines")
                         .setAttr("class", aeroway)
                         .setAttr("surface", surface)
@@ -437,9 +428,9 @@ public class AeroToolsProfile implements Profile {
                         .setPixelTolerance(0.0)
                         .setZoomRange(12, AIRPORT_MAX_ZOOM);
 
-                    // Emit true ground-width pavement polygon so taxiway width never scales artificially with zoom
                     try {
-                        double defaultWidth = "taxilane".equals(aeroway) ? 8.0 : 15.0;
+                        boolean isMajorTwy = (ref != null && !ref.isBlank()) && "paved".equals(surface);
+                        double defaultWidth = "taxilane".equals(aeroway) ? 7.5 : (isMajorTwy ? 14.0 : 8.5);
                         double widthMeters = parseMeters(feature.getString("width"), defaultWidth);
                         if (widthMeters > 0) {
                             Geometry worldGeom = feature.worldGeometry();
@@ -476,7 +467,7 @@ public class AeroToolsProfile implements Profile {
                 }
             }
 
-            // 8C. Operational Point Features (Holding points, Windsocks, PAPIs, Stands, Fuel, Helipads)
+            // 8C. Operational Point Features
             else if (feature.isPoint()) {
                 if ("holding_position".equals(aeroway)) {
                     double bearing = holdingBearings.getOrDefault(feature.id(), 0.0);
@@ -562,7 +553,6 @@ public class AeroToolsProfile implements Profile {
     public List<VectorTile.Feature> postProcessLayerFeatures(String layer, int zoom, List<VectorTile.Feature> items) {
         if ("landuse".equals(layer)) {
             try {
-                // Stronger buffer merge at lower zooms creates unified SkyDemon-style town silhouettes
                 double dist = zoom <= 9 ? 6.0 : 3.0;
                 return FeatureMerge.mergeNearbyPolygons(items, 64, 64, dist, dist);
             } catch (Exception e) {
@@ -587,12 +577,16 @@ public class AeroToolsProfile implements Profile {
             : "finland";
 
         Path metadataPath = Path.of("data", "airport_metadata.txt");
+        Path oceanPath = Path.of("data", "water-polygons-split-4326.zip");
 
-        Planetiler.create(Arguments.fromArgs("maxzoom=" + AIRPORT_MAX_ZOOM, "nodata=true", "force=true"))
+        var runner = Planetiler.create(Arguments.fromArgs("maxzoom=" + AIRPORT_MAX_ZOOM, "nodata=true", "force=true"))
             .setProfile(new AeroToolsProfile(metadataPath))
-            .addOsmSource("osm", Path.of("data", "raw.osm.pbf"))
-            .addShapefileSource("ocean", Path.of("data", "water-polygons-split-4326.zip"))
-            .overwriteOutput(Path.of("data", country + "_vfr.pmtiles"))
-            .run();
+            .addOsmSource("osm", Path.of("data", "raw.osm.pbf"));
+
+        if (Files.exists(oceanPath)) {
+            runner.addShapefileSource("ocean", oceanPath);
+        }
+
+        runner.overwriteOutput(Path.of("data", country + "_vfr.pmtiles")).run();
     }
 }
