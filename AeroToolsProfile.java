@@ -88,7 +88,9 @@ public class AeroToolsProfile implements Profile {
         if (envelopes.isEmpty()) return false;
         try {
             Geometry geom = feature.worldGeometry();
+            if (geom == null || geom.isEmpty()) return false;
             Coordinate c = geom.getCentroid().getCoordinate();
+            if (c == null) return false;
             double lon = GeoUtils.getWorldLon(c.x);
             double lat = GeoUtils.getWorldLat(c.y);
             for (Envelope env : envelopes) {
@@ -96,7 +98,7 @@ public class AeroToolsProfile implements Profile {
                     return true;
                 }
             }
-        } catch (GeometryException e) {
+        } catch (Exception e) {
             return false;
         }
         return false;
@@ -240,19 +242,16 @@ public class AeroToolsProfile implements Profile {
                     .setAttr("class", "forest")
                     .setPixelTolerance(1.5)
                     .setZoomRange(6, BASEMAP_MAX_ZOOM);
-
-                if (grassIslandWayIds.contains(feature.id())) {
-                    features.polygon("aeroways")
-                        .setAttr("class", "airport_wood")
-                        .setPixelTolerance(0.0)
-                        .setZoomRange(12, AIRPORT_MAX_ZOOM);
-                }
             } else if (feature.hasTag("landuse", "grass") || feature.hasTag("landuse", "meadow") ||
                        feature.hasTag("natural", "grassland") || feature.hasTag("natural", "scrub")) {
-                if (isInsideEnvelopeList(feature, airportZones)) {
-                    String grassClass = grassIslandWayIds.contains(feature.id()) ? "airport_grass_island" : "aerodrome_turf";
+                if (grassIslandWayIds.contains(feature.id())) {
                     features.polygon("aeroways")
-                        .setAttr("class", grassClass)
+                        .setAttr("class", "airport_grass_island")
+                        .setPixelTolerance(0.0)
+                        .setZoomRange(11, AIRPORT_MAX_ZOOM);
+                } else if (isInsideEnvelopeList(feature, airportZones)) {
+                    features.polygon("aeroways")
+                        .setAttr("class", "aerodrome_turf")
                         .setPixelTolerance(0.0)
                         .setZoomRange(11, AIRPORT_MAX_ZOOM);
                 }
@@ -370,7 +369,7 @@ public class AeroToolsProfile implements Profile {
 
                             emitRunwayIdents(features, ref, synthLine.getStartPoint(), synthLine.getEndPoint());
                         }
-                    } catch (GeometryException ignored) {}
+                    } catch (Exception ignored) {}
                 }
             }
 
@@ -408,7 +407,7 @@ public class AeroToolsProfile implements Profile {
                                     .setZoomRange(10, AIRPORT_MAX_ZOOM);
                             }
                         }
-                    } catch (GeometryException ignored) {}
+                    } catch (Exception ignored) {}
                 }
                 else if ("taxiway".equals(aeroway) || "taxilane".equals(aeroway)) {
                     features.line("aeroway_lines")
@@ -439,7 +438,7 @@ public class AeroToolsProfile implements Profile {
                                 .setPixelTolerance(0.0)
                                 .setZoomRange(12, AIRPORT_MAX_ZOOM);
                         }
-                    } catch (GeometryException ignored) {}
+                    } catch (Exception ignored) {}
                 }
                 else if ("holding_position".equals(aeroway)) {
                     features.line("aeroway_lines")
