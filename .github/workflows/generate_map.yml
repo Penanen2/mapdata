@@ -225,7 +225,10 @@ jobs:
                   continue
               if line_tree is not None:
                   candidates = line_tree.query(shrunk)
-                  cuts_interior = any(shrunk.intersects(all_centerlines[i]) for i in candidates)
+                  cuts_interior = any(
+                      shrunk.intersects(all_centerlines[i] if isinstance(i, (int, float)) else i)
+                      for i in candidates
+                  )
                   if not cuts_interior:
                       grass_island_ids.append(wid)
 
