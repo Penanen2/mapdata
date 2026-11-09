@@ -72,7 +72,6 @@ jobs:
           python - << 'EOF'
           import json, math, osmium
           from shapely.geometry import LineString, Polygon, box
-          from shapely.strtree import STRtree
 
           class PreProcessor(osmium.SimpleHandler):
               def __init__(self):
@@ -83,15 +82,17 @@ jobs:
                   self.centerline_runways = []
                   self.taxiway_lines = []
                   self.holding_nodes = {}
-                  self.grass_polys = []
+                  self.grass_candidates = []
 
               def _parse_ft(self, raw):
                   if not raw:
                       return None
                   try:
-                      s = raw.lower().replace(',', '.').strip()
+                      s = str(raw).lower().replace(',', '.').strip()
                       is_ft = 'ft' in s or "'" in s
                       clean = ''.join(ch for ch in s if (ch.isdigit() or ch in '.-'))
+                      if not clean or clean in ('.', '-', '-.') or clean.count('.') > 1:
+                          return None
                       val = float(clean)
                       return round(val if is_ft else val * 3.28084)
                   except Exception:
@@ -148,7 +149,7 @@ jobs:
 
               def way(self, w):
                   coords = [(nd.lon, nd.lat) for nd in w.nodes if nd.location.valid()]
-                  node_ids = [nd.ref for nd in w.nodes]
+                  node_ids = [nd.ref for nd in w.nodes if nd.location.valid()]
                   if len(coords) < 2:
                       return
 
@@ -171,14 +172,16 @@ jobs:
                   elif aeroway in ('taxiway', 'taxilane') and not is_area:
                       self.taxiway_lines.append((node_ids, coords))
 
+                  # Collect grass/meadow polygons (only store lightweight bbox + coords first)
                   if is_closed and (
-                      w.tags.get('landuse') in ('grass', 'meadow', 'forest') or
-                      w.tags.get('natural') in ('grassland', 'scrub', 'wood')
+                      w.tags.get('landuse') in ('grass', 'meadow') or
+                      w.tags.get('natural') in ('grassland', 'scrub')
                   ):
-                      try:
-                          self.grass_polys.append((w.id, Polygon(coords)))
-                      except Exception:
-                          pass
+                      lons = [c[0] for c in coords]
+                      lats = [c[1] for c in coords]
+                      cx = (min(lons) + max(lons)) * 0.5
+                      cy = (min(lats) + max(lats)) * 0.5
+                      self.grass_candidates.append((w.id, cx, cy, coords))
 
                   if is_closed and ('man_made' in w.tags or 'generator:source' in w.tags):
                       lons = [c[0] for c in coords]
@@ -193,6 +196,7 @@ jobs:
               json.dump({"type": "FeatureCollection", "features": p.obstacles}, f)
           print(f"Extracted {len(p.obstacles)} ICAO obstacles.")
 
+          # Compute holding_position node perpendicular bearings from parent taxiways
           hold_bearings = {}
           for node_ids, coords in p.taxiway_lines:
               for idx, nid in enumerate(node_ids):
@@ -207,30 +211,46 @@ jobs:
                       twy_brg = (math.degrees(math.atan2(y, x)) + 360.0) % 360.0
                       hold_bearings[nid] = round((twy_brg + 90.0) % 360.0, 1)
 
+          # Identify area runways that ALSO have a centerline runway way
           area_rwy_with_line = []
           for rwy_box in p.area_runways:
               if any(rwy_box.intersects(line) for line in p.centerline_runways):
                   b = rwy_box.bounds
                   area_rwy_with_line.append((b[0], b[1], b[2], b[3]))
 
+          # Filter grass candidates to ONLY those inside airport boxes, then check centerline intersections
+          def in_any_airport(lon, lat, boxes):
+              for b in boxes:
+                  if b[0] <= lon <= b[2] and b[1] <= lat <= b[3]:
+                      return True
+              return False
+
           all_centerlines = list(p.centerline_runways) + [LineString(c) for _, c in p.taxiway_lines]
-          line_tree = STRtree(all_centerlines) if all_centerlines else None
+          centerline_With_bounds = [(line, line.bounds) for line in all_centerlines]
+
           grass_island_ids = []
-          for wid, poly in p.grass_polys:
-              if not poly.is_valid:
-                  poly = poly.buffer(0)
-              shrunk = poly.buffer(-0.00003)
-              if shrunk.is_empty:
-                  grass_island_ids.append(wid)
+          for wid, cx, cy, coords in p.grass_candidates:
+              if not in_any_airport(cx, cy, p.airport_boxes):
                   continue
-              if line_tree is not None:
-                  candidates = line_tree.query(shrunk)
-                  cuts_interior = any(
-                      shrunk.intersects(all_centerlines[i] if isinstance(i, (int, float)) else i)
-                      for i in candidates
-                  )
+              try:
+                  poly = Polygon(coords)
+                  if not poly.is_valid:
+                      poly = poly.buffer(0)
+                  shrunk = poly.buffer(-0.00003)
+                  if shrunk.is_empty:
+                      grass_island_ids.append(wid)
+                      continue
+                  sb = shrunk.bounds
+                  cuts_interior = False
+                  for line, lb in centerline_With_bounds:
+                      if not (lb[2] < sb[0] or lb[0] > sb[2] or lb[3] < sb[1] or lb[1] > sb[3]):
+                          if shrunk.intersects(line):
+                              cuts_interior = True
+                              break
                   if not cuts_interior:
                       grass_island_ids.append(wid)
+              except Exception:
+                  pass
 
           with open("data/airport_metadata.txt", "w", encoding="utf-8") as mf:
               for b in p.airport_boxes:
@@ -253,7 +273,7 @@ jobs:
       - name: Generate Offline DEM Elevation Grid (Fail-Safe Checked)
         run: |
           python - << 'EOF'
-          import json, gzip, math, io, requests
+          import json, gzip, math, io, time, requests
           from PIL import Image
 
           min_lat = float("${{ matrix.min_lat }}")
@@ -280,9 +300,16 @@ jobs:
               for ty in range(min(y_min_tile, y_max_tile), max(y_min_tile, y_max_tile) + 1):
                   expected_tiles += 1
                   url = f"https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{zoom}/{tx}/{ty}.png"
-                  r = session.get(url, timeout=15)
-                  r.raise_for_status()
-                  tile_cache[(tx, ty)] = Image.open(io.BytesIO(r.content)).convert('RGB')
+                  for attempt in range(3):
+                      try:
+                          r = session.get(url, timeout=15)
+                          r.raise_for_status()
+                          tile_cache[(tx, ty)] = Image.open(io.BytesIO(r.content)).convert('RGB')
+                          break
+                      except Exception as e:
+                          if attempt == 2:
+                              raise e
+                          time.sleep(2)
 
           assert len(tile_cache) == expected_tiles and expected_tiles > 0, "Failed to fetch all DEM tiles!"
 
@@ -338,6 +365,7 @@ jobs:
           tag_name: vfr-maps-latest
           name: "Latest AeroTools VFR Maps"
           body: "Automated VFR Basemap + Z16 Aerodrome Charts build from commit ${{ github.sha }}."
+          overwrite: true
           files: |
             data/${{ matrix.country }}_vfr.pmtiles
             obstacles_${{ matrix.code }}.geojson
