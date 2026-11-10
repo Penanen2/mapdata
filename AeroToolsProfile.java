@@ -29,7 +29,7 @@ import java.util.Set;
 public class AeroToolsProfile implements Profile {
 
     private static final int BASEMAP_MAX_ZOOM = 12;
-    private static final int AIRPORT_MAX_ZOOM = 16;
+    private static final int AIRPORT_MAX_ZOOM = 15;
 
     private final List<Envelope> airportZones = new ArrayList<>();
     private final List<Envelope> areaRunwayWithLineZones = new ArrayList<>();
