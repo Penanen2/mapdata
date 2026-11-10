@@ -416,7 +416,23 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+
+          # 1. Clean up working tree artifacts so git rebase has zero untracked/unstaged conflicts
+          git reset --hard HEAD
+          git clean -fd -e manifest.json
+
+          # 2. Pull remote changes cleanly with rebase
+          git pull --rebase origin main
+
+          # 3. Stage and commit only manifest.json
           git add manifest.json
           git diff-index --quiet HEAD || git commit -m "Auto-update manifest for ${{ matrix.country }} [skip ci]"
-          git pull --rebase origin main
-          git push origin main
+
+          # 4. Push with retry in case the other matrix job pushed in between
+          for i in {1..5}; do
+            git push origin main && break || {
+              echo "Push rejected, rebasing and retrying..."
+              git pull --rebase origin main
+              sleep 2
+            }
+          done
