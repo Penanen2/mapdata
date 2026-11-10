@@ -58,7 +58,7 @@ jobs:
       - name: Download Pinned Planetiler Standalone Jar
         run: |
           curl -fSL --retry 3 --max-time 120 \
-            -o planetiler.jar \
+            -o data/planetiler.jar \
             "https://github.com/onthegomap/planetiler/releases/download/v0.8.3/planetiler.jar"
 
       - name: Download OSM Data from Geofabrik
@@ -172,7 +172,6 @@ jobs:
                   elif aeroway in ('taxiway', 'taxilane') and not is_area:
                       self.taxiway_lines.append((node_ids, coords))
 
-                  # Collect grass/meadow polygons (only store lightweight bbox + coords first)
                   if is_closed and (
                       w.tags.get('landuse') in ('grass', 'meadow') or
                       w.tags.get('natural') in ('grassland', 'scrub')
@@ -192,11 +191,10 @@ jobs:
           p.apply_file('data/raw.osm.pbf', locations=True)
 
           assert len(p.obstacles) > 50, f"Obstacle count suspiciously low: {len(p.obstacles)}"
-          with open("obstacles_${{ matrix.code }}.geojson", "w", encoding="utf-8") as f:
+          with open("data/obstacles_${{ matrix.code }}.geojson", "w", encoding="utf-8") as f:
               json.dump({"type": "FeatureCollection", "features": p.obstacles}, f)
           print(f"Extracted {len(p.obstacles)} ICAO obstacles.")
 
-          # Compute holding_position node perpendicular bearings from parent taxiways
           hold_bearings = {}
           for node_ids, coords in p.taxiway_lines:
               for idx, nid in enumerate(node_ids):
@@ -211,14 +209,12 @@ jobs:
                       twy_brg = (math.degrees(math.atan2(y, x)) + 360.0) % 360.0
                       hold_bearings[nid] = round((twy_brg + 90.0) % 360.0, 1)
 
-          # Identify area runways that ALSO have a centerline runway way
           area_rwy_with_line = []
           for rwy_box in p.area_runways:
               if any(rwy_box.intersects(line) for line in p.centerline_runways):
                   b = rwy_box.bounds
                   area_rwy_with_line.append((b[0], b[1], b[2], b[3]))
 
-          # Filter grass candidates to ONLY those inside airport boxes, then check centerline intersections
           def in_any_airport(lon, lat, boxes):
               for b in boxes:
                   if b[0] <= lon <= b[2] and b[1] <= lat <= b[3]:
@@ -226,7 +222,7 @@ jobs:
               return False
 
           all_centerlines = list(p.centerline_runways) + [LineString(c) for _, c in p.taxiway_lines]
-          centerline_With_bounds = [(line, line.bounds) for line in all_centerlines]
+          centerline_with_bounds = [(line, line.bounds) for line in all_centerlines]
 
           grass_island_ids = []
           for wid, cx, cy, coords in p.grass_candidates:
@@ -242,7 +238,7 @@ jobs:
                       continue
                   sb = shrunk.bounds
                   cuts_interior = False
-                  for line, lb in centerline_With_bounds:
+                  for line, lb in centerline_with_bounds:
                       if not (lb[2] < sb[0] or lb[0] > sb[2] or lb[3] < sb[1] or lb[1] > sb[3]):
                           if shrunk.intersects(line):
                               cuts_interior = True
@@ -268,7 +264,7 @@ jobs:
         env:
           MAP_COUNTRY: ${{ matrix.country }}
         run: |
-          java -cp planetiler.jar AeroToolsProfile.java
+          java -cp data/planetiler.jar AeroToolsProfile.java
 
       - name: Generate Offline DEM Elevation Grid (Fail-Safe Checked)
         run: |
@@ -347,7 +343,7 @@ jobs:
 
           assert len(points) > 100000, f"Elevation grid point count too low: {len(points)}"
 
-          out_file = f"{region_id}_elevation.json.gz"
+          out_file = f"data/{region_id}_elevation.json.gz"
           payload = {
               "region_id": region_id,
               "grid_resolution_deg": step,
@@ -364,18 +360,25 @@ jobs:
         with:
           tag_name: vfr-maps-latest
           name: "Latest AeroTools VFR Maps"
-          body: "Automated VFR Basemap + Z16 Aerodrome Charts build from commit ${{ github.sha }}."
+          body: "Automated VFR Basemap + Z15 Aerodrome Charts build from commit ${{ github.sha }}."
           overwrite: true
           files: |
             data/${{ matrix.country }}_vfr.pmtiles
-            obstacles_${{ matrix.code }}.geojson
-            ${{ matrix.country }}_elevation.json.gz
+            data/obstacles_${{ matrix.code }}.geojson
+            data/${{ matrix.country }}_elevation.json.gz
           make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update manifest.json with Checksums, Sizes & Release URLs
+      - name: Pull Latest & Commit Updated Manifest
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # 1. Pull latest remote commits first while tracked files are untouched
+          git pull --rebase origin main
+
+          # 2. Update manifest.json with checksums and release URLs
           python - << 'EOF'
           import json, datetime, hashlib, os
 
@@ -387,8 +390,8 @@ jobs:
               return h.hexdigest(), os.path.getsize(path)
 
           pm_sha, pm_size = file_meta("data/${{ matrix.country }}_vfr.pmtiles")
-          obs_sha, obs_size = file_meta("obstacles_${{ matrix.code }}.geojson")
-          elev_sha, elev_size = file_meta("${{ matrix.country }}_elevation.json.gz")
+          obs_sha, obs_size = file_meta("data/obstacles_${{ matrix.code }}.geojson")
+          elev_sha, elev_size = file_meta("data/${{ matrix.country }}_elevation.json.gz")
           today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
           base_rel = "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest"
 
@@ -412,27 +415,7 @@ jobs:
               json.dump(m, f, indent=2)
           EOF
 
-      - name: Commit & Push Updated Manifest
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-
-          # 1. Clean up working tree artifacts so git rebase has zero untracked/unstaged conflicts
-          git reset --hard HEAD
-          git clean -fd -e manifest.json
-
-          # 2. Pull remote changes cleanly with rebase
-          git pull --rebase origin main
-
-          # 3. Stage and commit only manifest.json
+          # 3. Commit and push manifest.json
           git add manifest.json
           git diff-index --quiet HEAD || git commit -m "Auto-update manifest for ${{ matrix.country }} [skip ci]"
-
-          # 4. Push with retry in case the other matrix job pushed in between
-          for i in {1..5}; do
-            git push origin main && break || {
-              echo "Push rejected, rebasing and retrying..."
-              git pull --rebase origin main
-              sleep 2
-            }
-          done
+          git push origin main
