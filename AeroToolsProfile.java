@@ -84,17 +84,21 @@ public class AeroToolsProfile implements Profile {
         }
     }
 
-    private boolean isInsideEnvelopeList(SourceFeature feature, List<Envelope> envelopes) {
+    private boolean intersectsEnvelopeList(SourceFeature feature, List<Envelope> envelopes) {
         if (envelopes.isEmpty()) return false;
         try {
             Geometry geom = feature.worldGeometry();
             if (geom == null || geom.isEmpty()) return false;
-            Coordinate c = geom.getCentroid().getCoordinate();
-            if (c == null) return false;
-            double lon = GeoUtils.getWorldLon(c.x);
-            double lat = GeoUtils.getWorldLat(c.y);
+            Envelope we = geom.getEnvelopeInternal();
+            double minLon = GeoUtils.getWorldLon(we.getMinX());
+            double maxLon = GeoUtils.getWorldLon(we.getMaxX());
+            double lat1 = GeoUtils.getWorldLat(we.getMinY());
+            double lat2 = GeoUtils.getWorldLat(we.getMaxY());
+            double minLat = Math.min(lat1, lat2);
+            double maxLat = Math.max(lat1, lat2);
+            Envelope featEnv = new Envelope(minLon, maxLon, minLat, maxLat);
             for (Envelope env : envelopes) {
-                if (env.contains(lon, lat)) {
+                if (env.intersects(featEnv)) {
                     return true;
                 }
             }
@@ -181,7 +185,17 @@ public class AeroToolsProfile implements Profile {
     @Override
     public void processFeature(SourceFeature feature, FeatureCollector features) {
 
-        // 1. ROADS (Basemap z4-12)
+        // 0. SEA AREAS (Basemap z0-12, plus z13-15 near coastal airports so water never disappears)
+        if ("ocean".equals(feature.getSource())) {
+            int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
+            features.polygon("water_areas")
+                .setAttr("class", "ocean")
+                .setPixelTolerance(1.5)
+                .setZoomRange(0, maxZ);
+            return;
+        }
+
+        // 1. ROADS (Basemap z5-12, extended to z15 around airports)
         if (feature.canBeLine() && feature.hasTag("highway")) {
             String highway = feature.getString("highway");
             if ("motorway".equals(highway) || "trunk".equals(highway) ||
@@ -190,58 +204,68 @@ public class AeroToolsProfile implements Profile {
 
                 int minZ = ("motorway".equals(highway) || "trunk".equals(highway)) ? 5 :
                            ("primary".equals(highway) ? 6 : ("secondary".equals(highway) ? 8 : 10));
+                int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
 
                 features.line("roads")
                     .setAttr("class", highway)
-                    .setPixelTolerance(1.0)
-                    .setZoomRange(minZ, BASEMAP_MAX_ZOOM);
+                    .setPixelTolerance(1.2)
+                    .setZoomRange(minZ, maxZ);
             }
         }
 
-        // 2. RAILWAYS (Basemap z7-12)
+        // 2. RAILWAYS (Main lines only — z7-12, extended to z15 around airports)
         if (feature.canBeLine() && "rail".equals(feature.getString("railway"))) {
             String service = feature.getString("service");
             if (service == null || service.isEmpty()) {
+                int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
                 features.line("railways")
-                    .setPixelTolerance(1.0)
-                    .setZoomRange(7, BASEMAP_MAX_ZOOM);
+                    .setPixelTolerance(1.2)
+                    .setZoomRange(7, maxZ);
             }
         }
 
-        // 3. POWER LINES (Basemap z8-12)
+        // 3. POWER LINES (Basemap z8-12, extended to z15 around airports)
         if (feature.canBeLine() && "line".equals(feature.getString("power"))) {
+            int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
             features.line("power_lines")
-                .setPixelTolerance(1.0)
-                .setZoomRange(8, BASEMAP_MAX_ZOOM);
+                .setPixelTolerance(1.2)
+                .setZoomRange(8, maxZ);
         }
 
-        // 4. RIVERS & CANALS (Basemap z6-12)
+        // 4. RIVERS & CANALS (Main rivers from z6, canals from z9 — streams/ditches excluded)
         if (feature.canBeLine() && (feature.hasTag("waterway", "river") || feature.hasTag("waterway", "canal"))) {
-            double widthM = parseMeters(feature.getString("width"), "river".equals(feature.getString("waterway")) ? 12.0 : 6.0);
+            String ww = feature.getString("waterway");
+            int minZ = "river".equals(ww) ? 6 : 9;
+            int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
+            double widthM = parseMeters(feature.getString("width"), "river".equals(ww) ? 12.0 : 6.0);
             features.line("waterways")
-                .setAttr("class", feature.getString("waterway"))
+                .setAttr("class", ww)
                 .setAttr("width", Math.round(widthM))
-                .setPixelTolerance(0.8)
-                .setZoomRange(6, BASEMAP_MAX_ZOOM);
+                .setPixelTolerance(1.0)
+                .setZoomRange(minZ, maxZ);
         }
 
-        // 5. LAKES & WATER POLYGONS (Basemap z4-12)
+        // 5. LAKES & RIVERBANK POLYGONS (Generalize micro-islands & filter tiny ponds via minPixelSize)
         if (feature.canBePolygon() && (feature.hasTag("natural", "water") ||
                                        feature.hasTag("landuse", "reservoir") ||
                                        feature.hasTag("waterway", "riverbank"))) {
+            int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
             features.polygon("water_areas")
                 .setAttr("class", "lake")
-                .setPixelTolerance(0.8)
-                .setZoomRange(4, BASEMAP_MAX_ZOOM);
+                .setMinPixelSize(2.0)
+                .setPixelTolerance(1.2)
+                .setZoomRange(4, maxZ);
         }
 
         // 6. BASEMAP LANDUSE & AIRPORT GRASS CUTOUTS
         if (feature.canBePolygon()) {
             if (feature.hasTag("landuse", "forest") || feature.hasTag("natural", "wood")) {
+                int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
                 features.polygon("landuse")
                     .setAttr("class", "forest")
-                    .setPixelTolerance(1.5)
-                    .setZoomRange(6, BASEMAP_MAX_ZOOM);
+                    .setMinPixelSize(2.0)
+                    .setPixelTolerance(1.8)
+                    .setZoomRange(6, maxZ);
             } else if (feature.hasTag("landuse", "grass") || feature.hasTag("landuse", "meadow") ||
                        feature.hasTag("natural", "grassland") || feature.hasTag("natural", "scrub")) {
                 if (grassIslandWayIds.contains(feature.id())) {
@@ -249,32 +273,38 @@ public class AeroToolsProfile implements Profile {
                         .setAttr("class", "airport_grass_island")
                         .setPixelTolerance(0.0)
                         .setZoomRange(11, AIRPORT_MAX_ZOOM);
-                } else if (isInsideEnvelopeList(feature, airportZones)) {
+                } else if (intersectsEnvelopeList(feature, airportZones)) {
                     features.polygon("aeroways")
                         .setAttr("class", "aerodrome_turf")
                         .setPixelTolerance(0.0)
                         .setZoomRange(11, AIRPORT_MAX_ZOOM);
                 }
             } else if (feature.hasTag("landuse", "farmland") || feature.hasTag("landuse", "farm")) {
+                int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
                 features.polygon("landuse")
                     .setAttr("class", "field")
-                    .setPixelTolerance(1.5)
-                    .setZoomRange(7, BASEMAP_MAX_ZOOM);
+                    .setMinPixelSize(2.0)
+                    .setPixelTolerance(1.8)
+                    .setZoomRange(7, maxZ);
             } else if (feature.hasTag("natural", "wetland")) {
+                int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
                 features.polygon("landuse")
                     .setAttr("class", "swamp")
-                    .setPixelTolerance(1.5)
-                    .setZoomRange(7, BASEMAP_MAX_ZOOM);
+                    .setMinPixelSize(2.0)
+                    .setPixelTolerance(1.8)
+                    .setZoomRange(7, maxZ);
             } else if (feature.hasTag("landuse", "residential") || feature.hasTag("landuse", "commercial") ||
                        feature.hasTag("landuse", "industrial") || feature.hasTag("landuse", "retail")) {
+                int maxZ = intersectsEnvelopeList(feature, airportZones) ? AIRPORT_MAX_ZOOM : BASEMAP_MAX_ZOOM;
                 features.polygon("landuse")
                     .setAttr("class", "urban")
+                    .setMinPixelSize(1.5)
                     .setPixelTolerance(1.5)
-                    .setZoomRange(5, BASEMAP_MAX_ZOOM);
+                    .setZoomRange(5, maxZ);
             }
         }
 
-        // 7. AIRPORT BUILDINGS (Hangars, Terminals, Towers — z12-16)
+        // 7. AIRPORT BUILDINGS (Hangars, Terminals, Towers — z12-15)
         if (feature.canBePolygon() && (feature.hasTag("aeroway") || feature.hasTag("building"))) {
             String aeroway = feature.getString("aeroway");
             String building = feature.getString("building");
@@ -282,7 +312,7 @@ public class AeroToolsProfile implements Profile {
             boolean isTerminal = "terminal".equals(aeroway) || "terminal".equals(building);
             boolean isTower = "tower".equals(aeroway) || "control_tower".equals(aeroway);
 
-            if ((isHangar || isTerminal || isTower) && (feature.hasTag("aeroway") || isInsideEnvelopeList(feature, airportZones))) {
+            if ((isHangar || isTerminal || isTower) && (feature.hasTag("aeroway") || intersectsEnvelopeList(feature, airportZones))) {
                 String bldgClass = isTerminal ? "terminal" : (isTower ? "tower" : "hangar");
                 String name = feature.getString("name");
                 features.polygon("aeroways")
@@ -300,7 +330,7 @@ public class AeroToolsProfile implements Profile {
             }
         }
 
-        // 8. OPERATIONAL AEROWAYS (z8-16)
+        // 8. OPERATIONAL AEROWAYS (z8-15)
         if (feature.hasTag("aeroway") || feature.hasTag("disused:aeroway") || feature.hasTag("abandoned:aeroway")) {
             boolean isClosed = feature.hasTag("disused:aeroway") || feature.hasTag("abandoned:aeroway") ||
                                feature.hasTag("aeroway", "closed");
@@ -340,7 +370,7 @@ public class AeroToolsProfile implements Profile {
                         .setZoomRange(14, AIRPORT_MAX_ZOOM);
                 }
 
-                if ("runway".equals(aeroway) && !isInsideEnvelopeList(feature, areaRunwayWithLineZones)) {
+                if ("runway".equals(aeroway) && !intersectsEnvelopeList(feature, areaRunwayWithLineZones)) {
                     try {
                         Geometry worldGeom = feature.worldGeometry();
                         MinimumDiameter minDiam = new MinimumDiameter(worldGeom);
@@ -376,10 +406,12 @@ public class AeroToolsProfile implements Profile {
             // 8B. Line Aeroways
             else if (feature.canBeLine()) {
                 if ("runway".equals(aeroway)) {
+                    double widthMeters = parseMeters(feature.getString("width"), 30.0);
                     features.line("aeroway_lines")
                         .setAttr("class", "runway")
                         .setAttr("surface", surface)
                         .setAttr("ref", ref != null ? ref : "")
+                        .setAttr("width_m", Math.round(widthMeters))
                         .setAttr("closed", isClosed)
                         .setPixelTolerance(0.0)
                         .setZoomRange(11, AIRPORT_MAX_ZOOM);
@@ -389,39 +421,38 @@ public class AeroToolsProfile implements Profile {
                         if (worldGeom instanceof LineString ls) {
                             emitRunwayIdents(features, ref, ls.getStartPoint(), ls.getEndPoint());
                         }
-                        if (!isInsideEnvelopeList(feature, areaRunwayWithLineZones)) {
-                            double widthMeters = parseMeters(feature.getString("width"), 30.0);
-                            if (widthMeters > 0) {
-                                double latDeg = GeoUtils.getWorldLat(worldGeom.getCentroid().getY());
-                                double metersPerWorldUnit = GeoUtils.WORLD_CIRCUMFERENCE_METERS * Math.cos(Math.toRadians(latDeg));
-                                double bufferWorldUnits = (widthMeters / 2.0) / metersPerWorldUnit;
-                                Geometry buffered = worldGeom.buffer(bufferWorldUnits, 8, BufferParameters.CAP_FLAT);
+                        if (!intersectsEnvelopeList(feature, areaRunwayWithLineZones) && widthMeters > 0) {
+                            double latDeg = GeoUtils.getWorldLat(worldGeom.getCentroid().getY());
+                            double metersPerWorldUnit = GeoUtils.WORLD_CIRCUMFERENCE_METERS * Math.cos(Math.toRadians(latDeg));
+                            double bufferWorldUnits = (widthMeters / 2.0) / metersPerWorldUnit;
+                            Geometry buffered = worldGeom.buffer(bufferWorldUnits, 8, BufferParameters.CAP_FLAT);
 
-                                features.geometry("aeroways", buffered)
-                                    .setAttr("class", "runway")
-                                    .setAttr("surface", surface)
-                                    .setAttr("ref", ref != null ? ref : "")
-                                    .setAttr("closed", isClosed)
-                                    .setAttr("derived", true)
-                                    .setPixelTolerance(0.0)
-                                    .setZoomRange(10, AIRPORT_MAX_ZOOM);
-                            }
+                            features.geometry("aeroways", buffered)
+                                .setAttr("class", "runway")
+                                .setAttr("surface", surface)
+                                .setAttr("ref", ref != null ? ref : "")
+                                .setAttr("closed", isClosed)
+                                .setAttr("derived", true)
+                                .setPixelTolerance(0.0)
+                                .setZoomRange(10, AIRPORT_MAX_ZOOM);
                         }
                     } catch (Exception ignored) {}
                 }
                 else if ("taxiway".equals(aeroway) || "taxilane".equals(aeroway)) {
+                    boolean isParkingAisle = "parking_aisle".equals(feature.getString("service")) || "taxilane".equals(aeroway);
+                    double defaultWidth = isParkingAisle ? 8.0 : 15.0;
+                    double widthMeters = parseMeters(feature.getString("width"), defaultWidth);
+
                     features.line("aeroway_lines")
                         .setAttr("class", aeroway)
                         .setAttr("surface", surface)
                         .setAttr("ref", ref != null ? ref : "")
+                        .setAttr("width_m", Math.round(widthMeters))
                         .setAttr("closed", isClosed)
                         .setPixelTolerance(0.0)
                         .setZoomRange(12, AIRPORT_MAX_ZOOM);
 
                     try {
-                        boolean isMajorTwy = (ref != null && !ref.isBlank()) && "paved".equals(surface);
-                        double defaultWidth = "taxilane".equals(aeroway) ? 7.5 : (isMajorTwy ? 14.0 : 8.5);
-                        double widthMeters = parseMeters(feature.getString("width"), defaultWidth);
                         if (widthMeters > 0) {
                             Geometry worldGeom = feature.worldGeometry();
                             double latDeg = GeoUtils.getWorldLat(worldGeom.getCentroid().getY());
@@ -433,6 +464,7 @@ public class AeroToolsProfile implements Profile {
                                 .setAttr("class", aeroway)
                                 .setAttr("surface", surface)
                                 .setAttr("ref", ref != null ? ref : "")
+                                .setAttr("width_m", Math.round(widthMeters))
                                 .setAttr("closed", isClosed)
                                 .setAttr("derived", true)
                                 .setPixelTolerance(0.0)
@@ -441,51 +473,100 @@ public class AeroToolsProfile implements Profile {
                     } catch (Exception ignored) {}
                 }
                 else if ("holding_position".equals(aeroway)) {
+                    String holdLabel = (ref != null && !ref.isBlank()) ? ref : (name != null ? name : "");
                     features.line("aeroway_lines")
                         .setAttr("class", "holding_position")
-                        .setAttr("ref", ref != null ? ref : (name != null ? name : ""))
+                        .setAttr("ref", holdLabel)
+                        .setAttr("name", holdLabel)
                         .setPixelTolerance(0.0)
                         .setZoomRange(13, AIRPORT_MAX_ZOOM);
                 }
                 else if ("parking_position".equals(aeroway)) {
+                    String standLabel = (ref != null && !ref.isBlank()) ? ref : (name != null ? name : "");
                     features.line("aeroway_lines")
                         .setAttr("class", "stand_lead_in")
-                        .setAttr("ref", ref != null ? ref : "")
+                        .setAttr("ref", standLabel)
+                        .setAttr("name", standLabel)
                         .setPixelTolerance(0.0)
                         .setZoomRange(14, AIRPORT_MAX_ZOOM);
+
+                    if (!standLabel.isBlank()) {
+                        features.pointOnSurface("aeroway_points")
+                            .setAttr("class", "stand")
+                            .setAttr("ref", standLabel)
+                            .setAttr("name", standLabel)
+                            .setZoomRange(13, AIRPORT_MAX_ZOOM);
+                    }
                 }
             }
 
             // 8C. Operational Point Features
             else if (feature.isPoint()) {
                 if ("holding_position".equals(aeroway)) {
-                    double bearing = holdingBearings.getOrDefault(feature.id(), 0.0);
+                    String holdLabel = (ref != null && !ref.isBlank()) ? ref : (name != null ? name : "");
+                    double bearing = holdingBearings.getOrDefault(feature.id(), 90.0);
+
                     features.point("aeroway_points")
                         .setAttr("class", "holding_position")
-                        .setAttr("ref", ref != null ? ref : (name != null ? name : ""))
+                        .setAttr("ref", holdLabel)
+                        .setAttr("name", holdLabel)
                         .setAttr("bearing", Math.round(bearing))
                         .setZoomRange(13, AIRPORT_MAX_ZOOM);
+
+                    // Emit a real 14m perpendicular hold-short line across the taxiway
+                    try {
+                        Geometry worldGeom = feature.worldGeometry();
+                        Coordinate c = worldGeom.getCoordinate();
+                        double latDeg = GeoUtils.getWorldLat(c.y);
+                        double metersPerWorldUnit = GeoUtils.WORLD_CIRCUMFERENCE_METERS * Math.cos(Math.toRadians(latDeg));
+                        double halfLenWorld = 7.0 / metersPerWorldUnit;
+                        double rad = Math.toRadians(bearing);
+                        // In Planetiler world coords: +X is East (sin), -Y is North (cos)
+                        double dx = Math.sin(rad) * halfLenWorld;
+                        double dy = -Math.cos(rad) * halfLenWorld;
+
+                        LineString holdBar = geomFactory.createLineString(new Coordinate[]{
+                            new Coordinate(c.x - dx, c.y - dy),
+                            new Coordinate(c.x + dx, c.y + dy)
+                        });
+                        features.geometry("aeroway_lines", holdBar)
+                            .setAttr("class", "holding_position")
+                            .setAttr("ref", holdLabel)
+                            .setAttr("name", holdLabel)
+                            .setPixelTolerance(0.0)
+                            .setZoomRange(13, AIRPORT_MAX_ZOOM);
+                    } catch (Exception ignored) {}
                 }
                 else if ("windsock".equals(aeroway)) {
+                    // Only include windsocks inside airport zones
+                    if (!intersectsEnvelopeList(feature, airportZones)) {
+                        return;
+                    }
                     boolean lit = "yes".equals(feature.getString("lit"));
                     features.point("aeroway_points")
                         .setAttr("class", "windsock")
                         .setAttr("lit", lit)
                         .setZoomRange(12, AIRPORT_MAX_ZOOM);
                 }
-                else if ("navigationaid".equals(aeroway)) {
-                    String navaidType = feature.getString("navigationaid", "papi").toLowerCase();
-                    features.point("aeroway_points")
-                        .setAttr("class", navaidType.contains("vasi") ? "vasi" : "papi")
-                        .setAttr("ref", ref != null ? ref : "")
-                        .setZoomRange(13, AIRPORT_MAX_ZOOM);
+                else if ("navigationaid".equals(aeroway) || "papi".equals(aeroway) || "vasi".equals(aeroway)) {
+                    String navaidTag = feature.getString("navigationaid", aeroway).toLowerCase();
+                    // Strictly emit ONLY PAPI or VASI — ignore taxiway/runway edge lights (txe, txc, rwe, als)
+                    if (navaidTag.contains("papi") || navaidTag.contains("vasi")) {
+                        features.point("aeroway_points")
+                            .setAttr("class", navaidTag.contains("vasi") ? "vasi" : "papi")
+                            .setAttr("ref", ref != null ? ref : "")
+                            .setZoomRange(13, AIRPORT_MAX_ZOOM);
+                    }
                 }
                 else if ("parking_position".equals(aeroway) || "gate".equals(aeroway)) {
-                    String standLabel = ref != null ? ref : (name != null ? name : "");
-                    features.point("aeroway_points")
-                        .setAttr("class", "stand")
-                        .setAttr("ref", standLabel)
-                        .setZoomRange(14, AIRPORT_MAX_ZOOM);
+                    String standLabel = (ref != null && !ref.isBlank()) ? ref : (name != null ? name : "");
+                    if (!standLabel.isBlank()) {
+                        features.point("aeroway_points")
+                            .setAttr("class", "stand")
+                            .setAttr("ref", standLabel)
+                            .setAttr("name", standLabel)
+                            .setZoomRange(13, AIRPORT_MAX_ZOOM);
+                    }
                 }
                 else if ("fuel".equals(aeroway)) {
                     features.point("aeroway_points")
@@ -494,6 +575,9 @@ public class AeroToolsProfile implements Profile {
                         .setZoomRange(13, AIRPORT_MAX_ZOOM);
                 }
                 else if ("helipad".equals(aeroway) || "heliport".equals(aeroway)) {
+                    if (!intersectsEnvelopeList(feature, airportZones)) {
+                        return;
+                    }
                     features.point("aeroway_points")
                         .setAttr("class", "helipad")
                         .setAttr("ref", ref != null ? ref : "H")
@@ -566,11 +650,16 @@ public class AeroToolsProfile implements Profile {
             : "finland";
 
         Path metadataPath = Path.of("data", "airport_metadata.txt");
+        Path oceanPath = Path.of("data", "water-polygons-split-3857.zip");
 
-        Planetiler.create(Arguments.fromArgs("maxzoom=" + AIRPORT_MAX_ZOOM, "nodata=true", "force=true"))
+        var runner = Planetiler.create(Arguments.fromArgs("maxzoom=" + AIRPORT_MAX_ZOOM, "nodata=true", "force=true"))
             .setProfile(new AeroToolsProfile(metadataPath))
-            .addOsmSource("osm", Path.of("data", "raw.osm.pbf"))
-            .overwriteOutput(Path.of("data", country + "_vfr.pmtiles"))
-            .run();
+            .addOsmSource("osm", Path.of("data", "raw.osm.pbf"));
+
+        if (Files.exists(oceanPath)) {
+            runner.addShapefileSource("ocean", oceanPath);
+        }
+
+        runner.overwriteOutput(Path.of("data", country + "_vfr.pmtiles")).run();
     }
 }
