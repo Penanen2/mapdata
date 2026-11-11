@@ -18,16 +18,16 @@
     {
       "id": "sweden",
       "name": "Sverige",
-      "version": "2026-11-10",
+      "version": "2026-11-11",
       "url": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/ofmx_sweden.ofmx",
       "pmtilesUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/sweden_vfr.pmtiles",
       "obstaclesUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/obstacles_sweden.geojson",
       "elevationUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/sweden_elevation.json.gz",
-      "pmtilesSha256": "c7bce887d8002cb60421ee1c640e29f3ef5b3240c17488937a8fc5d7338c41dd",
-      "pmtilesSizeBytes": 84923285,
+      "pmtilesSha256": "57eb566b5f2f96fe36bf156005bbb31fe770cec2ae4f42e29ad474b6b760f3d9",
+      "pmtilesSizeBytes": 141179752,
       "obstaclesSha256": "9f9f5468ed81ad3e38b29cc2cd640b59298b55ccd36a35f829a8f09e94e9be1d",
       "obstaclesSizeBytes": 1291295,
-      "elevationSha256": "2c7749a53ac0ac25f0d2b79421b89218e9b608f07f8c0ec5d8ce13f945a58ef1",
+      "elevationSha256": "ad0ce49dbda91d3d33887bf75937b6a355ec185b83483aa09b8cbba28ee98b05",
       "elevationSizeBytes": 5402661
     }
   ]
