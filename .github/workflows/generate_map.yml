@@ -57,15 +57,27 @@ jobs:
 
       - name: Download Pinned Planetiler Standalone Jar
         run: |
-          curl -fSL --retry 3 --max-time 120 \
+          curl -fSL --connect-timeout 15 --retry 3 --max-time 120 \
             -o data/planetiler.jar \
             "https://github.com/onthegomap/planetiler/releases/download/v0.8.3/planetiler.jar"
 
       - name: Download OSM Data from Geofabrik
         run: |
-          curl -fSL --retry 3 --retry-delay 5 --max-time 300 \
+          curl -fSL --connect-timeout 15 --retry 3 --retry-delay 5 --max-time 300 \
             -o data/raw.osm.pbf \
             "https://download.geofabrik.de/europe/${{ matrix.country }}-latest.osm.pbf"
+
+      - name: Download Ocean Polygons (Active Mirrors with Fast Timeout)
+        run: |
+          curl -fSL --connect-timeout 15 --retry 2 --max-time 300 \
+            -o data/water-polygons-split-3857.zip \
+            "https://www.osmdata.org/download/water-polygons-split-3857.zip" || \
+          curl -fSL --connect-timeout 15 --retry 2 --max-time 300 \
+            -o data/water-polygons-split-3857.zip \
+            "https://ftp.fau.de/pub/openstreetmapdata.com-archive/2026-10-11/water-polygons-split-3857.zip" || \
+          curl -fSL --connect-timeout 15 --retry 2 --max-time 300 \
+            -o data/water-polygons-split-3857.zip \
+            "https://osmdata.openstreetmap.de/download/water-polygons-split-3857.zip"
 
       - name: Pre-process Airport Geometry Metadata & Extract ICAO Obstacles
         run: |
@@ -375,10 +387,11 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          # 1. Pull latest remote commits first while tracked files are untouched
+          # 1. Ensure working tree of tracked files is 100% clean, then rebase onto latest main
+          git checkout -- .
           git pull --rebase origin main
 
-          # 2. Update manifest.json with checksums and release URLs
+          # 2. Update manifest.json with SHA-256 checksums, sizes, and release URLs
           python - << 'EOF'
           import json, datetime, hashlib, os
 
@@ -415,7 +428,7 @@ jobs:
               json.dump(m, f, indent=2)
           EOF
 
-          # 3. Commit and push manifest.json
+          # 3. Stage, commit, and push manifest.json
           git add manifest.json
           git diff-index --quiet HEAD || git commit -m "Auto-update manifest for ${{ matrix.country }} [skip ci]"
           git push origin main
