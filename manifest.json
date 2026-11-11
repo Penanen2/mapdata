@@ -3,16 +3,16 @@
     {
       "id": "finland",
       "name": "Suomi",
-      "version": "2026-11-10",
+      "version": "2026-11-11",
       "url": "https://raw.githubusercontent.com/Penanen2/mapdata/refs/heads/main/ofmx_ef.ofmx",
       "pmtilesUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/finland_vfr.pmtiles",
       "obstaclesUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/obstacles_ef.geojson",
       "elevationUrl": "https://github.com/Penanen2/mapdata/releases/download/vfr-maps-latest/finland_elevation.json.gz",
-      "pmtilesSha256": "4cb6911ad1b269474273de7f6885b475822d1c28e5d9c0eac892673bb1c50141",
-      "pmtilesSizeBytes": 64701989,
+      "pmtilesSha256": "ca654875d3740390d94e782fa96fa8e07057d511ad2fbb6e5b48a065dca73266",
+      "pmtilesSizeBytes": 108856363,
       "obstaclesSha256": "c751fa68daaf901b572796b0f1c091fb74bc5d8a6bb0676f8a0667796b9084a1",
       "obstaclesSizeBytes": 131165,
-      "elevationSha256": "d5c1711f406162b249f3c1386d27be7c9f4ff20cd65dc8958ba073b9666097f3",
+      "elevationSha256": "e68566b4b024124d773253ee7bdec0aaf3a84790a7d931f7fe46a8e43604c12f",
       "elevationSizeBytes": 4840075
     },
     {
